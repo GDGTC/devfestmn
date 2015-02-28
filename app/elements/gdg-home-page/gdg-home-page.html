@@ -1,0 +1,70 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="gdg-home-page">
+
+  <template>
+    <link rel="stylesheet" href="gdg-home-page.css">
+
+
+    <section id="mainContainer">
+
+      <section class="hero-container">
+        <h1>Welcome</h1>
+
+        <div class="hero-unit">
+          <h3>Countdown to DevFest 2015</h3>
+          <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
+          <p>This will be a full-width banner that floats a bit over the header</p>
+        </div>
+
+      </section>
+
+      <section class="content-layout-container">
+
+        <section>
+          <core-toolbar>
+
+            <paper-tabs id="scheduleTabs" selected="list" self-end>
+              <paper-tab name="list">Scheduled Events</paper-tab>
+              <paper-tab name="favorites">My Favorites</paper-tab>
+            </paper-tabs>
+
+          </core-toolbar>
+
+          <core-list id="content-list"
+                     scrollTarget="{{$.mainPanel.scroller}}">
+
+            <gdg-session-card></gdg-session-card>
+            <p>Hello</p>
+
+          </core-list>
+        </section>
+
+      </section>
+
+    </section>
+
+
+
+
+  </template>
+
+  <script>
+    (function () {
+      Polymer({
+
+        ready: function () {
+          var tabs = this.$.mainContainer.querySelector('paper-tabs');
+
+          tabs.addEventListener('core-select', function () {
+
+            console.log('I\'m touched');
+          });
+        }
+
+      });
+    })();
+
+  </script>
+
+</polymer-element>

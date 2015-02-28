@@ -10,10 +10,9 @@
         <p>{{countdownTime}}</p>
     </div>
 
-
   </template>
 
-
+  <srcipt src="../../../bower_components/countdown.js/lib/countdown.js"></script>
 
   <script>
     (function () {
@@ -22,7 +21,6 @@
 
         ready: function () {
 
-            var currentTime = new Date();
             var requestAnimationFrame = window.requestAnimationFrame ||
                                         window.mozRequestAnimationFrame ||
                                         window.msRequestAnimationFrame ||
@@ -30,8 +28,11 @@
 
                                         window.webkitRequestAnimationFrame;
 
-            var count = function () {
-                this.countdownTime = this.targetTime - currentTime;
+            console.log(requestAnimationFrame);
+
+            function count () {
+                //this.countdownTime = countdown(this.targetTime).toString();
+                console.log(this.countdownTime);
             }
 
             requestAnimationFrame(count);

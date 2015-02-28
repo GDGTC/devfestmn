@@ -7,6 +7,7 @@
     "polymer": "Polymer/polymer#^0.5.4"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^2.2.3"
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3",
+    "countdown.js": "~1.1.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "firebase": "devfestmn",
-  "public": ".",
+  "public": "app",
   "ignore": [
     "firebase.json",
     "**/.*",

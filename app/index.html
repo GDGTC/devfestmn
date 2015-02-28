@@ -12,11 +12,13 @@
   <link rel="stylesheet" href="/styles/main.css">
   <!-- endbuild-->
 
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic" rel="stylesheet" type="text/css">
 
   <!-- build:js /bower_components/webcomponentsjs/webcomponents.min.js -->
   <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
+
+  <!--<script src="scripts/wc_detector.js"></script>-->
 
   <!-- will be replaced with /elements/elements.vulcanized.html -->
   <link rel="import" href="/elements/elements.html">
@@ -29,12 +31,14 @@
     <core-drawer-panel>
 
       <!-- Drawer -->
-      <core-header-panel drawer>
+      <core-header-panel drawer id="sidePanel">
 
         <!-- Drawer Toolbar -->
         <core-toolbar>Menu</core-toolbar>
 
         <!-- Drawer Content -->
+
+        <!-- Main Menu -->
         <core-menu selected="0">
           <core-item label="Schedule"></core-item>
           <core-item label="Map"></core-item>
@@ -43,20 +47,61 @@
           <core-item label="About"></core-item>
         </core-menu>
 
+        <!-- Social media feed -->
+
+        <core-list id="feed"
+                   scrollTarget="{{$.sidePanel.scroller}}">
+        <core-list>
+        
+
       </core-header-panel>
 
       <!-- Main -->
-      <core-header-panel main>
+      <core-scroll-header-panel main condenses id="mainPanel">
 
         <!-- Main Toolbar -->
         <core-toolbar>
-          <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-          <span>{{appName}}</span>
+
+            <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+
+            <div flex>{{appName}}</div>
+
+            <paper-menu-button>
+              <paper-icon-button icon="more-vert">
+              </paper-icon-button>
+
+              <paper-dropdown class="dropdown"
+                              halign="right">
+
+                  <core-menu class="menu">
+                      <paper-item>Settings</paper-item>
+                      <paper-item>Help</paper-item>
+                      <paper-item>Feedback</paper-item>
+                  </core-menu>
+
+              </paper-dropdown>
+            </paper-menu-button>
+
         </core-toolbar>
+
 
         <!-- Main Content -->
         <section class="main-content-container">
+            <!--
+            <core-animated-pages selected="0"
+                                 transition="fade-scale">
+                <section>
+                    <home-page-list></home-page-list>
+                </section>
+                <section>
+                    <session-info-page fade-scale></session-info-page>
+                </section>
 
+            </core-core-animated-pages>
+            -->
+
+
+            <!-- TODO: This becomes the <home-page-list> element within <core-animated-pages> -->
             <section class="hero-container">
                 <h1>Welcome</h1>
 
@@ -64,17 +109,27 @@
                   <h3>Countdown to DevFest 2015</h3>
                   <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
                 </div>
-                
+
             </section>
 
-            <section class="card-list">
-                <div class="card">
-                </div>
+            <section class="main-content-list">
+
+                <core-list id="content-list"
+                           scrollTarget="{{$.mainPanel.scroller}}">
+
+                    <gdg-session-card></gdg-session-card>
+
+                <p>Hello</p>
+                </core-list>
+
             </section>
+
+
+
 
         </section>
 
-      </core-header-panel>
+      </core-scroll-header-panel>
     </core-drawer-panel>
 
   </template>

@@ -1,0 +1,43 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="gdg-timer" attributes="targetTime">
+
+  <template>
+    <link rel="stylesheet" href="gdg-timer.css">
+
+    <div class="time-container">
+        <p>Hello!</p>
+        <p>{{countdownTime}}</p>
+    </div>
+
+
+  </template>
+
+
+
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+
+        ready: function () {
+
+            var currentTime = new Date();
+            var requestAnimationFrame = window.requestAnimationFrame ||
+                                        window.mozRequestAnimationFrame ||
+                                        window.msRequestAnimationFrame ||
+                                        window.oRequestAnimationFrame ||
+
+                                        window.webkitRequestAnimationFrame;
+
+            var count = function () {
+                this.countdownTime = this.targetTime - currentTime;
+            }
+
+            requestAnimationFrame(count);
+        }
+
+      });
+    })();
+  </script>
+</polymer-element>

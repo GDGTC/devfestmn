@@ -1,5 +1,12 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../../bower_components/core-list/core-list.html">
+<link rel="import" href="../../../bower_components/paper-tabs/paper-tabs.html">
+
+<link rel="import" href="../gdg-session-card/gdg-session-card.html">
+
+
 <polymer-element name="gdg-home-page">
 
   <template>
@@ -8,6 +15,7 @@
 
     <section id="mainContainer">
 
+      <!-- Hero Banner -->
       <section class="hero-container">
         <h1>Welcome</h1>
 
@@ -16,12 +24,13 @@
           <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
           <p>This will be a full-width banner that floats a bit over the header</p>
         </div>
-
       </section>
+
 
       <section class="content-layout-container">
 
-        <section>
+        <section id="mainContent">
+
           <core-toolbar>
 
             <paper-tabs id="scheduleTabs" selected="list" self-end>
@@ -29,22 +38,32 @@
               <paper-tab name="favorites">My Favorites</paper-tab>
             </paper-tabs>
 
+
           </core-toolbar>
 
-          <core-list id="content-list"
-                     scrollTarget="{{$.mainPanel.scroller}}">
+          <!--<core-list id="content-list"
+                     scrollTarget="{{mainContent.scroller}}">
 
-            <gdg-session-card></gdg-session-card>
-            <p>Hello</p>
+          </core-list> -->
 
-          </core-list>
+          <gdg-session-card>
+
+            <img width="70"
+                 height="70"
+                 src="img/avatar-01.svg">
+
+            <h2>Web Components are the Rox</h2>
+
+            <p>How to compose with Shadow DOM... like this element!</p>
+
+          </gdg-session-card>
+          <p>Hello</p>
+
         </section>
 
       </section>
 
     </section>
-
-
 
 
   </template>

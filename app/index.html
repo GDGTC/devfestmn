@@ -26,117 +26,115 @@
 </head>
 
 <body unresolved fullbleed layout vertical>
-  <template is="auto-binding" id="app">
+<template is="auto-binding" id="app">
 
-    <core-drawer-panel>
+  <core-drawer-panel>
 
-      <!-- Drawer -->
-      <core-header-panel drawer id="sidePanel">
+    <!-- Drawer -->
+    <core-header-panel drawer id="sidePanel">
 
-        <!-- Drawer Toolbar -->
-        <core-toolbar>Menu</core-toolbar>
+      <!-- Drawer Toolbar -->
+      <core-toolbar>Menu</core-toolbar>
 
-        <!-- Drawer Content -->
+      <!-- Drawer Content -->
 
-        <!-- Main Menu -->
-        <core-menu selected="0">
-          <core-item label="Schedule"></core-item>
-          <core-item label="Map"></core-item>
-          <core-item label="My Favorites"></core-item>
-          <core-item label="NFC Scavenger Hunt"></core-item>
-          <core-item label="About"></core-item>
-        </core-menu>
+      <!-- Main Menu -->
+      <core-menu selected="0">
+        <core-item label="Schedule"></core-item>
+        <core-item label="Map"></core-item>
+        <core-item label="My Favorites"></core-item>
+        <core-item label="NFC Scavenger Hunt"></core-item>
+        <core-item label="About"></core-item>
+      </core-menu>
 
-        <!-- Social media feed -->
+      <!-- Social media feed -->
 
-        <core-list id="feed"
-                   scrollTarget="{{$.sidePanel.scroller}}">
+      <core-list id="feed"
+                 scrollTarget="{{$.sidePanel.scroller}}">
         <core-list>
-        
-
-      </core-header-panel>
-
-      <!-- Main -->
-      <core-scroll-header-panel main condenses id="mainPanel">
-
-        <!-- Main Toolbar -->
-        <core-toolbar>
-
-            <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-
-            <div flex>{{appName}}</div>
-
-            <paper-menu-button>
-              <paper-icon-button icon="more-vert">
-              </paper-icon-button>
-
-              <paper-dropdown class="dropdown"
-                              halign="right">
-
-                  <core-menu class="menu">
-                      <paper-item>Settings</paper-item>
-                      <paper-item>Help</paper-item>
-                      <paper-item>Feedback</paper-item>
-                  </core-menu>
-
-              </paper-dropdown>
-            </paper-menu-button>
-
-        </core-toolbar>
 
 
-        <!-- Main Content -->
-        <section class="main-content-container">
-            <!--
-            <core-animated-pages selected="0"
-                                 transition="fade-scale">
-                <section>
-                    <home-page-list></home-page-list>
-                </section>
-                <section>
-                    <session-info-page fade-scale></session-info-page>
-                </section>
+    </core-header-panel>
 
-            </core-core-animated-pages>
-            -->
+    <!-- Main -->
+    <core-scroll-header-panel main condenses id="mainPanel">
+
+      <!-- Main Toolbar -->
+      <core-toolbar>
+
+        <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+
+        <div flex>{{appName}}</div>
+
+        <paper-menu-button>
+          <paper-icon-button icon="more-vert">
+          </paper-icon-button>
+
+          <paper-dropdown class="dropdown"
+                          halign="right">
+
+            <core-menu class="menu">
+              <paper-item>Settings</paper-item>
+              <paper-item>Help</paper-item>
+              <paper-item>Feedback</paper-item>
+            </core-menu>
+
+          </paper-dropdown>
+        </paper-menu-button>
+
+      </core-toolbar>
 
 
-            <!-- TODO: This becomes the <home-page-list> element within <core-animated-pages> -->
-            <section class="hero-container">
-                <h1>Welcome</h1>
-
-                <div class="hero-unit">
-                  <h3>Countdown to DevFest 2015</h3>
-                  <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
-                </div>
-
+      <!-- Main Content -->
+      <section class="main-content-container">
+        <!--
+        <core-animated-pages selected="0"
+                             transition="fade-scale">
+            <section>
+                <home-page-list></home-page-list>
+            </section>
+            <section>
+                <session-info-page fade-scale></session-info-page>
             </section>
 
-            <section class="main-content-list">
-
-                <core-list id="content-list"
-                           scrollTarget="{{$.mainPanel.scroller}}">
-
-                    <gdg-session-card></gdg-session-card>
-
-                <p>Hello</p>
-                </core-list>
-
-            </section>
+        </core-core-animated-pages>
+        -->
 
 
+        <!-- TODO: This becomes the <home-page-list> element within <core-animated-pages> -->
+        <section class="hero-container">
+          <h1>Welcome</h1>
 
+          <div class="hero-unit">
+            <h3>Countdown to DevFest 2015</h3>
+            <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
+          </div>
 
         </section>
 
-      </core-scroll-header-panel>
-    </core-drawer-panel>
+        <section class="main-content-list">
 
-  </template>
+          <core-list id="content-list"
+                     scrollTarget="{{$.mainPanel.scroller}}">
 
-  <!-- build:js /scripts/app.js -->
-  <script src="/scripts/app.js"></script>
-  <!-- endbuild-->
+            <gdg-session-card></gdg-session-card>
+
+            <p>Hello</p>
+          </core-list>
+
+        </section>
+
+
+      </section>
+
+    </core-scroll-header-panel>
+  </core-drawer-panel>
+
+</template>
+
+<!-- build:js /scripts/app.js -->
+<script src="/scripts/app.js"></script>
+<!-- endbuild-->
 </body>
 
 </html>

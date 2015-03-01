@@ -1,0 +1,72 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../gdg-session-service/gdg-session-service.html">
+<link rel="import" href="../gdg-session-card/gdg-session-card.html">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
+
+<polymer-element name="gdg-session-list" attributes="show router">
+  <template>
+    <link rel="stylesheet" href="gdg-session-list.css">
+
+
+    <firebase-element location="https://devfestmn.firebaseio.com/sessions"
+                      data="{{sessions}}"
+                      keys="{{keys}}"
+                      id="sessionsFB"
+                      childEvents>
+    </firebase-element>
+
+    <core-animated-pages transitions="cross-fade cross-fade-delayed scale-up
+                                      slide-up slide-up-offscreen slide-down tile-cascasde"
+                         selected="{{selected}}"
+                         flex
+                         auto
+                         on-core-animated-pages-transition-end="{{transitionEndAction}}"
+                         no-tap
+                         class>
+
+      <div layout vertical center>
+
+        <template repeat="{{key in keys}}">
+          <gdg-session-card id="key" on-click="{{ onCardSelected(key) }}">
+            <img src="{{sessions[key].avatar}}" width="70" height="70">
+
+            <h2>{{sessions[key].name}}</h2>
+
+            <p>{{sessions[key].shortDescription}}</p>
+
+            <p>Speaker: {{sessions[key].speaker}}</p>
+
+            <p>Room: {{sessions[key].location}}</p>
+
+            <gdg-session-details id="{{key}}" hidden?="{{selected != key}}">
+            </gdg-session-details>
+          </gdg-session-card>
+        </template>
+
+      </div>
+
+
+    </core-animated-pages>
+
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+
+        onCardSelected: function(event, sessionKey) {
+
+          this.$.selected = sessionKey;
+        }
+
+
+
+//        openDetails: function (event, sessionKey) {
+//          this.router.go('/sessions/' + sessionKey);
+//        }
+
+
+      });
+    })();
+  </script>
+</polymer-element>

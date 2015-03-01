@@ -1,0 +1,102 @@
+{
+   "_do": {
+      "description": "",
+      "message": "not remove this line"
+   },
+   "addon_homepageURL": {
+      "description": "",
+      "message": "http://www.kaspersky.ru"
+   },
+   "de": {
+      "description": "",
+      "message": "Немецкий"
+   },
+   "disable_autoshow": {
+      "description": "",
+      "message": "Не показывать виртуальную клавиатуру автоматически"
+   },
+   "en": {
+      "description": "",
+      "message": "Английский"
+   },
+   "es": {
+      "description": "",
+      "message": "Испанский"
+   },
+   "extension_author": {
+      "description": "",
+      "message": "Лаборатория Касперского"
+   },
+   "extension_description": {
+      "description": "",
+      "message": "Виртуальная клавиатура позволяет безопасно вводить пароли и секретную информацию"
+   },
+   "extension_name": {
+      "description": "",
+      "message": "Виртуальная клавиатура"
+   },
+   "fr": {
+      "description": "",
+      "message": "Французский"
+   },
+   "it": {
+      "description": "",
+      "message": "Итальянский"
+   },
+   "keyboard_title": {
+      "description": "",
+      "message": "Виртуальная клавиатура"
+   },
+   "layout_selector": {
+      "description": "",
+      "message": "Выберите язык ввода"
+   },
+   "options_changed_button": {
+      "description": "",
+      "message": "Параметры изменены"
+   },
+   "options_saved_button": {
+      "description": "",
+      "message": "Параметры сохранены"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Настройка виртуальной клавиатуры"
+   },
+   "options_unchanged_button": {
+      "description": "",
+      "message": "Параметры не изменены"
+   },
+   "pl": {
+      "description": "",
+      "message": "Польский"
+   },
+   "preferences_button_label": {
+      "description": "",
+      "message": "Настройки"
+   },
+   "pt": {
+      "description": "",
+      "message": "Португальский"
+   },
+   "ru": {
+      "description": "",
+      "message": "Русский"
+   },
+   "saveOptions_button": {
+      "description": "",
+      "message": "Сохранить параметры"
+   },
+   "show_kb_on_pass": {
+      "description": "",
+      "message": "Показывать виртуальную клавиатуру при вводе пароля"
+   },
+   "show_kb_on_pass_title": {
+      "description": "",
+      "message": "Показывать виртуальную клавиатуру при вводе пароля"
+   },
+   "toolbar_button_hint": {
+      "description": "",
+      "message": "Показать виртуальную клавиатуру"
+   }
+}

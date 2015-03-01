@@ -1,0 +1,64 @@
+body
+{
+    font-family: Geneva;
+    font-size: 15;
+}
+.extension_options
+{
+    position: absolute;
+    padding: 20px;
+}
+.options
+{
+    position: relative;
+    
+    background: #efefef;
+    width: auto !important;
+    border: solid black 1px;
+    padding: 20px;
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.kaspersky_title
+{
+    display: inline-block;
+    position: relative;
+    height: 32px;
+    left: 10px;
+    width: auto;
+    vertical-align: middle;
+}
+.kaspersky_logo
+{
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 35px;
+    height: 35px;
+    background-image: url("/icon-32.png");
+    background-repeat: no-repeat;
+}
+.status
+{
+    padding-left: 20px;
+    display: inline-block;
+    font-family: Geneva;
+    font-size: 12;    
+}
+.status.unchanged
+{
+    color: #000000;
+}
+.status.saved
+{
+    color: #009900;
+}
+.status.changed
+{
+    color: #990000;
+}
+.label
+{
+    display: inline-block;
+}

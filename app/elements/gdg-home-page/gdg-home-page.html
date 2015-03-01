@@ -4,10 +4,12 @@
 <link rel="import" href="../../../bower_components/core-list/core-list.html">
 <link rel="import" href="../../../bower_components/paper-tabs/paper-tabs.html">
 
-<link rel="import" href="../gdg-session-card/gdg-session-card.html">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
+
+<link rel="import" href="../gdg-session-card/gdg-session-list.html">
 
 
-<polymer-element name="gdg-home-page">
+<polymer-element name="gdg-home-page" attributes="router">
 
   <template>
     <link rel="stylesheet" href="gdg-home-page.css">
@@ -46,6 +48,7 @@
 
           </core-list> -->
 
+          <!--
           <gdg-session-card>
 
             <img width="70"
@@ -57,7 +60,10 @@
             <p>How to compose with Shadow DOM... like this element!</p>
 
           </gdg-session-card>
-          <p>Hello</p>
+          -->
+          <gdg-session-list show="all" router="router"></gdg-session-list>
+
+
 
         </section>
 
@@ -79,6 +85,70 @@
 
             console.log('I\'m touched');
           });
+
+        },
+
+        resetSessionData: function () {
+          // setting the data object directly will automatically also
+          // set the firebase location
+          this.sessionData = {
+            1: {
+              name: 'Web Components are the ROX',
+              time: new Date(2015, 2, 21, 8),
+              speaker: 'Larry Page',
+              room: '1A',
+              currentFavorites: 0
+            },
+            2: {
+              name: 'Material Design Everywhere',
+              time: new Date(2015, 2, 21, 8),
+              speaker: 'Larry Page',
+              room: '1B',
+              currentFavorites: 0
+            },
+            3: {
+              name: 'Self-Driving Cars',
+              time: new Date(2015, 2, 21, 8),
+              speaker: 'Larry Page',
+              room: '1C',
+              currentFavorites: 0
+            },
+            4: {
+              name: 'Android Animations',
+              time: new Date(2015, 2, 21, 8),
+              speaker: 'Larry Page',
+              room: '1D',
+              currentFavorites: 0
+            },
+            5: {
+              name: 'Web Animation',
+              time: new Date(2015, 2, 21, 10),
+              speaker: 'Larry Page',
+              room: '2A',
+              currentFavorites: 0
+            },
+            6: {
+              name: 'Web Audio API',
+              time: new Date(2015, 2, 21, 10),
+              speaker: 'Larry Page',
+              room: '2C',
+              currentFavorites: 0
+            },
+            7: {
+              name: 'Android NFC and Mobile Payments',
+              time: new Date(2015, 2, 21, 10),
+              speaker: 'Larry Page',
+              room: '2C',
+              currentFavorites: 0
+            },
+            8: {
+              name: 'The Future of Google Glass',
+              time: new Date(2015, 2, 21, 10),
+              speaker: 'Larry Page',
+              room: '2C',
+              currentFavorites: 0
+            }
+          }
         }
 
       });

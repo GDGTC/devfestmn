@@ -1,0 +1,102 @@
+{
+   "_do": {
+      "description": "",
+      "message": "not remove this line"
+   },
+   "addon_homepageURL": {
+      "description": "",
+      "message": "http://www.kaspersky.fr"
+   },
+   "de": {
+      "description": "",
+      "message": "Allemand"
+   },
+   "disable_autoshow": {
+      "description": "",
+      "message": "Ne pas afficher automatiquement le clavier virtuel"
+   },
+   "en": {
+      "description": "",
+      "message": "Anglais"
+   },
+   "es": {
+      "description": "",
+      "message": "Espagnol"
+   },
+   "extension_author": {
+      "description": "",
+      "message": "Kaspersky Lab"
+   },
+   "extension_description": {
+      "description": "",
+      "message": "Le clavier virtuel permet de saisir des mots de passe et des informations secrètes sans danger"
+   },
+   "extension_name": {
+      "description": "",
+      "message": "Clavier virtuel"
+   },
+   "fr": {
+      "description": "",
+      "message": "Français"
+   },
+   "it": {
+      "description": "",
+      "message": "Italien"
+   },
+   "keyboard_title": {
+      "description": "",
+      "message": "Clavier virtuel"
+   },
+   "layout_selector": {
+      "description": "",
+      "message": "Choisissez la langue de saisie"
+   },
+   "options_changed_button": {
+      "description": "",
+      "message": "Paramètres modifiés"
+   },
+   "options_saved_button": {
+      "description": "",
+      "message": "Paramètres enregistrés"
+   },
+   "options_title": {
+      "description": "",
+      "message": "Configuration du clavier virtuel"
+   },
+   "options_unchanged_button": {
+      "description": "",
+      "message": "Paramètres non modifiés"
+   },
+   "pl": {
+      "description": "",
+      "message": "Polonais"
+   },
+   "preferences_button_label": {
+      "description": "",
+      "message": "Paramètres"
+   },
+   "pt": {
+      "description": "",
+      "message": "Portugais"
+   },
+   "ru": {
+      "description": "",
+      "message": "Russe"
+   },
+   "saveOptions_button": {
+      "description": "",
+      "message": "Enregistrer les paramètres"
+   },
+   "show_kb_on_pass": {
+      "description": "",
+      "message": "Afficher le clavier virtuel pour la saisie du mot de passe"
+   },
+   "show_kb_on_pass_title": {
+      "description": "",
+      "message": "Afficher le clavier virtuel pour la saisie du mot de passe"
+   },
+   "toolbar_button_hint": {
+      "description": "",
+      "message": "Afficher le clavier virtuel"
+   }
+}

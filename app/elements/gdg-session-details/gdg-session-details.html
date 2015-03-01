@@ -1,0 +1,96 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+
+<link rel="import" href="../gdg-comment/gdg-comment.html">
+
+<polymer-element name="gdg-session-details" attributes="id session">
+  <template>
+    <link rel="stylesheet" href="gdg-session-details.css">
+
+    <firebase-element location="https://devfestmn.firebaseio.com/sessions/{{id}}/comments"
+                      data="{{comments}}"
+                      id="fbComments"
+                      keys="{{keys}}"
+                      childEvents>
+    </firebase-element>
+
+    <!-- Details -->
+    <div>
+      <p>Hello!</p>
+
+      <p>Session Details</p>
+    </div>
+
+    <!-- Comments -->
+    <div class="comment">
+      <template repeat="keys in keys">
+        <p>I'm a comment</p>
+        <p>{{comments[key].user.username}}</p>
+        <p>{{comments[key].text}}</p>
+      </template>
+    </div>
+
+    <div class="add-comment">
+      <button on-click="{{openCommentDialog}}">
+        Add a Comment
+
+        <paper-action-dialog id="commentDialog"
+                             heading="Add a Comment"
+                             transition="core-transition-buttom">
+
+          <form>
+            <paper-autogrow-textarea id="commentTextArea">
+              <textarea id="commentText" placeholder="Begin your comment here"></textarea>
+            </paper-autogrow-textarea>
+          </form>
+
+          <paper-button affirmative autofocus on-click="{{submitComment}}">Submit</paper-button>
+
+        </paper-action-dialog>
+
+      </button>
+    </div>
+
+
+  </template>
+  <script>
+    (function () {
+
+      'use strict';
+
+      Polymer({
+
+        openCommentDialog: function () {
+          this.$.commentDialog.toggle();
+        },
+
+        submitComment: function () {
+
+          if (!this.$.commentText.value.length) {
+            alert('Please write some content');
+            return;
+          }
+
+          var comment = this.$.fbComments.push({
+            text: this.$.commentText.value,
+            user: {
+              uid: this.globals.currentUser.uid,
+              username: this.globals.currentUser.username,  // TODO: Setup some globals
+              avatar_url: this.globals.currentUser.google.cachedUserProfile.avatar_url,
+              html_url: this.globals.currentUser.google.cachedUserProfile.html_url
+            },
+            timestamp: new Date().getTime()
+          });
+
+          this.$.commentText.value = '';
+
+        }
+
+
+      });
+    })();
+  </script>
+</polymer-element>

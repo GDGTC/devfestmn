@@ -17,6 +17,29 @@
     console.log('Our app is ready to rock!');
   });
 
+  app.login = function () {
+    this.$.baseLogin.login();
+  };
+
+  app.logout = function () {
+    this.$.baseLogin.logout();
+  };
+
+  app.onLogin = function () {
+    this.globals.currentUser = this.user;
+  };
+
+  app.onLoginError = function () {
+    console.log("Login Failed");
+  };
+
+  app.onLogout = function () {
+    this.globals.currentUser = undefined;
+  };
+
+
+
+
 // wrap document so it plays nice with other libraries
 // http://www.polymer-project.org/platform/shadow-dom.html#wrappers
 })(wrap(document));

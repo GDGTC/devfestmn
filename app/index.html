@@ -21,12 +21,22 @@
   <!--<script src="scripts/wc_detector.js"></script>-->
 
   <!-- will be replaced with /elements/elements.vulcanized.html -->
-  <link rel="import" href="/elements/elements.html">
+  <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
 </head>
 
 <body unresolved fullbleed layout vertical>
 <template is="auto-binding" id="app">
+
+  <firebase-login id="baseLogin"
+                  user="{{user}}"
+                  statusKnown="{{statusKnown}}"
+                  location="https://devfestmn.firebaseio.com"
+                  provider="google"
+                  on-login="{{onLogin}}"
+                  on-error="{{onLoginError}}">
+
+  </firebase-login>
 
   <core-drawer-panel>
 
@@ -67,23 +77,28 @@
         <div flex>{{appName}}</div>
 
         <paper-menu-button>
-          <paper-icon-button icon="more-vert">
+          <paper-icon-button icon="social:person">
           </paper-icon-button>
 
           <paper-dropdown class="dropdown"
+                          transition=""
                           halign="right">
 
             <core-menu class="menu">
-              <paper-item>Settings</paper-item>
-              <paper-item>Help</paper-item>
-              <paper-item>Feedback</paper-item>
+              <paper-item on-click="{{login}}" hidden?="{{ !statusKnown || user }}">
+                Login
+              </paper-item>
+
+              <paper-item on-click="{{logout}}" hidden?="{{statusKnown || !user }}">
+                Logout
+              </paper-item>
             </core-menu>
 
           </paper-dropdown>
         </paper-menu-button>
+        <template if="{{user}}">Logged in as {{user.google.username}}</template>
 
       </core-toolbar>
-
 
       <!-- Main Content -->
 
@@ -100,8 +115,28 @@
       </core-core-animated-pages>
       -->
 
+      <div class="content">
 
-      <gdg-home-page></gdg-home-page>
+        <!--<gdg-home-page></gdg-home-page>-->
+
+        <app-router core-animated-pages transitions="fade-scale">
+
+          <app-route path="/"
+                     import="elements/gdg-home-page/gdg-home-page.html"
+                     element="gdg-home-page"
+                     bindRouter>
+          </app-route>
+
+          <app-route path="/sessions/:sessionId"
+                     import="elements/gdg-session-details/gdg-session-details.html"
+                     element="gdg-session-page"
+                     bindRouter>
+          </app-route>
+        </app-router>
+      </div>
+
+
+
 
 
 

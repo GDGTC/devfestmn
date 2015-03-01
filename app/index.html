@@ -58,10 +58,18 @@
       </core-menu>
 
       <!-- Social media feed -->
-
-      <core-list id="feed"
-                 scrollTarget="{{$.sidePanel.scroller}}">
-      </core-list>
+      <h2 class="sidenav-header">Signed-In Users</h2>
+      <core-header-panel>
+        <core-list id="feed"
+                   data="{{users}}"
+                   scrollTarget="{{$.sidePanel.scroller}}">
+          <template>
+            <div class="row">
+              {{name}}
+            </div>
+          </template>
+        </core-list>
+      </core-header-panel>
 
 
     </core-header-panel>
@@ -130,6 +138,7 @@
           <app-route path="/sessions/:sessionId"
                      import="elements/gdg-session-details/gdg-session-details.html"
                      element="gdg-session-page"
+                     transition="fade-scale"
                      bindRouter>
           </app-route>
         </app-router>

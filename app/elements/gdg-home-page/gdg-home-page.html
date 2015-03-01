@@ -6,7 +6,8 @@
 
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<link rel="import" href="../gdg-session-card/gdg-session-list.html">
+<link rel="import" href="../gdg-session-list/gdg-session-list.html">
+<link rel="import" href="../gdg-countdown/gdg-countdown.html">
 
 
 <polymer-element name="gdg-home-page" attributes="router">
@@ -23,7 +24,7 @@
 
         <div class="hero-unit">
           <h3>Countdown to DevFest 2015</h3>
-          <gdg-timer targetTime={{devfestStartTime}}></gdg-timer>
+          <gdg-countdown targetTime={{devfestStartTime}}></gdg-countdown>
           <p>This will be a full-width banner that floats a bit over the header</p>
         </div>
       </section>
@@ -78,6 +79,8 @@
     (function () {
       Polymer({
 
+        devfestStartTime: new Date(2015, 2, 21, 7),
+
         ready: function () {
           var tabs = this.$.mainContainer.querySelector('paper-tabs');
 
@@ -85,7 +88,6 @@
 
             console.log('I\'m touched');
           });
-
         },
 
         resetSessionData: function () {
@@ -148,7 +150,7 @@
               room: '2C',
               currentFavorites: 0
             }
-          }
+          };
         }
 
       });

@@ -43,6 +43,7 @@
 
           <form>
             <paper-autogrow-textarea id="commentTextArea">
+              <label for="commentText" hidden?="{{!commentError}}">{{commentError}}</label>
               <textarea id="commentText" placeholder="Begin your comment here"></textarea>
             </paper-autogrow-textarea>
           </form>
@@ -59,8 +60,6 @@
   <script>
     (function () {
 
-      'use strict';
-
       Polymer({
 
         openCommentDialog: function () {
@@ -70,17 +69,17 @@
         submitComment: function () {
 
           if (!this.$.commentText.value.length) {
-            alert('Please write some content');
+            this.commentError.value = 'Please enter some content before submitting';
             return;
           }
 
-          var comment = this.$.fbComments.push({
+          this.$.fbComments.push({
             text: this.$.commentText.value,
             user: {
               uid: this.globals.currentUser.uid,
               username: this.globals.currentUser.username,  // TODO: Setup some globals
-              avatar_url: this.globals.currentUser.google.cachedUserProfile.avatar_url,
-              html_url: this.globals.currentUser.google.cachedUserProfile.html_url
+              avatarUrl: this.globals.currentUser.google.cachedUserProfile.avatarUrl,
+              htmlUrl: this.globals.currentUser.google.cachedUserProfile.htmlUrl
             },
             timestamp: new Date().getTime()
           });

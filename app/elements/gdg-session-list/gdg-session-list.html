@@ -1,5 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../gdg-session-service/gdg-session-service.html">
 <link rel="import" href="../gdg-session-card/gdg-session-card.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
@@ -27,14 +26,14 @@
       <div layout vertical center>
 
         <template repeat="{{key in keys}}">
-          <gdg-session-card id="key" on-click="{{ onCardSelected(key) }}">
+          <gdg-session-card id="key">
             <img src="{{sessions[key].avatar}}" width="70" height="70">
 
             <h2>{{sessions[key].name}}</h2>
 
             <p>{{sessions[key].shortDescription}}</p>
 
-            <p>Speaker: {{sessions[key].speaker}}</p>
+            <p>Speaker: {{sessionData[key].speaker}}</p>
 
             <p>Room: {{sessions[key].location}}</p>
 
@@ -55,6 +54,7 @@
       Polymer({
 
         onCardSelected: function(event, sessionKey) {
+          console.log('Hello');
 
           this.$.selected = sessionKey;
         }

@@ -30,7 +30,7 @@
   };
 
   app.onLoginError = function () {
-    console.log("Login Failed");
+    console.log('Login Failed');
   };
 
   app.onLogout = function () {

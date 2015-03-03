@@ -10,7 +10,7 @@
       "title": "Android",
       "iconUrl": "",
       "primaryHexColor":  "#78C15B",
-      "accentHexColor": "##C6FF00"
+      "accentHexColor": "#C6FF00"
     },
     "wearables": {
       "title": "Wearables",

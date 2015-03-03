@@ -1,0 +1,22 @@
+{
+  "tracks": {
+    "general": {
+      "title": "",
+      "iconUrl": "",
+      "primaryHexColor": "#000000",
+      "accentHexColor": "#FFFFFF"
+    },
+    "android": {
+      "title": "Android",
+      "iconUrl": "",
+      "primaryHexColor":  "#78C15B",
+      "accentHexColor": "##C6FF00"
+    },
+    "wearables": {
+      "title": "Wearables",
+      "iconUrl": "",
+      "primaryHexColor":  "#00BCD4",
+      "accentHexColor": "#84FFFF"
+    }
+  }
+}

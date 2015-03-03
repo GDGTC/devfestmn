@@ -1,0 +1,29 @@
+{
+  "presentations": {
+    "1": {
+      "speakers": {
+        "1": "Firebase Guy"
+      },
+      "subject": "Firebase Magic",
+      "track": "general",
+      "session": "1"
+    },
+    "2": {
+      "speakers": {
+        "1": "Aaron Goldberg"
+      },
+      "subject": "RecyclerView",
+      "track":  "android",
+      "session": "1"
+    },
+    "3": {
+      "speakers": {
+        "1": "Brian Yencho",
+        "2": "Sean Weiser"
+      },
+      "subject": "Apps for Android Wear",
+      "track":  "wearables",
+      "session": "1"
+    }
+  }
+}

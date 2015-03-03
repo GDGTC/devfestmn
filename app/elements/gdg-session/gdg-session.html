@@ -1,0 +1,116 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
+<link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+
+<polymer-element name="gdg-session" attributes="sessionId">
+
+  <template>
+    <link rel="stylesheet" href="gdg-session.css">
+
+    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}"
+                      keys="{{keys}}"
+                      data="{{presentations}}"
+                      id="fbPresentations">
+
+    </firebase-element>
+
+    <!-- Test cards (pre-Firebase!) -->
+    <gdg-presentation-card presentationId="key">
+      <img src="{{presentations[key].avatar}}" width="70" height="70">
+
+      <h2>{{sessionId}}</h2>
+      <h2>{{sessions[key].name}}</h2>
+
+      <p>{{sessions[key].shortDescription}}</p>
+
+      <p>Speaker: {{sessionData[key].speaker}}</p>
+
+      <p>Room: {{sessions[key].location}}</p>
+
+      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+      </gdg-presentation-details>
+    </gdg-presentation-card>
+
+    <gdg-presentation-card presentationId="key">
+      <img src="{{presentations[key].avatar}}" width="70" height="70">
+
+      <h2>{{sessions[key].name}}</h2>
+
+      <p>{{sessions[key].shortDescription}}</p>
+
+      <p>Speaker: {{sessionData[key].speaker}}</p>
+
+      <p>Room: {{sessions[key].location}}</p>
+
+      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+      </gdg-presentation-details>
+    </gdg-presentation-card>
+
+
+    <gdg-presentation-card presentationId="key">
+      <img src="{{presentations[key].avatar}}" width="70" height="70">
+
+      <h2>{{sessions[key].name}}</h2>
+
+      <p>{{sessions[key].shortDescription}}</p>
+
+      <p>Speaker: {{sessionData[key].speaker}}</p>
+
+      <p>Room: {{sessions[key].location}}</p>
+
+      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+      </gdg-presentation-details>
+    </gdg-presentation-card>
+
+
+    <gdg-presentation-card presentationId="key">
+      <img src="{{presentations[key].avatar}}" width="70" height="70">
+
+      <h2>{{sessions[key].name}}</h2>
+
+      <p>{{sessions[key].shortDescription}}</p>
+
+      <p>Speaker: {{sessionData[key].speaker}}</p>
+
+      <p>Room: {{sessions[key].location}}</p>
+
+      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+      </gdg-presentation-details>
+    </gdg-presentation-card>
+
+
+
+
+
+
+
+
+
+    <template repeat="key in keys">
+      <gdg-presentation-card id="key" presentationId="key">
+        <img src="{{presentations[key].avatar}}" width="70" height="70">
+
+        <h2>{{sessions[key].name}}</h2>
+
+        <p>{{sessions[key].shortDescription}}</p>
+
+        <p>Speaker: {{sessionData[key].speaker}}</p>
+
+        <p>Room: {{sessions[key].location}}</p>
+
+        <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+        </gdg-presentation-details>
+      </gdg-presentation-card>
+
+    </template>
+
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>

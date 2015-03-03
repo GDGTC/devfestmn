@@ -3,14 +3,14 @@
 <link rel="import" href="../../../bower_components/paper-input/paper-autogrow-textarea.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 
-
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../gdg-comment/gdg-comment.html">
 
-<polymer-element name="gdg-session-details" attributes="id session">
+<polymer-element name="gdg-presentation-details" attributes="id presentationId">
   <template>
-    <link rel="stylesheet" href="gdg-session-details.css">
+    <link rel="stylesheet" href="gdg-presentation-details.css">
 
-    <firebase-element location="https://devfestmn.firebaseio.com/sessions/{{id}}/comments"
+    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                       data="{{comments}}"
                       id="fbComments"
                       keys="{{keys}}"
@@ -21,8 +21,11 @@
     <div>
       <p>Hello!</p>
 
-      <p>Session Details</p>
+      <p>Presentation Details</p>
     </div>
+
+
+
 
     <!-- Comments -->
     <div class="comment">

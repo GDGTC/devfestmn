@@ -1,8 +1,9 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
-}
-
-gdg-session-card {
-  margin-bottom: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
 }

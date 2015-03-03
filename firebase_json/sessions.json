@@ -1,11 +1,11 @@
 {
   "sessions": {
-    "1": {
+    "s1": {
       "label": "Opening Keynote & Intro",
       "startTime": "8:30",
       "endTime": "10:00"
     },
-    "2": {
+    "s2": {
       "label": "Session 1",
       "startTime": "10:00",
       "endTime": "11:00"

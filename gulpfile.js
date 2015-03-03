@@ -82,7 +82,7 @@ gulp.task('fonts', function () {
 gulp.task('styles', function () {
   return gulp.src([
       'app/styles/**/*.css',
-      'app/styles/*.scss'
+      'app/styles/**/*.scss'
     ])
     .pipe($.changed('styles', {extension: '.scss'}))
     .pipe($.rubySass({
@@ -98,6 +98,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('dist/styles'))
     .pipe($.size({title: 'styles'}));
 });
+
 
 gulp.task('elements', function () {
   return gulp.src([

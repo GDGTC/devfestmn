@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../gdg-session-card/gdg-session-card.html">
+<link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
+
+<link rel="import" href="../gdg-session/gdg-session.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-session-list" attributes="show router">
@@ -14,38 +16,34 @@
                       childEvents>
     </firebase-element>
 
+    <!-- Relative-positioned container for transitioning between the grid of presentations and their detail view -->
+    <!--
     <core-animated-pages transitions="cross-fade cross-fade-delayed scale-up
-                                      slide-up slide-up-offscreen slide-down tile-cascasde"
+                                      slide-up slide-up-offscreen slide-down tile-cascade"
                          selected="{{selected}}"
                          flex
                          auto
                          on-core-animated-pages-transition-end="{{transitionEndAction}}"
                          no-tap
                          class>
+    -->
 
-      <div layout vertical center>
+        <gdg-session sessionId="1"></gdg-session>
+        <gdg-session sessionId="2"></gdg-session>
+        <gdg-session sessionId="3"></gdg-session>
+        <gdg-session sessionId="4"></gdg-session>
 
         <template repeat="{{key in keys}}">
-          <gdg-session-card id="key">
-            <img src="{{sessions[key].avatar}}" width="70" height="70">
+          <gdg-session sessionId="key">
 
-            <h2>{{sessions[key].name}}</h2>
 
-            <p>{{sessions[key].shortDescription}}</p>
-
-            <p>Speaker: {{sessionData[key].speaker}}</p>
-
-            <p>Room: {{sessions[key].location}}</p>
-
-            <gdg-session-details id="{{key}}" hidden?="{{selected != key}}">
-            </gdg-session-details>
-          </gdg-session-card>
+          </gdg-session>
         </template>
 
-      </div>
-
-
+<!--
     </core-animated-pages>
+-->
+
 
 
   </template>
@@ -53,7 +51,7 @@
     (function () {
       Polymer({
 
-        onCardSelected: function(event, sessionKey) {
+        onCardSelected: function (event, sessionKey) {
           console.log('Hello');
 
           this.$.selected = sessionKey;

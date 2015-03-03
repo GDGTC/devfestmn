@@ -9,7 +9,7 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css /styles/main.css -->
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild-->
 
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic" rel="stylesheet" type="text/css">
@@ -17,6 +17,7 @@
   <!-- build:js /bower_components/webcomponentsjs/webcomponents.min.js -->
   <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
+
 
   <!--<script src="scripts/wc_detector.js"></script>-->
 
@@ -135,20 +136,14 @@
                      bindRouter>
           </app-route>
 
-          <app-route path="/sessions/:sessionId"
-                     import="elements/gdg-session-details/gdg-session-details.html"
-                     element="gdg-session-page"
+          <app-route path="/presentations/:presentationId"
+                     import="elements/gdg-presentation-details/gdg-presentation-details.html"
+                     element="gdg-presentation-details"
                      transition="fade-scale"
                      bindRouter>
           </app-route>
         </app-router>
       </div>
-
-
-
-
-
-
 
 
     </core-header-panel>

@@ -29,20 +29,17 @@
         </div>
       </section>
 
+      <core-toolbar>
+
+        <paper-tabs id="scheduleTabs" selected="list" self-end>
+          <paper-tab name="list">Scheduled Events</paper-tab>
+          <paper-tab name="favorites">My Favorites</paper-tab>
+        </paper-tabs>
+
+      </core-toolbar>
+
 
       <section class="content-layout-container">
-
-        <section id="mainContent">
-
-          <core-toolbar>
-
-            <paper-tabs id="scheduleTabs" selected="list" self-end>
-              <paper-tab name="list">Scheduled Events</paper-tab>
-              <paper-tab name="favorites">My Favorites</paper-tab>
-            </paper-tabs>
-
-
-          </core-toolbar>
 
           <!--<core-list id="content-list"
                      scrollTarget="{{mainContent.scroller}}">
@@ -50,7 +47,7 @@
           </core-list> -->
 
           <!--
-          <gdg-session-card>
+          <gdg-presentation-card>
 
             <img width="70"
                  height="70"
@@ -60,13 +57,9 @@
 
             <p>How to compose with Shadow DOM... like this element!</p>
 
-          </gdg-session-card>
+          </gdg-presentation-card>
           -->
           <gdg-session-list show="all" router="router"></gdg-session-list>
-
-
-
-        </section>
 
       </section>
 

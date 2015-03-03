@@ -1,29 +1,36 @@
 {
   "presentations": {
-    "1": {
-      "speakers": {
-        "1": "Firebase Guy"
+    "s1": {
+      "presentation1": {
+        "speakers": {
+          "1": "Firebase Guy"
+        },
+        "subject": "Firebase Magic",
+        "track": "general",
+        "session": "1"
       },
-      "subject": "Firebase Magic",
-      "track": "general",
-      "session": "1"
+      "presentation2": {
+        "speakers": {
+          "1": "Aaron Goldberg"
+        },
+        "subject": "RecyclerView",
+        "track": "android",
+        "session": "1"
+      },
+      "presentation3": {
+        "speakers": {
+          "1": "Brian Yencho",
+          "2": "Sean Weiser"
+        },
+        "subject": "Apps for Android Wear",
+        "track": "wearables",
+        "session": "1"
+      }
     },
-    "2": {
-      "speakers": {
-        "1": "Aaron Goldberg"
-      },
-      "subject": "RecyclerView",
-      "track":  "android",
-      "session": "1"
+    "s2": {
     },
-    "3": {
-      "speakers": {
-        "1": "Brian Yencho",
-        "2": "Sean Weiser"
-      },
-      "subject": "Apps for Android Wear",
-      "track":  "wearables",
-      "session": "1"
+    "s3": {
+
     }
   }
 }

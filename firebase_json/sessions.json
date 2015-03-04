@@ -9,6 +9,41 @@
       "label": "Session 1",
       "startTime": "10:00",
       "endTime": "11:00"
+    },
+    "s3": {
+      "label": "Session 2",
+      "startTime": "11:00",
+      "endTime": "12:00"
+    },
+    "s4": {
+      "label": "Lunch",
+      "startTime": "12:00",
+      "endTime": "1:00"
+    },
+    "s5": {
+      "label": "Session 3",
+      "startTime": "13:00",
+      "endTime": "14:00"
+    },
+    "s6": {
+      "label": "Session 4",
+      "startTime": "14:00",
+      "endTime": "15:00"
+    },
+    "s7": {
+      "label": "Session 5",
+      "startTime": "15:00",
+      "endTime": "16:00"
+    },
+    "s8": {
+      "label": "Session 6",
+      "startTime": "16:00",
+      "endTime": "17:00"
+    },
+    "s9": {
+      "label": "Closing Remarks",
+      "startTime": "17:00",
+      "endTime": "17:30"
     }
   }
 }

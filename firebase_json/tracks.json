@@ -17,6 +17,24 @@
       "iconUrl": "",
       "primaryHexColor":  "#00BCD4",
       "accentHexColor": "#84FFFF"
+    },
+    "chromeCloud": {
+      "title": "Chrome & Cloud",
+      "iconUrl": "",
+      "primaryHexColor": "",
+      "accentHexColor": ""
+    },
+    "frontEnd": {
+      "title": "Design & Front End",
+      "iconUrl": "",
+      "primaryHexColor": "",
+      "accentHexColor": ""
+    },
+    "gettingStarted": {
+      "title": "Getting Started",
+      "iconUrl": "",
+      "primaryHexColor": "",
+      "accentHexColor": ""
     }
   }
 }

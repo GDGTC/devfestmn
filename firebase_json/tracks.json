@@ -15,26 +15,26 @@
     "wearables": {
       "title": "Wearables",
       "iconUrl": "",
-      "primaryHexColor":  "#00BCD4",
-      "accentHexColor": "#84FFFF"
+      "primaryHexColor":  "#B388FF",
+      "accentHexColor": "#7E57C2"
     },
     "chromeCloud": {
       "title": "Chrome & Cloud",
       "iconUrl": "",
-      "primaryHexColor": "",
-      "accentHexColor": ""
+      "primaryHexColor": "#84FFFF",
+      "accentHexColor": "#03A9F4"
     },
     "frontEnd": {
       "title": "Design & Front End",
       "iconUrl": "",
-      "primaryHexColor": "",
-      "accentHexColor": ""
+      "primaryHexColor": "#FF8A80",
+      "accentHexColor": "#FF5252"
     },
     "gettingStarted": {
       "title": "Getting Started",
       "iconUrl": "",
-      "primaryHexColor": "",
-      "accentHexColor": ""
+      "primaryHexColor": "#FFFF8D",
+      "accentHexColor": "#FFEB3B"
     }
   }
 }

@@ -19,11 +19,11 @@
 
       <!-- Test cards (pre-Firebase!) -->
       <gdg-presentation-card favorited="{{presentation.favorited}}"
-                             on-favorite-tap="{{handleFavorited}}"
+                             on-favorite-tapped="{{handleFavorited}}"
+                             style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
                              hidden?="{{viewMode == 'favorites' && !presentation.favorited}}">
 
         <img src="{{presentation.iconUrl}}" width="70" height="70">
-        <h2>{{presentation.subject}}</h2>
 
         <p>Speakers: <span>
                         {{presentation.speakers['1'] }}
@@ -32,6 +32,10 @@
                         </span>
                      </span>
         </p>
+
+        <h2 style="{{'background-color: ' + presentation.accentHexColor + ';'}}">{{presentation.subject}}</h2>
+
+
 
         <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
         </gdg-presentation-details>
@@ -74,11 +78,13 @@
       Polymer({
 
         handleFavorited: function (event, detail, sender) {
+          console.log("Hello!");
 
           //  sender.templateInstance.model is a reference to the model data used to
           // construct a template instance. In this case, it would be
           // the 'presentation' object used to create a <gdg-presentation-card>
           var presentation = sender.templateInstance.model.presentation;
+          console.log(presentation);
           this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
         },
 
@@ -90,7 +96,9 @@
               "1": "Aaron Goldberg"
             },
             "subject": "RecyclerView",
-            "track": "android"
+            "track": "android",
+            "primaryHexColor":  "#78C15B",
+            "accentHexColor": "#C6FF00"
           },
           {
             "speakers": {
@@ -98,28 +106,37 @@
               "2": "Sean Weisner"
             },
             "subject": "Apps for Android Wear",
-            "track": "android"
+            "track": "wearables",
+            "primaryHexColor":  "#B388FF",
+            "accentHexColor": "#7E57C2"
           },
           {
             "speakers": {
               "1": "Ilya Verbitsky"
             },
             "subject": "WebRTC Workshop (Video Chat)",
-            "track": "chromeCloud"
+            "track": "chromeCloud",
+            "primaryHexColor": "#84FFFF",
+            "accentHexColor": "#03A9F4"
+
           },
           {
             "speakers": {
               "1": "Noah Blon"
             },
             "subject": "Material Design",
-            "track": "frontEnd"
+            "track": "frontEnd",
+            "primaryHexColor": "#FF8A80",
+            "accentHexColor": "#FF5252"
           },
           {
             "speakers": {
               "1": "Steven Fluin"
             },
             "subject": "AngularJS Workshop",
-            "track": "gettingStarted"
+            "track": "gettingStarted",
+            "primaryHexColor": "#FFFF8D",
+            "accentHexColor": "#FFEB3B"
           }
         ]
 

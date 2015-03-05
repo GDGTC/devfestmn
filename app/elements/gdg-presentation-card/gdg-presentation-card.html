@@ -1,7 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
 
-<polymer-element name="gdg-presentation-card" attributes="presentationId">
+<polymer-element name="gdg-presentation-card" attributes="presentationId featured">
   <template>
     <link rel="stylesheet" href="gdg-presentation-card.css">
 
@@ -43,10 +43,13 @@
         favoriteTapped: function (event, detail, sender) {
           this.favorited = !this.favorited;
           this.fire('favorite-tapped');
+        },
+
+        ready: function () {
+          if (this.featured) {
+            this.style.width = '100%';
+          }
         }
-
-
-
       });
     })();
   </script>

@@ -14,6 +14,10 @@
 
     </firebase-element>
 
+    <section class="session-banner-container">
+      <h1>I'm the banner area for each session. Make me prettier!</h1>
+    </section>
+
     <template repeat="{{presentation in samplePresentations}}">
 
 
@@ -21,6 +25,7 @@
       <gdg-presentation-card favorited="{{presentation.favorited}}"
                              on-favorite-tapped="{{handleFavorited}}"
                              style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
+                             featured="{{presentation.featured}}"
                              hidden?="{{viewMode == 'favorites' && !presentation.favorited}}">
 
         <img src="{{presentation.iconUrl}}" width="70" height="70">
@@ -32,6 +37,13 @@
                         </span>
                      </span>
         </p>
+
+        <div class="description" hidden?="{{!presentation.featured}}">
+          <p>
+            This is the description for this event, which is only visible here when the
+            item gets set to "featured" and is moved up and given full width.
+          </p>
+        </div>
 
         <h2 style="{{'background-color: ' + presentation.accentHexColor + ';'}}">{{presentation.subject}}</h2>
 
@@ -98,7 +110,8 @@
             "subject": "RecyclerView",
             "track": "android",
             "primaryHexColor":  "#78C15B",
-            "accentHexColor": "#C6FF00"
+            "accentHexColor": "#C6FF00",
+            "featured": true
           },
           {
             "speakers": {
@@ -108,7 +121,8 @@
             "subject": "Apps for Android Wear",
             "track": "wearables",
             "primaryHexColor":  "#B388FF",
-            "accentHexColor": "#7E57C2"
+            "accentHexColor": "#7E57C2",
+            "featured": false
           },
           {
             "speakers": {
@@ -117,8 +131,8 @@
             "subject": "WebRTC Workshop (Video Chat)",
             "track": "chromeCloud",
             "primaryHexColor": "#84FFFF",
-            "accentHexColor": "#03A9F4"
-
+            "accentHexColor": "#03A9F4",
+            "featured": false
           },
           {
             "speakers": {
@@ -127,7 +141,8 @@
             "subject": "Material Design",
             "track": "frontEnd",
             "primaryHexColor": "#FF8A80",
-            "accentHexColor": "#FF5252"
+            "accentHexColor": "#FF5252",
+            "featured": false
           },
           {
             "speakers": {
@@ -136,7 +151,8 @@
             "subject": "AngularJS Workshop",
             "track": "gettingStarted",
             "primaryHexColor": "#FFFF8D",
-            "accentHexColor": "#FFEB3B"
+            "accentHexColor": "#FFEB3B",
+            "featured": false
           }
         ]
 

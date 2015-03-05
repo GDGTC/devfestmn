@@ -2,7 +2,7 @@
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 
-<polymer-element name="gdg-session" attributes="sessionId">
+<polymer-element name="gdg-session" attributes="sessionId viewMode">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
@@ -14,80 +14,42 @@
 
     </firebase-element>
 
-    <!-- Test cards (pre-Firebase!) -->
-    <gdg-presentation-card presentationId="key">
-      <img src="{{presentations[key].avatar}}" width="70" height="70">
-
-      <h2>{{sessionId}}</h2>
-      <h2>{{sessions[key].name}}</h2>
-
-      <p>{{sessions[key].shortDescription}}</p>
-
-      <p>Speaker: {{sessionData[key].speaker}}</p>
-
-      <p>Room: {{sessions[key].location}}</p>
-
-      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-      </gdg-presentation-details>
-    </gdg-presentation-card>
-
-    <gdg-presentation-card presentationId="key">
-      <img src="{{presentations[key].avatar}}" width="70" height="70">
-
-      <h2>{{sessions[key].name}}</h2>
-
-      <p>{{sessions[key].shortDescription}}</p>
-
-      <p>Speaker: {{sessionData[key].speaker}}</p>
-
-      <p>Room: {{sessions[key].location}}</p>
-
-      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-      </gdg-presentation-details>
-    </gdg-presentation-card>
+    <template repeat="{{presentation in samplePresentations}}">
 
 
-    <gdg-presentation-card presentationId="key">
-      <img src="{{presentations[key].avatar}}" width="70" height="70">
+      <!-- Test cards (pre-Firebase!) -->
+      <gdg-presentation-card favorited="{{presentation.favorited}}"
+                             on-favorite-tap="{{handleFavorited}}"
+                             hidden?="{{viewMode == 'favorites' && !presentation.favorited}}">
 
-      <h2>{{sessions[key].name}}</h2>
+        <img src="{{presentation.iconUrl}}" width="70" height="70">
+        <h2>{{presentation.subject}}</h2>
 
-      <p>{{sessions[key].shortDescription}}</p>
+        <p>Speakers: <span>
+                        {{presentation.speakers['1'] }}
+                        <span hidden?="{{!presentation.speakers['2'] }}">
+                          and {{presentation.speakers['2']}}
+                        </span>
+                     </span>
+        </p>
 
-      <p>Speaker: {{sessionData[key].speaker}}</p>
+        <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
+        </gdg-presentation-details>
 
-      <p>Room: {{sessions[key].location}}</p>
-
-      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-      </gdg-presentation-details>
-    </gdg-presentation-card>
-
-
-    <gdg-presentation-card presentationId="key">
-      <img src="{{presentations[key].avatar}}" width="70" height="70">
-
-      <h2>{{sessions[key].name}}</h2>
-
-      <p>{{sessions[key].shortDescription}}</p>
-
-      <p>Speaker: {{sessionData[key].speaker}}</p>
-
-      <p>Room: {{sessions[key].location}}</p>
-
-      <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-      </gdg-presentation-details>
-    </gdg-presentation-card>
+      </gdg-presentation-card>
 
 
+    </template>
 
 
-
-
-
-
+    <!-- TODO: Use Repeated template below with Firebase data
 
     <template repeat="key in keys">
-      <gdg-presentation-card id="key" presentationId="key">
+      <gdg-presentation-card id="key"
+                             favorite="{{presentations[key].favorite}}"
+                             on-favorite-tap="{{handleFavorited}}"
+                             hidden?="{{viewMode == 'favorites' && !presentations[key].favorite}}">
+
         <img src="{{presentations[key].avatar}}" width="70" height="70">
 
         <h2>{{sessions[key].name}}</h2>
@@ -103,13 +65,65 @@
       </gdg-presentation-card>
 
     </template>
+    -->
 
 
   </template>
   <script>
     (function () {
       Polymer({
-        // define element prototype here
+
+        handleFavorited: function (event, detail, sender) {
+
+          //  sender.templateInstance.model is a reference to the model data used to
+          // construct a template instance. In this case, it would be
+          // the 'presentation' object used to create a <gdg-presentation-card>
+          var presentation = sender.templateInstance.model.presentation;
+          this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
+        },
+
+
+
+        samplePresentations: [
+          {
+            "speakers": {
+              "1": "Aaron Goldberg"
+            },
+            "subject": "RecyclerView",
+            "track": "android"
+          },
+          {
+            "speakers": {
+              "1": "Brian Yencho",
+              "2": "Sean Weisner"
+            },
+            "subject": "Apps for Android Wear",
+            "track": "android"
+          },
+          {
+            "speakers": {
+              "1": "Ilya Verbitsky"
+            },
+            "subject": "WebRTC Workshop (Video Chat)",
+            "track": "chromeCloud"
+          },
+          {
+            "speakers": {
+              "1": "Noah Blon"
+            },
+            "subject": "Material Design",
+            "track": "frontEnd"
+          },
+          {
+            "speakers": {
+              "1": "Steven Fluin"
+            },
+            "subject": "AngularJS Workshop",
+            "track": "gettingStarted"
+          }
+        ]
+
+
       });
     })();
   </script>

@@ -59,7 +59,7 @@
 
           </gdg-presentation-card>
           -->
-          <gdg-session-list show="all" router="router"></gdg-session-list>
+          <gdg-session-list id="sessionsList" router="router" viewMode="{{viewMode}}"></gdg-session-list>
 
       </section>
 
@@ -76,10 +76,12 @@
 
         ready: function () {
           var tabs = this.$.mainContainer.querySelector('paper-tabs');
+          var sessionsList = this.$.mainContainer.querySelector('#sessionsList');
 
+
+          // Only show favorited events when the user selects the 'favorites' tab
           tabs.addEventListener('core-select', function () {
-
-            console.log('I\'m touched');
+            sessionsList.viewMode = tabs.selected;
           });
         },
 

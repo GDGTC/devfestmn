@@ -10,13 +10,35 @@
       <content select="h2"></content>
     </div>
 
+    <core-icon-button
+      id="favicon"
+      icon="favorite"
+      on-tap="{{favoriteTapped}}">
+
+    </core-icon-button>
+
+
     <content></content>
 
   </template>
   <script>
     (function () {
       Polymer({
-        // define element prototype here
+
+        publish: {
+          favorited: {
+            value: false,
+            reflect: true
+          }
+        },
+
+        favoriteTapped: function () {
+          this.favorited = !this.favorited;
+          this.fire('favorite-tapped');
+        }
+
+
+
       });
     })();
   </script>

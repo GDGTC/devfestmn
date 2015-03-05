@@ -11,6 +11,12 @@ img, embed, object, video {
   max-width: 100%;
 }
 
+core-icon-button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 
 core-toolbar {
   color: #FAFAFA;

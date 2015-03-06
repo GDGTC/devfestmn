@@ -17,7 +17,7 @@
     </core-icon-button>
 
     <div class="card-body">
-      <content select="p"></content>
+      <content select="div"></content>
     </div>
 
 
@@ -40,15 +40,15 @@
           }
         },
 
-        favoriteTapped: function (event, detail, sender) {
+        favoriteTapped: function (/*event, detail, sender*/) {
           this.favorited = !this.favorited;
           this.fire('favorite-tapped');
         },
 
         ready: function () {
-          if (this.featured) {
-            this.style.width = '100%';
-          }
+//          if (this.featured) {
+//            this.style.order = 1;
+//          }
         }
       });
     })();

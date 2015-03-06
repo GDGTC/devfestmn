@@ -25,18 +25,20 @@
       <gdg-presentation-card favorited="{{presentation.favorited}}"
                              on-favorite-tapped="{{handleFavorited}}"
                              style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
-                             featured="{{presentation.featured}}"
+                             class="{{ {featured: presentation.featured} | tokenList }}"
                              hidden?="{{viewMode == 'favorites' && !presentation.favorited}}">
 
         <img src="{{presentation.iconUrl}}" width="70" height="70">
 
-        <p>Speakers: <span>
+        <div>
+          <p>Speakers: <span>
                         {{presentation.speakers['1'] }}
                         <span hidden?="{{!presentation.speakers['2'] }}">
                           and {{presentation.speakers['2']}}
                         </span>
                      </span>
-        </p>
+          </p>
+        </div>
 
         <div class="description" hidden?="{{!presentation.featured}}">
           <p>
@@ -111,7 +113,7 @@
             "track": "android",
             "primaryHexColor":  "#78C15B",
             "accentHexColor": "#C6FF00",
-            "featured": true
+            "featured": false
           },
           {
             "speakers": {
@@ -152,7 +154,7 @@
             "track": "gettingStarted",
             "primaryHexColor": "#FFFF8D",
             "accentHexColor": "#FFEB3B",
-            "featured": false
+            "featured": true
           }
         ]
 

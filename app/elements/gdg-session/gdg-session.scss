@@ -1,3 +1,5 @@
+@import "mixins";
+
 :host {
   position: relative;
   max-width: 100%;
@@ -10,8 +12,22 @@
   gdg-presentation-card {
     margin: 10px;
     width: 40%;
+    @include BoxShadowHelper(2);
+    transition: bow-shadow .25s,
+    transform .25s;
 
+    &:hover {
+      @include BoxShadowHelper(4);
+      transform: translate3d(0, -5px, 0);
+    }
 
+    &.featured {
+      width: 100%;
+      order: 1;
+    }
+    &:not(.featured) {
+      order: 2;
+    }
   }
 
   .session-banner-container {
@@ -20,14 +36,15 @@
     text-align: center;
   }
 
-//  @media screen and (max-width: 600px) {
-//    flex-direction: column;
-//    gdg-presentation-card {
-//      width: 100%;
-//    }
-//  }
-//
-//  @media screen and (max-width: 900px) {
-//
-//  }
+  //  @media screen and (max-width: 600px) {
+  //    flex-direction: column;
+  //    gdg-presentation-card {
+  //      width: 100%;
+  //    }
+  //  }
+  //
+  //  @media screen and (max-width: 900px) {
+  //
+  //  }
+
 }

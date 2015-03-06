@@ -10,7 +10,7 @@
   "indent": 2,
   "latedef": true,
   "noarg": true,
-  "quotmark": "single",
+  //"quotmark": "single",   TODO: Uncomment when we're done using sample JSON in the code
   "undef": true,
   "unused": true,
   "globals": {

@@ -26,7 +26,8 @@
   };
 
   app.onLogin = function () {
-    this.globals.currentUser = this.user;
+    console.log(this.user);
+    this.globals.user = this.user;
   };
 
   app.onLoginError = function () {

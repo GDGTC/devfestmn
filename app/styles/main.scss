@@ -34,6 +34,29 @@ h1 {
     color: $theme-color__primary;
 }
 
+.user-status-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+  }
+}
 
 
 

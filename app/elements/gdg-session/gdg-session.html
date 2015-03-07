@@ -1,4 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 
@@ -18,6 +20,15 @@
       <h1>I'm the banner area for each session. Make me prettier!</h1>
     </section>
 
+    <!--
+    <core-animated-pages flex
+                         id="sessionItems"
+                         selected="0"
+                         on-core-animated-pages-transition-end="{{transitionEnd}}"
+                         transitions="hero-transition cross-fade">
+    -->
+
+
     <template repeat="{{presentation in samplePresentations}}">
 
 
@@ -31,34 +42,35 @@
         <img src="{{presentation.iconUrl}}" width="70" height="70">
 
         <div>
+
           <p>Speakers: <span>
-                        {{presentation.speakers['1'] }}
-                        <span hidden?="{{!presentation.speakers['2'] }}">
-                          and {{presentation.speakers['2']}}
-                        </span>
-                     </span>
+                          {{presentation.speakers['1'] }}
+                          <span hidden?="{{!presentation.speakers['2'] }}">
+                            and {{presentation.speakers['2']}}
+                          </span>
+                       </span>
           </p>
+
+          <div class="description" hidden?="{{!presentation.featured}}">
+            <p>
+              This is the description for this event, which is only visible here when the
+              item gets set to "featured" and is moved up and given full width.
+            </p>
+          </div>
+
         </div>
 
-        <div class="description" hidden?="{{!presentation.featured}}">
-          <p>
-            This is the description for this event, which is only visible here when the
-            item gets set to "featured" and is moved up and given full width.
-          </p>
-        </div>
-
-        <h2 style="{{'background-color: ' + presentation.accentHexColor + ';'}}">{{presentation.subject}}</h2>
-
-
-
-        <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-        </gdg-presentation-details>
+        <h2 style="{{'background-color: ' + presentation.accentHexColor + ';'}}">
+          <span>{{presentation.subject}}</span>
+        </h2>
 
       </gdg-presentation-card>
-
-
     </template>
 
+
+    <!--
+    </core-animated-pages>
+    -->
 
     <!-- TODO: Use Repeated template below with Firebase data
 
@@ -102,7 +114,25 @@
           this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
         },
 
+        expandDetails: function (e) {
+          var presentation = e.target.templateInstance.model.presentation;
+          this.$.sessionItems.selected = presentation;
+          console.log(presentation);
+          console.log(this.$.sessionItems);
 
+        },
+
+        collapseDetails: function () {
+          this.lastSelected = this.$.sessionItems.selected;
+          console.log(this.lastSelected);
+          this.$.sessionItems.selected = 0;
+        },
+
+        transitionEnd: function () {
+          if (this.lastSelected) {
+            this.lastSelected = null;
+          }
+        },
 
         samplePresentations: [
           {
@@ -111,7 +141,7 @@
             },
             "subject": "RecyclerView",
             "track": "android",
-            "primaryHexColor":  "#78C15B",
+            "primaryHexColor": "#78C15B",
             "accentHexColor": "#C6FF00",
             "featured": false
           },
@@ -122,7 +152,7 @@
             },
             "subject": "Apps for Android Wear",
             "track": "wearables",
-            "primaryHexColor":  "#B388FF",
+            "primaryHexColor": "#B388FF",
             "accentHexColor": "#7E57C2",
             "featured": false
           },

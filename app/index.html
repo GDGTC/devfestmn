@@ -36,8 +36,9 @@
                   provider="google"
                   on-login="{{onLogin}}"
                   on-error="{{onLoginError}}">
-
   </firebase-login>
+
+  <gdg-globals values="{{globals}}"></gdg-globals>
 
   <core-drawer-panel>
 
@@ -85,27 +86,34 @@
 
         <div flex>{{appName}}</div>
 
-        <paper-menu-button>
-          <paper-icon-button icon="social:person">
-          </paper-icon-button>
+        <template if="{{user}}">
+          <div class="user-status-container">
+            <p>Hello, {{user.google.displayName}}!</p>
+            <div style="margin-left: 20px;"class="profile-pic-container">
+              <img class="profile-pic" src="{{ user.google.cachedUserProfile.picture }}" >
+            </div>
+          </div>
+        </template>
 
-          <paper-dropdown class="dropdown"
-                          transition=""
-                          halign="right">
+        <paper-menu-button halign="right" valign="top">
+          <paper-icon-button icon="social:person"></paper-icon-button>
+
+          <paper-dropdown class="dropdown" transition="" halign="right">
 
             <core-menu class="menu">
               <paper-item on-click="{{login}}" hidden?="{{ !statusKnown || user }}">
                 Login
               </paper-item>
 
-              <paper-item on-click="{{logout}}" hidden?="{{statusKnown || !user }}">
+              <paper-item on-click="{{logout}}" hidden?="{{ !statusKnown || !user }}">
                 Logout
               </paper-item>
             </core-menu>
 
           </paper-dropdown>
         </paper-menu-button>
-        <template if="{{user}}">Logged in as {{user.google.username}}</template>
+
+
 
       </core-toolbar>
 

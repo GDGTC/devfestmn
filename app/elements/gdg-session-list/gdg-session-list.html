@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../../bower_components/core-signals/core-signals.html">
+
 
 <link rel="import" href="../gdg-session/gdg-session.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
@@ -16,36 +18,17 @@
                       childEvents>
     </firebase-element>
 
-    <!-- Relative-positioned container for transitioning between the grid of presentations and their detail view -->
-    <!--
-    <core-animated-pages transitions="cross-fade cross-fade-delayed scale-up
-                                      slide-up slide-up-offscreen slide-down tile-cascade"
-                         selected="{{selected}}"
-                         flex
-                         auto
-                         on-core-animated-pages-transition-end="{{transitionEndAction}}"
-                         no-tap
-                         class>
-    -->
+    <gdg-session sessionId="1"></gdg-session>
+    <gdg-session sessionId="2"></gdg-session>
+    <gdg-session sessionId="3"></gdg-session>
+    <gdg-session sessionId="4"></gdg-session>
+
+    <template repeat="{{key in keys}}">
+      <gdg-session sessionId="key">
 
 
-
-        <gdg-session viewMode="viewMode" sessionId="1"></gdg-session>
-        <gdg-session viewMode="viewMode" sessionId="2"></gdg-session>
-        <gdg-session viewMode="viewMode" sessionId="3"></gdg-session>
-        <gdg-session viewMode="viewMode" sessionId="4"></gdg-session>
-
-        <template repeat="{{key in keys}}">
-          <gdg-session sessionId="key">
-
-
-          </gdg-session>
-        </template>
-
-<!--
-    </core-animated-pages>
--->
-
+      </gdg-session>
+    </template>
 
 
   </template>
@@ -57,8 +40,19 @@
           console.log('Hello');
 
           this.$.selected = sessionKey;
-        }
+        },
 
+        attributeChanged: function (attrName, oldVal, newVal) {
+          console.log("Changed");
+          this.viewMode = newVal;
+
+          var session = this.shadowRoot.querySelector('gdg-session');
+          console.log(session);
+
+        },
+
+        ready: function() {
+        }
 
 
 //        openDetails: function (event, sessionKey) {

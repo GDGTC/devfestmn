@@ -1,13 +1,17 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../../bower_components/core-signals/core-signals.html">
+
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-session" attributes="sessionId viewMode">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
+
+    <core-signals on-core-signal-view-mode="{{handleNewViewMode}}"></core-signals>
 
     <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}"
                       keys="{{keys}}"
@@ -34,11 +38,10 @@
 
       <!-- Test cards (pre-Firebase!) -->
       <gdg-presentation-card favorited="{{presentation.favorited}}"
-                             on-click="{{expandDetailsRouter}}"
                              on-favorite-tapped="{{handleFavorited}}"
                              style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
                              class="{{ {featured: presentation.featured} | tokenList }}"
-                             hidden?="{{viewMode == 'favorites' && !presentation.favorited}}">
+                             hidden?="{{viewMode === 'favorites' && !presentation.favorited}}">
 
         <img src="{{presentation.iconUrl}}" width="70" height="70">
 
@@ -110,7 +113,11 @@
           // construct a template instance. In this case, it would be
           // the 'presentation' object used to create a <gdg-presentation-card>
           var presentation = sender.templateInstance.model.presentation;
-          this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
+          console.log(presentation);
+          //this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
+
+          // TODO: update the firebase model. Right now, this is a test by updating the samples
+
         },
 
         expandDetails: function (e) {
@@ -134,8 +141,15 @@
           }
         },
 
+        handleNewViewMode: function (e, detail, sender) {
+          console.log("New View Mode!");
+          console.log(detail);
+          this.viewMode = detail;
+        },
+
         samplePresentations: [
           {
+            "id": 1,
             "speakers": {
               "1": "Aaron Goldberg"
             },
@@ -146,6 +160,7 @@
             "featured": false
           },
           {
+            "id": 2,
             "speakers": {
               "1": "Brian Yencho",
               "2": "Sean Weisner"
@@ -157,6 +172,7 @@
             "featured": false
           },
           {
+            "id": 3,
             "speakers": {
               "1": "Ilya Verbitsky"
             },
@@ -167,6 +183,7 @@
             "featured": false
           },
           {
+            "id": 4,
             "speakers": {
               "1": "Noah Blon"
             },
@@ -177,6 +194,7 @@
             "featured": false
           },
           {
+            "id": "5",
             "speakers": {
               "1": "Steven Fluin"
             },

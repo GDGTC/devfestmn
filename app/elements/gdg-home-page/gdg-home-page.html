@@ -58,7 +58,7 @@
 
           </gdg-presentation-card>
           -->
-          <gdg-session-list id="sessionsList" router="router" viewMode="{{viewMode}}"></gdg-session-list>
+          <gdg-session-list id="sessionsList" router="router"></gdg-session-list>
 
       </section>
 
@@ -79,7 +79,7 @@
 
           // Only show favorited events when the user selects the 'favorites' tab
           tabs.addEventListener('core-select', function () {
-            sessionsList.viewMode = tabs.selected;
+            this.fire('core-signal', {name: 'view-mode', data: tabs.selected});
           });
 
 

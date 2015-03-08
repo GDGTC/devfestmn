@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="gdg-home-page.css">
 
 
-    <section id="mainContainer">
+    <section id="mainContainer" cross-fade>
 
       <!-- Hero Banner -->
       <section class="hero-container">
@@ -77,75 +77,24 @@
           var tabs = this.$.mainContainer.querySelector('paper-tabs');
           var sessionsList = this.$.mainContainer.querySelector('#sessionsList');
 
-
           // Only show favorited events when the user selects the 'favorites' tab
           tabs.addEventListener('core-select', function () {
             sessionsList.viewMode = tabs.selected;
           });
+
+
+//          // Listen for presentation selection so we can transition to the detail page
+//          var gdgHomePage = document.querySelector('gdg-home-page');
+//          gdgHomePage.addEventListener('presentation-selected')
+
         },
 
-        resetSessionData: function () {
-          // setting the data object directly will automatically also
-          // set the firebase location
-          this.sessionData = {
-            1: {
-              name: 'Web Components are the ROX',
-              time: new Date(2015, 2, 21, 8),
-              speaker: 'Larry Page',
-              room: '1A',
-              currentFavorites: 0
-            },
-            2: {
-              name: 'Material Design Everywhere',
-              time: new Date(2015, 2, 21, 8),
-              speaker: 'Larry Page',
-              room: '1B',
-              currentFavorites: 0
-            },
-            3: {
-              name: 'Self-Driving Cars',
-              time: new Date(2015, 2, 21, 8),
-              speaker: 'Larry Page',
-              room: '1C',
-              currentFavorites: 0
-            },
-            4: {
-              name: 'Android Animations',
-              time: new Date(2015, 2, 21, 8),
-              speaker: 'Larry Page',
-              room: '1D',
-              currentFavorites: 0
-            },
-            5: {
-              name: 'Web Animation',
-              time: new Date(2015, 2, 21, 10),
-              speaker: 'Larry Page',
-              room: '2A',
-              currentFavorites: 0
-            },
-            6: {
-              name: 'Web Audio API',
-              time: new Date(2015, 2, 21, 10),
-              speaker: 'Larry Page',
-              room: '2C',
-              currentFavorites: 0
-            },
-            7: {
-              name: 'Android NFC and Mobile Payments',
-              time: new Date(2015, 2, 21, 10),
-              speaker: 'Larry Page',
-              room: '2C',
-              currentFavorites: 0
-            },
-            8: {
-              name: 'The Future of Google Glass',
-              time: new Date(2015, 2, 21, 10),
-              speaker: 'Larry Page',
-              room: '2C',
-              currentFavorites: 0
-            }
-          };
+        onPresentationClick: function (e, presentationId) {
+          this.router.go('/presentations/' + presentationId);
         }
+
+
+
 
       });
     })();

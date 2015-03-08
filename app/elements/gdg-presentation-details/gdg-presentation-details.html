@@ -6,7 +6,7 @@
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../gdg-comment/gdg-comment.html">
 
-<polymer-element name="gdg-presentation-details" attributes="id presentationId">
+<polymer-element name="gdg-presentation-details" attributes="id presentationId router">
   <template>
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
@@ -17,42 +17,46 @@
                       childEvents>
     </firebase-element>
 
-    <!-- Details -->
-    <div>
-      <p>Transitions into fuller Presentation Details view</p>
-    </div>
+    <section class="main-container" cross-fade>
+      <!-- Details -->
+      <div>
+        <p>Transitions into fuller Presentation Details view</p>
+      </div>
 
 
-    <!-- Comments -->
-    <div class="comment">
-      <template repeat="keys in keys">
-        <p>I'm a comment</p>
-        <p>{{comments[key].user.username}}</p>
-        <p>{{comments[key].text}}</p>
-      </template>
-    </div>
+      <!-- Comments -->
+      <div class="comment">
+        <template repeat="keys in keys">
+          <p>I'm a comment</p>
 
-    <div class="add-comment">
-      <button on-click="{{openCommentDialog}}">
-        Add a Comment
+          <p>{{comments[key].user.username}}</p>
 
-        <paper-action-dialog id="commentDialog"
-                             heading="Add a Comment"
-                             transition="core-transition-buttom">
+          <p>{{comments[key].text}}</p>
+        </template>
+      </div>
 
-          <form>
-            <paper-autogrow-textarea id="commentTextArea">
-              <label for="commentText" hidden?="{{!commentError}}">{{commentError}}</label>
-              <textarea id="commentText" placeholder="Begin your comment here"></textarea>
-            </paper-autogrow-textarea>
-          </form>
+      <div class="add-comment">
+        <button on-click="{{openCommentDialog}}">
+          Add a Comment
 
-          <paper-button affirmative autofocus on-click="{{submitComment}}">Submit</paper-button>
+          <paper-action-dialog id="commentDialog"
+                               heading="Add a Comment"
+                               transition="core-transition-buttom">
 
-        </paper-action-dialog>
+            <form>
+              <paper-autogrow-textarea id="commentTextArea">
+                <label for="commentText" hidden?="{{!commentError}}">{{commentError}}</label>
+                <textarea id="commentText" placeholder="Begin your comment here"></textarea>
+              </paper-autogrow-textarea>
+            </form>
 
-      </button>
-    </div>
+            <paper-button affirmative autofocus on-click="{{submitComment}}">Submit</paper-button>
+
+          </paper-action-dialog>
+
+        </button>
+      </div>
+    </section>
 
 
   </template>

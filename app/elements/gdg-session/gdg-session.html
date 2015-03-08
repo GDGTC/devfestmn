@@ -34,6 +34,7 @@
 
       <!-- Test cards (pre-Firebase!) -->
       <gdg-presentation-card favorited="{{presentation.favorited}}"
+                             on-click="{{expandDetailsRouter}}"
                              on-favorite-tapped="{{handleFavorited}}"
                              style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
                              class="{{ {featured: presentation.featured} | tokenList }}"
@@ -104,13 +105,11 @@
       Polymer({
 
         handleFavorited: function (event, detail, sender) {
-          console.log("Hello!");
 
           //  sender.templateInstance.model is a reference to the model data used to
           // construct a template instance. In this case, it would be
           // the 'presentation' object used to create a <gdg-presentation-card>
           var presentation = sender.templateInstance.model.presentation;
-          console.log(presentation);
           this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
         },
 
@@ -121,6 +120,7 @@
           console.log(this.$.sessionItems);
 
         },
+
 
         collapseDetails: function () {
           this.lastSelected = this.$.sessionItems.selected;

@@ -24,14 +24,6 @@
       <h1>I'm the banner area for each session. Make me prettier!</h1>
     </section>
 
-    <!--
-    <core-animated-pages flex
-                         id="sessionItems"
-                         selected="0"
-                         on-core-animated-pages-transition-end="{{transitionEnd}}"
-                         transitions="hero-transition cross-fade">
-    -->
-
 
     <template repeat="{{presentation in samplePresentations}}">
 
@@ -70,36 +62,6 @@
 
       </gdg-presentation-card>
     </template>
-
-
-    <!--
-    </core-animated-pages>
-    -->
-
-    <!-- TODO: Use Repeated template below with Firebase data
-
-    <template repeat="key in keys">
-      <gdg-presentation-card id="key"
-                             favorite="{{presentations[key].favorite}}"
-                             on-favorite-tap="{{handleFavorited}}"
-                             hidden?="{{viewMode == 'favorites' && !presentations[key].favorite}}">
-
-        <img src="{{presentations[key].avatar}}" width="70" height="70">
-
-        <h2>{{sessions[key].name}}</h2>
-
-        <p>{{sessions[key].shortDescription}}</p>
-
-        <p>Speaker: {{sessionData[key].speaker}}</p>
-
-        <p>Room: {{sessions[key].location}}</p>
-
-        <gdg-presentation-details presentationId="key" hidden?="{{selected != key}}">
-        </gdg-presentation-details>
-      </gdg-presentation-card>
-
-    </template>
-    -->
 
 
   </template>

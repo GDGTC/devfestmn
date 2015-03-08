@@ -28,8 +28,8 @@
         </div>
       </section>
 
+      <!-- Tabs to toggle full schedule vs favorites -->
       <core-toolbar>
-
         <paper-tabs id="scheduleTabs" selected="list" self-end>
           <paper-tab name="list">Scheduled Events</paper-tab>
           <paper-tab name="favorites">My Favorites</paper-tab>
@@ -37,29 +37,9 @@
 
       </core-toolbar>
 
-
+      <!-- Schedule -->
       <section class="content-layout-container">
-
-          <!--<core-list id="content-list"
-                     scrollTarget="{{mainContent.scroller}}">
-
-          </core-list> -->
-
-          <!--
-          <gdg-presentation-card>
-
-            <img width="70"
-                 height="70"
-                 src="img/avatar-01.svg">
-
-            <h2>Web Components are the Rox</h2>
-
-            <p>How to compose with Shadow DOM... like this element!</p>
-
-          </gdg-presentation-card>
-          -->
           <gdg-session-list id="sessionsList" router="router"></gdg-session-list>
-
       </section>
 
     </section>

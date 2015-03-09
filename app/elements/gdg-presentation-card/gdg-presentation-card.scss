@@ -1,7 +1,8 @@
 :host {
   display: block;
   position: relative;
-  //padding: 20%;
+  height: 275px;
+  overflow: hidden;
   font-size: 1.2rem;
   font-weight: 300;
   cursor: pointer;
@@ -30,38 +31,44 @@ core-icon-button#favicon {
 }
 
 polyfill-next-selector {
-  content: '.card-header img';
+  content: 'section.card-header';
 }
-.card-header ::content img {
-  width: 70px;
-  border-radius: 50%;
-  margin: 10px;
+::content section.card-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  img {
+    width: 70px;
+    border-radius: 50%;
+    margin: 10px;
+  }
 }
-
 
 polyfill-next-selector {
-  content: '.card-body div';
+  content: 'section.card-body';
 }
-.card-body ::content div {
+::content section.card-body {
   max-width: 100%;
   padding: 16px;
 }
 
 
-
 polyfill-next-selector {
-  content: '.card-footer h2';
+  content: 'section.card-footer';
 }
-.card-footer ::content h2 {
+::content section.card-footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 5px;
-  margin: 0;
-  span {
-    font-size: 1.5rem;
-    font-weight: 300;
+  h2 {
+    padding: 0 5px;
+    margin: 0;
+    span {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
   }
 }
 

@@ -1,40 +1,38 @@
 {
-  "tracks": {
-    "general": {
-      "title": "",
-      "iconUrl": "",
-      "primaryHexColor": "#000000",
-      "accentHexColor": "#FFFFFF"
-    },
-    "android": {
-      "title": "Android",
-      "iconUrl": "",
-      "primaryHexColor":  "#78C15B",
-      "accentHexColor": "#C6FF00"
-    },
-    "wearables": {
-      "title": "Wearables",
-      "iconUrl": "",
-      "primaryHexColor":  "#B388FF",
-      "accentHexColor": "#7E57C2"
-    },
-    "chromeCloud": {
-      "title": "Chrome & Cloud",
-      "iconUrl": "",
-      "primaryHexColor": "#84FFFF",
-      "accentHexColor": "#03A9F4"
-    },
-    "frontEnd": {
-      "title": "Design & Front End",
-      "iconUrl": "",
-      "primaryHexColor": "#FF8A80",
-      "accentHexColor": "#FF5252"
-    },
-    "gettingStarted": {
-      "title": "Getting Started",
-      "iconUrl": "",
-      "primaryHexColor": "#FFFF8D",
-      "accentHexColor": "#FFEB3B"
-    }
+  "general": {
+    "title": "",
+    "iconUrl": "",
+    "primaryHexColor": "#000000",
+    "accentHexColor": "#FFFFFF"
+  },
+  "android": {
+    "title": "Android",
+    "iconUrl": "",
+    "primaryHexColor": "#78C15B",
+    "accentHexColor": "#C6FF00"
+  },
+  "wearables": {
+    "title": "Wearables",
+    "iconUrl": "",
+    "primaryHexColor": "#B388FF",
+    "accentHexColor": "#7E57C2"
+  },
+  "chromeCloud": {
+    "title": "Chrome & Cloud",
+    "iconUrl": "",
+    "primaryHexColor": "#84FFFF",
+    "accentHexColor": "#03A9F4"
+  },
+  "frontEnd": {
+    "title": "Design & Front End",
+    "iconUrl": "",
+    "primaryHexColor": "#FF8A80",
+    "accentHexColor": "#FF5252"
+  },
+  "gettingStarted": {
+    "title": "Getting Started",
+    "iconUrl": "",
+    "primaryHexColor": "#FFFF8D",
+    "accentHexColor": "#FFEB3B"
   }
 }

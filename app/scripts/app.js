@@ -8,7 +8,6 @@
   app.appName = 'Google DevFest Twin Cities';
 
 
-
   app.devfestStartTime = new Date(2015, 2, 21, 7);
 
   // Listen for template bound event to know when bindings
@@ -28,6 +27,7 @@
   app.onLogin = function () {
     console.log(this.user);
     this.globals.user = this.user;
+    this.$.fbUsers.push(this.user);
   };
 
   app.onLoginError = function () {
@@ -35,7 +35,7 @@
   };
 
   app.onLogout = function () {
-    this.globals.currentUser = undefined;
+    this.globals.user = undefined;
   };
 
 

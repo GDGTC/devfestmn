@@ -38,9 +38,16 @@
                   on-error="{{onLoginError}}">
   </firebase-login>
 
+  <firebase-element id="fbUsers"
+                    location="https://devfestmn.firebaseio.com/users"
+                    data="{{userList}}"
+                    keys="{{users}}">
+  </firebase-element>
+
+
   <gdg-globals values="{{globals}}"></gdg-globals>
 
-  <core-drawer-panel>
+  <core-drawer-panel forceNarrow>
 
     <!-- Drawer -->
     <core-header-panel drawer id="sidePanel">
@@ -63,21 +70,23 @@
       <h2 class="sidenav-header">Signed-In Users</h2>
       <core-header-panel>
         <core-list id="feed"
-                   data="{{users}}"
+                   data="{{userList}}"
                    scrollTarget="{{$.sidePanel.scroller}}">
-          <template>
+
+          <template repeat="{{user in users}}">
             <div class="row">
-              {{name}}
+              {{user}}
+              <p>Test content</p>
             </div>
           </template>
+
         </core-list>
       </core-header-panel>
-
 
     </core-header-panel>
 
     <!-- Main -->
-    <core-header-panel main condenses id="mainPanel">
+    <core-header-panel main condenses id="mainPanel" mode="waterfall-tall">
 
       <!-- Main Toolbar -->
       <core-toolbar>
@@ -89,8 +98,9 @@
         <template if="{{user}}">
           <div class="user-status-container">
             <p>Hello, {{user.google.displayName}}!</p>
-            <div style="margin-left: 20px;"class="profile-pic-container">
-              <img class="profile-pic" src="{{ user.google.cachedUserProfile.picture }}" >
+
+            <div style="margin-left: 20px;" class="profile-pic-container">
+              <img class="profile-pic" src="{{ user.google.cachedUserProfile.picture }}">
             </div>
           </div>
         </template>
@@ -112,7 +122,6 @@
 
           </paper-dropdown>
         </paper-menu-button>
-
 
 
       </core-toolbar>

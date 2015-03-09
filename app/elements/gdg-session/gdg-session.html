@@ -6,7 +6,7 @@
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-session" attributes="sessionId viewMode">
+<polymer-element name="gdg-session" attributes="sessionId">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
@@ -14,51 +14,59 @@
     <core-signals on-core-signal-view-mode="{{handleNewViewMode}}"></core-signals>
 
     <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}"
-                      keys="{{keys}}"
+                      keys="{{presentationKeys}}"
                       data="{{presentations}}"
                       id="fbPresentations">
+    </firebase-element>
 
+    <firebase-element location="https://devfestmn.firebaseio.com/tracks"
+                      keys="{{trackKeys}}"
+                      data="{{tracks}}"
+                      id="fbTracks">
     </firebase-element>
 
     <section class="session-banner-container">
-      <h1>I'm the banner area for each session. Make me prettier!</h1>
+      <h1>I'm the banner area for session {{sessionId}}. Make me prettier!</h1>
     </section>
 
 
-    <template repeat="{{presentation in samplePresentations}}">
+    <template repeat="{{key, indexNum in presentationKeys}}">
 
 
-      <!-- Test cards (pre-Firebase!) -->
-      <gdg-presentation-card favorited="{{presentation.favorited}}"
+      <gdg-presentation-card favorited="{{presentations[key].favorited}}"
                              on-favorite-tapped="{{handleFavorited}}"
-                             style="{{'background-color: ' +  presentation.primaryHexColor + ';'}}"
-                             class="{{ {featured: presentation.featured} | tokenList }}"
-                             hidden?="{{viewMode === 'favorites' && !presentation.favorited}}">
+                             style="{{'background-color: ' +  tracks[presentations[key].track].primaryHexColor + ';'}}"
+                             class="{{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
+                             presentationId="{{key}}"
+                             hidden?="{{viewMode === 'favorites' && !presentations[key].favorited}}">
 
-        <img src="{{presentation.iconUrl}}" width="70" height="70">
+        <section class="card-header">
+          <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+        </section>
 
-        <div>
 
+        <section class="card-body">
           <p>Speakers: <span>
-                          {{presentation.speakers['1'] }}
-                          <span hidden?="{{!presentation.speakers['2'] }}">
-                            and {{presentation.speakers['2']}}
+                          {{presentations[key].speakers['1'] }}
+                          <span hidden?="{{!presentations[key].speakers['2'] }}">
+                            and {{presentations[key].speakers['2']}}
                           </span>
                        </span>
           </p>
 
-          <div class="description" hidden?="{{!presentation.featured}}">
+          <div class="description" hidden?="{{!presentations[key].featured}}">
             <p>
               This is the description for this event, which is only visible here when the
               item gets set to "featured" and is moved up and given full width.
             </p>
           </div>
+        </section>
 
-        </div>
-
-        <h2 style="{{'background-color: ' + presentation.accentHexColor + ';'}}">
-          <span>{{presentation.subject}}</span>
-        </h2>
+        <section class="card-footer">
+          <h2 style="{{'background-color: ' + tracks[presentations[key].track].accentHexColor + ';'}}">
+            <span>{{presentations[key].subject}}</span>
+          </h2>
+        </section>
 
       </gdg-presentation-card>
     </template>
@@ -100,71 +108,16 @@
           }
         },
 
-        handleNewViewMode: function (e, detail, sender) {
-          console.log("New View Mode!");
-          console.log(detail);
+        /**
+         * Receives a signal of the new view mode from core-signals
+         */
+        handleNewViewMode: function (e, detail /*sender*/) {
           this.viewMode = detail;
         },
 
-        samplePresentations: [
-          {
-            "id": 1,
-            "speakers": {
-              "1": "Aaron Goldberg"
-            },
-            "subject": "RecyclerView",
-            "track": "android",
-            "primaryHexColor": "#78C15B",
-            "accentHexColor": "#C6FF00",
-            "featured": false
-          },
-          {
-            "id": 2,
-            "speakers": {
-              "1": "Brian Yencho",
-              "2": "Sean Weisner"
-            },
-            "subject": "Apps for Android Wear",
-            "track": "wearables",
-            "primaryHexColor": "#B388FF",
-            "accentHexColor": "#7E57C2",
-            "featured": false
-          },
-          {
-            "id": 3,
-            "speakers": {
-              "1": "Ilya Verbitsky"
-            },
-            "subject": "WebRTC Workshop (Video Chat)",
-            "track": "chromeCloud",
-            "primaryHexColor": "#84FFFF",
-            "accentHexColor": "#03A9F4",
-            "featured": false
-          },
-          {
-            "id": 4,
-            "speakers": {
-              "1": "Noah Blon"
-            },
-            "subject": "Material Design",
-            "track": "frontEnd",
-            "primaryHexColor": "#FF8A80",
-            "accentHexColor": "#FF5252",
-            "featured": false
-          },
-          {
-            "id": "5",
-            "speakers": {
-              "1": "Steven Fluin"
-            },
-            "subject": "AngularJS Workshop",
-            "track": "gettingStarted",
-            "primaryHexColor": "#FFFF8D",
-            "accentHexColor": "#FFEB3B",
-            "featured": true
-          }
-        ]
-
+        ready: function () {
+          //var featuredPres = Math.floor(Math.random() * this.presentations.length);
+        }
 
       });
     })();

@@ -20,15 +20,21 @@
       transform: translate3d(0, -5px, 0);
     }
 
-    &.featured {
-      width: 100%;
-      margin: 2% 5%;
-      order: 1;
+    width: 25%;
+
+    &.stretched {
+      width: 45%;
     }
-    &:not(.featured) {
-      order: 2;
-      width: 23%;
-    }
+
+    //    &.featured {
+    //      width: 100%;
+    //      margin: 2% 5%;
+    //      order: 1;
+    //    }
+    //    &:not(.featured) {
+    //      order: 2;
+    //      width: 23%;
+    //    }
   }
 
   .session-banner-container {

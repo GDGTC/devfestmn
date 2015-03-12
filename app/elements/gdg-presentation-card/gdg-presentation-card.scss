@@ -15,6 +15,7 @@
 core-icon-button#favicon {
   position: absolute;
   display: flex;
+  z-index: 2;
   flex-direction: column;
   justify-content: center;
   align-items: center;

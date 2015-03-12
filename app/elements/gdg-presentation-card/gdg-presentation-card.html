@@ -7,7 +7,7 @@
   <template>
     <link rel="stylesheet" href="gdg-presentation-card.css">
 
-    <section id="content" on-click="{{expandDetails}}">
+    <section id="content" on-tap="{{expandDetails}}">
 
       <!-- Absolutely positioned elements -->
       <core-icon-button
@@ -65,13 +65,13 @@
           window.location='#/presentations/' + this.presentationId;
         },
 
-        favoriteTapped: function (/*event, detail, sender*/) {
+        favoriteTapped: function (event /*detail, sender*/) {
+          event.stopPropagation();
           this.favorited = !this.favorited;
           this.fire('favorite-tapped');
         },
 
         ready: function () {
-          this.selected = this.$.cardFace;
         }
       });
     })();

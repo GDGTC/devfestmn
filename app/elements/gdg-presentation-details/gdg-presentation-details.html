@@ -6,7 +6,7 @@
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../gdg-comment/gdg-comment.html">
 
-<polymer-element name="gdg-presentation-details" attributes="id presentationId router">
+<polymer-element name="gdg-presentation-details" attributes="presentationId sessionId">
   <template>
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
@@ -15,6 +15,12 @@
                       id="fbComments"
                       keys="{{keys}}"
                       childEvents>
+    </firebase-element>
+
+    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
+                      data="{{presentation}}"
+                      id="fbPresentation"
+                      keys="{{key}}">
     </firebase-element>
 
     <section class="main-container" cross-fade>

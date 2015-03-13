@@ -1,4 +1,4 @@
-# devfestmn
+# DEVFEST MN 2015 Website
 
 # Getting Started
 

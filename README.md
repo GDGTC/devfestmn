@@ -2,7 +2,7 @@
 
 # Getting Started
 
-The project is built through Gulp, with packages managed by NPM and Bower, so
+This project is built through Gulp, with packages managed by NPM and Bower, so
 a few quick commands are necessary to get set up.
 
 ### Building
@@ -23,7 +23,7 @@ a few quick commands are necessary to get set up.
   
 ### Creating custom elements
 
-  The project was scaffolded with the [Official Gulp-Polymer Yeoman Generator](https://github.com/yeoman/generator-polymer)
+  This project was scaffolded with the [Official Gulp-Polymer Yeoman Generator](https://github.com/yeoman/generator-polymer)
   Full instructions for installing the necessary Yeoman dependencies and using the generator's commands to 
   build out new elements of the project are helpfully listed there. 
   

@@ -13,7 +13,7 @@ a few quick commands are necessary to get set up.
   
 ### Running
 
-  Builds steps are managed by a set of tasks in gulpfile.js.
+  Build steps are managed by a set of tasks in gulpfile.js.
   
   To serve files from /dist, run:
   - ```gulp serve```

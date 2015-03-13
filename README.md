@@ -3,7 +3,7 @@
 # Getting Started
 
 This project is built through Gulp, with packages managed by NPM and Bower, so
-a few quick commands are necessary to get set up.
+a few quick commands are necessary to get set up after cloning the repository.
 
 ### Building
 

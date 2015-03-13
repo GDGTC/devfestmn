@@ -20,6 +20,9 @@
 
             this.values = values;
 
+            // Every instance of this element within the application will have the ability to use
+            // the items in the "values" dictionary, as well as update it by binding data to it via the
+            // "values" template attribute.
             for (var i = 0, l = this.attributes.values.length; i < l; i++) {
               var attr = this.attributes[i];
               values[attr.nodeName] = attr.value;

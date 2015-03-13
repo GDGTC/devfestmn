@@ -1,38 +1,44 @@
 {
-  "general": {
-    "title": "",
-    "iconUrl": "",
-    "primaryHexColor": "#000000",
-    "accentHexColor": "#FFFFFF"
-  },
-  "android": {
-    "title": "Android",
-    "iconUrl": "",
-    "primaryHexColor": "#78C15B",
-    "accentHexColor": "#C6FF00"
-  },
-  "wearables": {
-    "title": "Wearables",
-    "iconUrl": "",
-    "primaryHexColor": "#B388FF",
-    "accentHexColor": "#7E57C2"
-  },
-  "chromeCloud": {
-    "title": "Chrome & Cloud",
-    "iconUrl": "",
-    "primaryHexColor": "#84FFFF",
-    "accentHexColor": "#03A9F4"
-  },
-  "frontEnd": {
-    "title": "Design & Front End",
-    "iconUrl": "",
-    "primaryHexColor": "#FF8A80",
-    "accentHexColor": "#FF5252"
-  },
-  "gettingStarted": {
-    "title": "Getting Started",
-    "iconUrl": "",
-    "primaryHexColor": "#FFFF8D",
-    "accentHexColor": "#FFEB3B"
-  }
+    "general": {
+        "title": "",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#000000",
+        "accentBackgroundHex": "#FFFFFF",
+        "fontRGBA": "(253, 251, 251, 1)"
+    },
+    "android": {
+        "title": "Android",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#78C15B",
+        "accentBackgroundHex": "#C6FF00",
+        "fontRGBA": "(100, 100, 95, 1)"
+    },
+    "wearables": {
+        "title": "Wearables",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#B388FF",
+        "accentBackgroundHex": "#7E57C2",
+        "fontRGBA": "(100, 100, 95, 1)"
+    },
+    "chromeCloud": {
+        "title": "Chrome & Cloud",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#84FFFF",
+        "accentBackgroundHex": "#03A9F4",
+        "fontRGBA": "(253, 251, 251, 1)"
+    },
+    "frontEnd": {
+        "title": "Design & Front End",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#FF8A80",
+        "accentBackgroundHex": "#FF5252",
+        "fontRGBA": "(253, 251, 251, 1)"
+    },
+    "gettingStarted": {
+        "title": "Getting Started",
+        "iconUrl": "",
+        "primaryBackgroundHex": "#FFFF8D",
+        "accentBackgroundHex": "#FFEB3B",
+        "fontRGBA": "(100, 100, 95, 1)"
+    }
 }

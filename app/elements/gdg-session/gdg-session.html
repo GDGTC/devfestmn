@@ -8,6 +8,7 @@
 
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+<link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-session" attributes="sessionId">
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="gdg-session.css">
 
     <core-signals on-core-signal-view-mode="{{handleNewViewMode}}"></core-signals>
+    <gdg-globals values="{{globals}}"></gdg-globals>
+
 
     <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}"
                       keys="{{presentationKeys}}"
@@ -29,6 +32,15 @@
                       id="fbTracks">
     </firebase-element>
 
+    <firebase-element id="fbUser"
+                      location="https://devfestmn.firebaseio.com/users/{{globals.user[id]}}"
+                      data="{{user}}">
+    </firebase-element>
+
+
+
+
+    <!-- Begin content -->
     <section id="mainContainer">
       <section class="session-banner-container">
         <h1>I'm the banner area for session {{sessionId}}. Make me prettier!</h1>
@@ -44,7 +56,7 @@
                                    id="key"
                                    on-tap="{{expandDetails}}"
                                    on-favorite-tapped="{{handleFavorited}}"
-                                   style="{{'background-color: ' +  tracks[presentations[key].track].primaryHexColor + ';'}}"
+                                   style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
                                    class="{{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
                                    presentationId="{{key}}"
                                    hidden?="{{viewMode === 'favorites' && !presentations[key].favorited}}">
@@ -55,10 +67,11 @@
 
 
               <section class="card-body">
-                <p>Speakers: <span>
-                          {{presentations[key].speakers['1'] }}
+                <p>Speaker<span hidden?="{{!presentations[key].speakers['2']}}">s</span>:
+                       <span>
+                          {{presentations[key].speakers['1']['name'] }}
                           <span hidden?="{{!presentations[key].speakers['2'] }}">
-                            and {{presentations[key].speakers['2']}}
+                            &amp; {{presentations[key].speakers['2']['name']}}
                           </span>
                        </span>
                 </p>
@@ -72,7 +85,7 @@
               </section>
 
               <section class="card-footer">
-                <h2 style="{{'background-color: ' + tracks[presentations[key].track].accentHexColor + ';'}}">
+                <h2 style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['fontRGBA'] + ';'}}">
                   <span>{{presentations[key].subject}}</span>
                 </h2>
               </section>
@@ -94,16 +107,37 @@
     (function () {
       Polymer({
 
-
         handleFavorited: function (event, detail, sender) {
 
           //  sender.templateInstance.model is a reference to the model data used to
           // construct a template instance. In this case, it would be
           // the 'presentation' object used to create a <gdg-presentation-card>
-          var presentation = sender.templateInstance.model.presentation;
-          console.log(presentation);
           //this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
+
+          var presentationKey = sender.templateInstance.model.key;
+          var presentation = sender.templateInstance.model.presentations[presentationKey];
+
+          //var presentation = this.$.fbPresentations.get(presentationKey);
+
+          console.log(presentationKey);
+          console.log(presentation);
+
+          console.log(this.globals);
+          console.log(this.currentUser);
+
+          if (this.currentUser.favoritePresentations) {
+            this.currentUser.favoritePresentations[presentationKey] = presentation;
+
+          } else {
+            this.currentUser.favoritePresentations = {
+              presentationKey: presentation
+            };
+          }
+
+          this.$.fbUser.push(this.currentUser);
+
         },
+
 
         /**
          * Grab the presentationId to the card that was selected, then
@@ -140,6 +174,8 @@
         ready: function () {
           var cardPager = this.$.mainContainer.querySelector('#cardPager');
           cardPager.selected = 0;
+
+          this.currentUser = this.globals.user;
         }
 
       });

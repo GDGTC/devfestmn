@@ -25,7 +25,7 @@
   };
 
   app.onLogin = function () {
-    console.log(this.user);
+    //console.log(this.user);
     this.globals.user = this.user;
     this.$.fbUsers.push(this.user);
   };
@@ -44,3 +44,4 @@
 // wrap document so it plays nice with other libraries
 // http://www.polymer-project.org/platform/shadow-dom.html#wrappers
 })(wrap(document));
+

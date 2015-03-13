@@ -1,9 +1,11 @@
 {
   "firebase": "devfestmn",
-  "public": "app",
+  "public": "dist",
   "ignore": [
-    "firebase.json",
-    "**/.*",
+    ".jshintrc",
+    ".git*",
+    ".editorconfig",
+    "**/*.json",
     "**/node_modules/**"
   ]
 }

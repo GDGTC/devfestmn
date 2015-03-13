@@ -28,6 +28,23 @@
     //      order: 2;
     //      width: 23%;
     //    }
+
+    @media screen and (max-width: 500px) {
+      width: 90%;
+
+      &.stretched {
+        width: 90%;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 40%;
+      //flex-grow: .5;
+
+      &.stretched {
+        width: 90%;
+      }
+    }
   }
 
   .session-banner-container {

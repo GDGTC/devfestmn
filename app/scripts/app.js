@@ -26,8 +26,21 @@
 
   app.onLogin = function () {
     //console.log(this.user);
+    //console.log(this.userList);
     this.globals.user = this.user;
-    this.$.fbUsers.push(this.user);
+
+    if (this.userList === null) {
+      this.userList = {};
+    }
+
+    if (isUniqueUser(this.user, this.userList)) {
+      this.userList[this.user.uid] = this.user;
+      //this.userList.commit();
+    }
+
+    console.log(this.userList);
+
+    //this.$.fbUsers.commit(this.user);
   };
 
   app.onLoginError = function () {
@@ -37,6 +50,10 @@
   app.onLogout = function () {
     this.globals.user = undefined;
   };
+
+  function isUniqueUser (userObj, userListObj) {
+    return !userListObj[userObj.uid];
+  }
 
 
 

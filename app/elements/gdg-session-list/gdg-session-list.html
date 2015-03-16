@@ -28,26 +28,9 @@
   <script>
     (function () {
       Polymer({
-
-
-        attributeChanged: function (attrName, oldVal, newVal) {
-          console.log("Changed");
-          this.viewMode = newVal;
-
-          var session = this.shadowRoot.querySelector('gdg-session');
-          console.log(session);
-
-        },
-
+        
         ready: function() {
         }
-
-
-//        openDetails: function (event, sessionKey) {
-//          this.router.go('/sessions/' + sessionKey);
-//        }
-
-
       });
     })();
   </script>

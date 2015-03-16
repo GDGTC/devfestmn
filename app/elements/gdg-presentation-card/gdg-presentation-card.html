@@ -2,10 +2,17 @@
 <link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
 
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-presentation-card" attributes="presentationId featured">
   <template>
     <link rel="stylesheet" href="gdg-presentation-card.css">
+
+    <firebase-element id="fbUser"
+                      location="https://devfestmn.firebaseio.com/users/{{globals.user.uid}}"
+                      data="{{loggedInUser}}">
+    </firebase-element>
+
 
     <section id="content" on-tap="{{expandDetails}}">
 
@@ -58,6 +65,10 @@
           favorited: {
             value: false,
             reflect: true
+          },
+          favoriteCount: {
+            value: 0,
+            reflect: true
           }
         },
 
@@ -67,7 +78,8 @@
 
         favoriteTapped: function (event /*detail, sender*/) {
           event.stopPropagation();
-          this.favorited = !this.favorited;
+          //this.favorited = !this.favorited;
+
           this.fire('favorite-tapped');
         },
 

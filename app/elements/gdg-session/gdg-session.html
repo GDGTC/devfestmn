@@ -33,8 +33,8 @@
     </firebase-element>
 
     <firebase-element id="fbUser"
-                      location="https://devfestmn.firebaseio.com/users/{{globals.user[id]}}"
-                      data="{{user}}">
+                      location="https://devfestmn.firebaseio.com/users/{{globals.user.uid}}"
+                      data="{{loggedInUser}}">
     </firebase-element>
 
 
@@ -52,14 +52,14 @@
           <template repeat="{{key, indexNum in presentationKeys}}">
 
 
-            <gdg-presentation-card favorited="{{presentations[key].favorited}}"
+            <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
                                    id="key"
                                    on-tap="{{expandDetails}}"
                                    on-favorite-tapped="{{handleFavorited}}"
                                    style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
                                    class="{{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
                                    presentationId="{{key}}"
-                                   hidden?="{{viewMode === 'favorites' && !presentations[key].favorited}}">
+                                   hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
 
               <section class="card-header">
                 <img src="{{presentations[key].iconUrl}}" width="70" height="70">
@@ -115,27 +115,40 @@
           //this.$.fbPresentations[presentation].favorited = true;  // TODO: Something like this to update the Firebase model
 
           var presentationKey = sender.templateInstance.model.key;
-          var presentation = sender.templateInstance.model.presentations[presentationKey];
+          var presentation = this.presentations[presentationKey];
 
-          //var presentation = this.$.fbPresentations.get(presentationKey);
+          var isNewFavorite = !this.loggedInUser.favoritePresentations[presentationKey];
+          console.log(isNewFavorite);
 
-          console.log(presentationKey);
-          console.log(presentation);
-
-          console.log(this.globals);
-          console.log(this.currentUser);
-
-          if (this.currentUser.favoritePresentations) {
-            this.currentUser.favoritePresentations[presentationKey] = presentation;
-
+          // Update the presentation's favorites count
+          if (presentation.favoriteCount) {
+            isNewFavorite ? presentation.favoriteCount++ : presentation.favoriteCount--;
           } else {
-            this.currentUser.favoritePresentations = {
-              presentationKey: presentation
-            };
+            // we should only here if we've never initialized to 1 before
+            presentation.favoriteCount = 1;
           }
+          this.$.fbPresentations.commitProperty(presentationKey);
 
-          this.$.fbUser.push(this.currentUser);
+          // Update the user's favorites
+          if (this.loggedInUser) {
 
+            if (isNewFavorite) {
+
+              // Handle adding to favorites
+              if (this.loggedInUser.favoritePresentations) {
+                this.loggedInUser.favoritePresentations[presentationKey] = presentation;
+              } else {
+                this.loggedInUser.favoritePresentations = {
+                  presentationKey: presentation
+                };
+              }
+
+              // handle removing from favorites
+            } else {
+              delete this.loggedInUser.favoritePresentations[presentationKey];
+            }
+            this.$.fbUser.commitProperty('favoritePresentations');
+          }
         },
 
 
@@ -174,8 +187,10 @@
         ready: function () {
           var cardPager = this.$.mainContainer.querySelector('#cardPager');
           cardPager.selected = 0;
+        },
 
-          this.currentUser = this.globals.user;
+        domReady: function () {
+          console.log(this.loggedInUser);
         }
 
       });

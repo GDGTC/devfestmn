@@ -8,6 +8,20 @@
   cursor: pointer;
 }
 
+.btn-label {
+  &.favorites {
+    position: absolute;
+    z-index: 4;
+    top: 20px;
+    right: 26px;
+    color: rgba(0.0, 0.0, 0.0, .87);
+
+    :host([favorited]) & {
+      color: #FFFFFF;
+    }
+  }
+}
+
 .card-header {
   margin-bottom: 10px;
 }
@@ -19,16 +33,18 @@ core-icon-button#favicon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 3px;
-  right: 3px;
+  top: 0px;
+  right: 0px;
   color: hsla(0, 0, 78%, 1.00);
-  width: 48px;
-  height: 48px;
+
+  /deep/ core-icon {
+    width: 48px;
+    height: 48px;
+  }
 
   :host([favorited]) & {
     color: hsla(355, 100%, 66%, 1);
   }
-
 }
 
 polyfill-next-selector {

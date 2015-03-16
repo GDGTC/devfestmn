@@ -59,6 +59,7 @@
                                    style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
                                    class="{{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
                                    presentationId="{{key}}"
+                                   sessionId="{{sessionId}}"
                                    hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
 
               <section class="card-header">
@@ -128,6 +129,7 @@
             presentation.favoriteCount = 1;
           }
           this.$.fbPresentations.commitProperty(presentationKey);
+
 
           // Update the user's favorites
           if (this.loggedInUser) {

@@ -4,13 +4,13 @@
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-presentation-card" attributes="presentationId featured">
+<polymer-element name="gdg-presentation-card" attributes="presentationId sessionId featured">
   <template>
     <link rel="stylesheet" href="gdg-presentation-card.css">
 
-    <firebase-element id="fbUser"
-                      location="https://devfestmn.firebaseio.com/users/{{globals.user.uid}}"
-                      data="{{loggedInUser}}">
+    <firebase-element id="fbPresentation"
+                      location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
+                      data="{{presentation}}">
     </firebase-element>
 
 
@@ -21,7 +21,13 @@
         id="favicon"
         icon="favorite"
         on-tap="{{favoriteTapped}}">
+
+        <span class="btn-label favorites">
+          {{presentation.favoriteCount}}
+        </span>
+
       </core-icon-button>
+
 
       <!--
       <a class="details-button" href="{{'#/presentations/' + presentationId }}">
@@ -73,7 +79,7 @@
         },
 
         expandDetails: function () {
-          window.location='#/presentations/' + this.presentationId;
+          window.location = '#/presentations/' + this.presentationId;
         },
 
         favoriteTapped: function (event /*detail, sender*/) {

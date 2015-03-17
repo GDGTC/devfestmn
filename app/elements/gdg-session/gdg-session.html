@@ -38,65 +38,84 @@
     </firebase-element>
 
 
-
-
     <!-- Begin content -->
     <section id="mainContainer">
+
       <section class="session-banner-container">
         <h1>I'm the banner area for session {{sessionId}}. Make me prettier!</h1>
       </section>
 
-      <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition cross-fade scale-up">
+      <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition"
+                           on-core-animated-pages-transition-end="{{transitionComplete}}">
 
-        <section id="listContainer">
-          <template repeat="{{key, indexNum in presentationKeys}}">
+        <section>
 
-
-            <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
-                                   id="key"
-                                   on-tap="{{expandDetails}}"
-                                   on-favorite-tapped="{{handleFavorited}}"
-                                   style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
-                                   class="{{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
-                                   presentationId="{{key}}"
-                                   sessionId="{{sessionId}}"
-                                   hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
-
-              <section class="card-header">
-                <img src="{{presentations[key].iconUrl}}" width="70" height="70">
-              </section>
+          <div class="chip-container" hero-p on-tap="{{expandDetails}}">
 
 
-              <section class="card-body">
-                <p>Speaker<span hidden?="{{!presentations[key].speakers['2']}}">s</span>:
+            <template repeat="{{key, indexNum in presentationKeys}}">
+
+
+              <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
+                                     hero-id="key"
+                                     hero?="{{selectedPresId === key}}"
+                                     on-favorite-tapped="{{handleFavorited}}"
+                                     style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
+                                     class="chip {{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
+                                     presentationId="{{key}}"
+                                     sessionId="{{sessionId}}"
+                                     hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
+
+                <section class="card-header">
+                  <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+                </section>
+
+
+                <section class="card-body">
+                  <p>Speaker<span hidden?="{{!presentations[key].speakers['2']}}">s</span>:
                        <span>
                           {{presentations[key].speakers['1']['name'] }}
                           <span hidden?="{{!presentations[key].speakers['2'] }}">
                             &amp; {{presentations[key].speakers['2']['name']}}
                           </span>
                        </span>
-                </p>
-
-                <div class="description" hidden?="{{!presentations[key].featured}}">
-                  <p>
-                    This is the description for this event, which is only visible here when the
-                    item gets set to "featured" and is moved up and given full width.
                   </p>
-                </div>
-              </section>
 
-              <section class="card-footer">
-                <h2 style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['fontRGBA'] + ';'}}">
-                  <span>{{presentations[key].subject}}</span>
-                </h2>
-              </section>
+                  <div class="description" hidden?="{{!presentations[key].featured}}">
+                    <p>
+                      This is the description for this event, which is only visible here when the
+                      item gets set to "featured" and is moved up and given full width.
+                    </p>
+                  </div>
+                </section>
 
-            </gdg-presentation-card>
+                <section class="card-footer">
+                  <h2
+                    style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['fontRGBA'] + ';'}}">
+                    <span>{{presentations[key].subject}}</span>
+                  </h2>
+                </section>
 
-          </template>
+              </gdg-presentation-card>
+
+            </template>
+          </div>
+
         </section>
 
-        <gdg-presentation-details presentationId="{{selectedPresId}}" sessionId="{{sessionId}}"></gdg-presentation-details>
+        <section id="detailsContainer">
+
+          <gdg-presentation-details presentationId="{{selectedPresId}}"
+                                    sessionId="{{sessionId}}"
+                                    hero-id="{{selectedPresId}}"
+                                    hero
+                                    on-collapse-details="{{collapseDetails}}"
+                                    style="{{'background-color: ' +  tracks[presentations[selectedPresId]['track']]['primaryBackgroundHex'] + ';'}}"
+                                    scale-up>
+
+          </gdg-presentation-details>
+
+        </section>
 
       </core-animated-pages>
     </section>
@@ -107,6 +126,9 @@
   <script>
     (function () {
       Polymer({
+
+        selected: 0,
+        selectedPresId: null,
 
         handleFavorited: function (event, detail, sender) {
 
@@ -122,8 +144,13 @@
           console.log(isNewFavorite);
 
           // Update the presentation's favorites count
-          if (presentation.favoriteCount) {
-            isNewFavorite ? presentation.favoriteCount++ : presentation.favoriteCount--;
+          if ('favoriteCount' in presentation) {
+            if (isNewFavorite) {
+              presentation.favoriteCount += 1;
+            } else {
+              presentation.favoriteCount -= 1;
+            }
+
           } else {
             // we should only here if we've never initialized to 1 before
             presentation.favoriteCount = 1;
@@ -137,7 +164,7 @@
             if (isNewFavorite) {
 
               // Handle adding to favorites
-              if (this.loggedInUser.favoritePresentations) {
+              if ('favoritePresentations' in this.loggedInUser) {
                 this.loggedInUser.favoritePresentations[presentationKey] = presentation;
               } else {
                 this.loggedInUser.favoritePresentations = {
@@ -162,20 +189,19 @@
          */
         expandDetails: function (e) {
           var fbPresentation = e.target.templateInstance.model;
-          this.$.selectedPresId = fbPresentation.key;
+          this.selectedPresId = fbPresentation.key;
           this.selected = 1;
         },
 
 
-        collapseDetails: function () {
-          this.lastSelected = this.$.sessionItems.selected;
-          console.log(this.lastSelected);
-          this.$.sessionItems.selected = 0;
+        collapseDetails: function (/*event, detail, sender*/) {
+          this.lastSelected = this.selectedPresId;
+          this.selected = 0;
         },
 
-        transitionEnd: function () {
-          if (this.lastSelected) {
-            this.lastSelected = null;
+        transitionComplete: function () {
+          if (this.selectedPresId && this.selected === 0) {
+            this.selectedPresId = null;
           }
         },
 
@@ -186,10 +212,6 @@
           this.viewMode = detail;
         },
 
-        ready: function () {
-          var cardPager = this.$.mainContainer.querySelector('#cardPager');
-          cardPager.selected = 0;
-        },
 
         domReady: function () {
           console.log(this.loggedInUser);

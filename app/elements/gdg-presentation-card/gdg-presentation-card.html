@@ -14,7 +14,7 @@
     </firebase-element>
 
 
-    <section id="content" on-tap="{{expandDetails}}">
+    <section id="content">
 
       <!-- Absolutely positioned elements -->
       <core-icon-button
@@ -23,7 +23,7 @@
         on-tap="{{favoriteTapped}}">
 
         <span class="btn-label favorites">
-          {{presentation.favoriteCount}}
+          {{presentation.favoriteCount || 0}}
         </span>
 
       </core-icon-button>
@@ -78,9 +78,9 @@
           }
         },
 
-        expandDetails: function () {
-          window.location = '#/presentations/' + this.presentationId;
-        },
+//        expandDetails: function () {
+//          window.location = '#/presentations/' + this.presentationId;
+//        },
 
         favoriteTapped: function (event /*detail, sender*/) {
           event.stopPropagation();

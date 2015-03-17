@@ -2,45 +2,41 @@
 <link rel="import" href="../../../bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-autogrow-textarea.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
 
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../gdg-comment/gdg-comment.html">
+<link rel="import" href="../gdg-globals/gdg-globals.html">
 
 <polymer-element name="gdg-presentation-details" attributes="presentationId sessionId">
   <template>
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
+    <gdg-globals values="{{globals}}"></gdg-globals>
+
     <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                       data="{{comments}}"
                       id="fbComments"
-                      keys="{{keys}}"
+                      keys="{{commentKeys}}"
                       childEvents>
     </firebase-element>
 
     <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
                       data="{{presentation}}"
                       id="fbPresentation"
-                      keys="{{key}}">
+                      keys="{{presentationKey}}">
     </firebase-element>
 
-    <section class="main-container" cross-fade>
+    <section id="mainContainer">
       <!-- Details -->
       <div>
         <p>Transitions into fuller Presentation Details view</p>
       </div>
 
-
-      <!-- Comments -->
-      <div class="comment">
-        <template repeat="keys in keys">
-          <p>I'm a comment</p>
-
-          <p>{{comments[key].user.username}}</p>
-
-          <p>{{comments[key].text}}</p>
-        </template>
-      </div>
-
+      <core-icon-button on-tap="{{handleCollapseDetails}}">
+        <core-icon icon="backspace"></core-icon>
+      </core-icon-button>
+      <!-- Add Comments Button with Expanding dialog -->
       <div class="add-comment">
         <button on-click="{{openCommentDialog}}">
           Add a Comment
@@ -62,6 +58,18 @@
 
         </button>
       </div>
+
+      <!-- Comments -->
+      <div class="comment">
+        <template repeat="keys in commentKeys">
+          <p>I'm a comment</p>
+
+          <p>{{comments[key].user.username}}</p>
+
+          <p>{{comments[key].text}}</p>
+        </template>
+      </div>
+
     </section>
 
 
@@ -85,16 +93,24 @@
           this.$.fbComments.push({
             text: this.$.commentText.value,
             user: {
-              uid: this.globals.currentUser.uid,
-              username: this.globals.currentUser.username,  // TODO: Setup some globals
-              avatarUrl: this.globals.currentUser.google.cachedUserProfile.avatarUrl,
-              htmlUrl: this.globals.currentUser.google.cachedUserProfile.htmlUrl
+              uid: this.globals.user.uid,
+              username: this.globals.user.google.displayName,
+              avatarUrl: this.globals.user.google.cachedUserProfile.picture,
+              htmlUrl: this.globals.user.google.cachedUserProfile.link
             },
             timestamp: new Date().getTime()
           });
 
           this.$.commentText.value = '';
 
+        },
+
+        handleCollapseDetails: function () {
+          this.fire('collapse-details');
+        },
+
+        domReady: function () {
+          console.log(this.globals.user);
         }
 
 

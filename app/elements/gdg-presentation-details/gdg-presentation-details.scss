@@ -1,3 +1,25 @@
+@import "mixins";
+
+$card-detail-view__primary_height: 400px;
+$card-detail-view__primary-width: 750px;
+
 :host {
   display: block;
+  width: $card-detail-view__primary-width;
+  height: $card-detail-view__primary_height;
+  z-index: 6;
+  border-radius: 3px;
+  text-align: start;
+  overflow: hidden;
+  @include BoxShadowHelper(2);
+
+  @media screen and (max-width: $card-detail-view__primary-width) {
+    width: $card-detail-view__primary-width * .75;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+
+  min-width: 450px;
 }

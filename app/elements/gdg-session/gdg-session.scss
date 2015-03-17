@@ -2,13 +2,19 @@
 
 :host {
 
+  position: relative;
+  top: 0;
+  bottom: 0;
+
   gdg-presentation-card {
+    display: inline-block;
     margin: 10px 0;
     @include BoxShadowHelper(2);
-    transition: bow-shadow .25s,
-    transform .25s;
+    transition: bow-shadow .25s;
 
     &:hover {
+
+      transition: transform .25s;
       @include BoxShadowHelper(4);
       transform: translate3d(0, -5px, 0);
     }
@@ -63,12 +69,25 @@
 
 #mainContainer {
   width: 100%;
+  min-height: 400px;
 }
 
-#listContainer {
+#detailsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.chip-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   max-width: 100%;
   display: flex;
-  position: relative;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;

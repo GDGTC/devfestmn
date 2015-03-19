@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../../bower_components/core-list/core-list.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
@@ -45,7 +46,8 @@
       <section class="header-container" layout horizontal>
 
         <div flex>
-          <h1 style="{{ 'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">{{presentation.subject || 'Title'}}</h1>
+          <h1 style="{{ 'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">{{presentation.subject ||
+            'Title'}}</h1>
           <hr/>
         </div>
 
@@ -95,7 +97,7 @@
 
 
       <!-- Scrollable Comments -->
-      <section class="comments-container" layout vertical>
+      <section class="comments-container {{ {expanded: commentsExpanded} | tokenList }}" layout vertical>
 
 
         <!-- Add Comments Button with Expanding dialog -->
@@ -121,18 +123,32 @@
           </button>
         </div>
 
-        <core-scroll-header-panel flex condenses>
+        <div class="scroll-panel-container">
 
-          <core-toolbar>
-            <div>Recent Comments</div>
-          </core-toolbar>
+          <paper-fab icon="arrow-up"
+                     role="button"
+                     class="panel-fab"
+                     tabindex="0"
+                     aria-label="expand-comments"
+                     on-tap="{{toggleComments}}"
+                     style="{{'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';' }}">
 
-          <div class="scroll-content comments">
-            <template repeat="{{key in commentKeys}}">
-              <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
-            </template>
-          </div>
-        </core-scroll-header-panel>
+          </paper-fab>
+
+          <core-scroll-header-panel flex>
+
+            <core-toolbar>
+              <div>Comment Stream</div>
+            </core-toolbar>
+
+            <div class="scroll-content comments">
+              <template repeat="{{key in commentKeys}}">
+                <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
+              </template>
+            </div>
+
+          </core-scroll-header-panel>
+        </div>
 
 
       </section>
@@ -147,7 +163,12 @@
 
       Polymer({
 
-        commentsModel: {},
+        commentsExpanded: false,
+
+        toggleComments: function () {
+          this.commentsExpanded = !this.commentsExpanded;
+        },
+
 
         openCommentDialog: function () {
           this.$.commentDialog.toggle();

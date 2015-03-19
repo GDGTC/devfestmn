@@ -5,13 +5,13 @@ $card-detail-view__primary-width: 770px;
 
 :host {
   display: block;
-  overflow: hidden;
+  //overflow: hidden;
   width: $card-detail-view__primary-width;
   height: $card-detail-view__primary_height;
   z-index: 6;
   border-radius: 3px;
   text-align: start;
-  overflow: hidden;
+  overflow: visible;
   @include BoxShadowHelper(2);
 
   @media screen and (max-width: $card-detail-view__primary-width) {
@@ -31,10 +31,12 @@ h1 {
 
 #mainContainer {
   height: $card-detail-view__primary_height;
+  position: relative;
 
   .header-container {
     height: 20%;
     padding: 5px 16px;
+    overflow: hidden;
     h1 {
       margin-bottom: -5px;
     }
@@ -50,14 +52,63 @@ h1 {
   }
 
   .body-container {
-    height: 60%;
+    overflow: hidden;
+    height: 50%;
     padding: 5px 16px;
   }
 
+  /* Start state of comments container */
   .comments-container {
-    height: 20%;
-    padding: 5px 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 25px;
+
+    .scroll-panel-container {
+      position: relative;
+      width: 90%;
+      height: 100%;
+
+
+      core-scroll-header-panel {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .comments {
+        visibility: collapse;
+      }
+
+    }
+
+    /* Expanded state of comments container */
+    &.expanded {
+      .comments {
+        visibility: visible;
+      }
+      overflow: visible;
+      core-scroll-header-panel {
+        height: 400px;
+      }
+    }
+
+
+    .panel-fab {
+      position: absolute;
+      z-index: 1;
+      top: -20px;
+      right: -20px;
+      width: 53px;
+      height: 53px;
+    }
   }
+
+
 }
 
 

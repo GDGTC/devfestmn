@@ -1,10 +1,11 @@
 @import "mixins";
 
-$card-detail-view__primary_height: 400px;
-$card-detail-view__primary-width: 750px;
+$card-detail-view__primary_height: 500px;
+$card-detail-view__primary-width: 770px;
 
 :host {
   display: block;
+  overflow: hidden;
   width: $card-detail-view__primary-width;
   height: $card-detail-view__primary_height;
   z-index: 6;
@@ -23,3 +24,40 @@ $card-detail-view__primary-width: 750px;
 
   min-width: 450px;
 }
+
+h1 {
+  font-size: 2rem;
+}
+
+#mainContainer {
+  height: $card-detail-view__primary_height;
+
+  .header-container {
+    height: 20%;
+    padding: 5px 16px;
+    h1 {
+      margin-bottom: -5px;
+    }
+
+    .back-button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      core-icon-button {
+        padding-right: 15px;
+      }
+    }
+  }
+
+  .body-container {
+    height: 60%;
+    padding: 5px 16px;
+  }
+
+  .comments-container {
+    height: 20%;
+    padding: 5px 16px;
+  }
+}
+
+

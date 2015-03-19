@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild-->
 
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic" rel="stylesheet" type="text/css">
   <link rel="import" href="../bower_components/font-roboto/roboto.html">
 
   <!-- build:js /bower_components/webcomponentsjs/webcomponents.min.js -->
@@ -59,18 +58,18 @@
       <!-- Drawer Content -->
 
       <!-- Main Menu -->
-      <core-menu selected="0">
-        <core-item label="Schedule"></core-item>
-        <core-item label="Map"></core-item>
-        <core-item label="My Favorites"></core-item>
-        <core-item label="NFC Scavenger Hunt"></core-item>
-        <core-item label="About"></core-item>
+      <core-menu selected="{{selectedRoute}}" valueattr="route" id="navSelections" on-core-select="{{sideNavSelect}}">
+        <core-item icon="calendar" route="/" label="Schedule"></core-item>
+        <core-item icon="people" route="/speakers" label="Speakers"></core-item>
+        <core-item icon="sponsors" route="/sponsors" label="Sponsors"></core-item>
+        <core-item icon="info" route="/about" label="About"></core-item>
+        <core-item icon="map" route="/hunt" label="NFC Scavenger Hunt"></core-item>
       </core-menu>
 
       <!-- Social media feed -->
       <h2 class="sidenav-header">Signed-In Users</h2>
       <core-header-panel>
-        <core-list id="feed"
+        <core-list id="userFeed"
                    data="{{userList}}"
                    scrollTarget="{{$.sidePanel.scroller}}">
 
@@ -129,46 +128,54 @@
 
       <!-- Main Content -->
 
-      <!--
-      <core-animated-pages selected="0"
-                           transition="fade-scale">
-          <section>
-              <home-page-list></home-page-list>
-          </section>
-          <section>
-              <session-info-page fade-scale></session-info-page>
-          </section>
-
-      </core-core-animated-pages>
-      -->
 
       <div class="content">
 
+          <!--
           <gdg-home-page></gdg-home-page>
+          -->
 
 
 
-        <!--
-        <app-router core-animated-pages transitions="hero-transition cross-fade scale-up tile-cascade">
+        <app-router id="router" core-animated-pages transitions="hero-transition cross-fade scale-up tile-cascade">
 
           <app-route path="/"
                      import="elements/gdg-home-page/gdg-home-page.html"
                      bindRouter>
           </app-route>
 
-          <app-route path="/presentations/:presentationId"
-                     import="elements/gdg-presentation-details/gdg-presentation-details.html"
+          <app-route path="/about"
+                     import="elements/gdg-about-page/gdg-about-page.html"
+                     bindRouter>
+          </app-route>
+
+          <app-route path="/sponsors"
+                     import="elements/gdg-sponsors-page/gdg-sponsors-page.html"
+                     bindRouter>
+          </app-route>
+
+          <app-route path="/speakers"
+                     import="elements/gdg-speakers-page/gdg-speakers-page.html"
+                     bindRouter>
+          </app-route>
+
+          <app-route path="/hunt"
+                     import="elements/gdg-scavenger-hunt-page/gdg-scavenger-hunt-page.html"
                      bindRouter>
           </app-route>
         </app-router>
-        -->
+
       </div>
 
+      <div id="upScroller">
+        <core-icon icon="up-arrow"></core-icon>
+      </div>
 
     </core-header-panel>
   </core-drawer-panel>
-
 </template>
+
+
 
 
 <!-- build:js /scripts/app.js -->

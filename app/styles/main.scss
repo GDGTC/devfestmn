@@ -80,3 +80,36 @@ h1 {
   font-size: 1.2rem;
 }
 
+#upScroller {
+  position: fixed;
+  bottom: 10px;
+  right: 53px;
+  opacity: 0;
+  background-color: #FFFF00;
+  border: 2px #FF9900 solid;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .22);
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-top: 10px;
+  width: 50px;
+  height: 70px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+
+  transition: opacity 1.0s cubic-bezier(.59, -0.54, 72, 1.59),
+              background-color .3s cubic-bezier(.59, -0.54, 72, 1.59);
+
+  &:hover {
+    background-color: #CCFF33;
+    border-color: #669900;
+    cursor: pointer;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
+

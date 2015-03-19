@@ -3,6 +3,8 @@
 <link rel="import" href="../../../bower_components/core-animated-pages/transitions/hero-transition.html">
 <link rel="import" href="../../../bower_components/core-animated-pages/transitions/scale-up.html">
 <link rel="import" href="../../../bower_components/core-animated-pages/transitions/list-cascade.html">
+<link rel="import" href="../../../bower_components/core-icons/device-icons.html">
+
 
 <link rel="import" href="../../../bower_components/core-signals/core-signals.html">
 
@@ -11,7 +13,7 @@
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-session" attributes="sessionId">
+<polymer-element name="gdg-session" attributes="sessionId sessionNum">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
@@ -37,18 +39,38 @@
                       data="{{loggedInUser}}">
     </firebase-element>
 
+    <firebase-element location="https://devfestmn.firebaseio.com/sessions/{{sessionId}}"
+                      id="fbSession"
+                      data="{{gdgSession}}">
+    </firebase-element>
+
+    <!--
+        <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
+                          data="{{comments}}"
+                          id="fbComments"
+                          keys="{{commentKeys}}"
+                          childEvents>
+        </firebase-element>
+    -->
+
 
     <!-- Begin content -->
     <section id="mainContainer">
 
       <section class="session-banner-container">
-        <h1>I'm the banner area for session {{sessionId}}. Make me prettier!</h1>
+        <div layout horizontal>
+          <h1 flex>Session {{sessionNum}}</h1>
+            <span>
+              <core-icon icon="device:access-time"></core-icon>
+              {{gdgSession.startTime}} - {{gdgSession.endTime}}
+            </span>
+        </div>
       </section>
 
       <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition"
                            on-core-animated-pages-transition-end="{{transitionComplete}}">
 
-        <section>
+        <section hero>
 
           <div class="chip-container" hero-p on-tap="{{expandDetails}}">
 
@@ -60,7 +82,7 @@
                                      hero-id="key"
                                      hero?="{{selectedPresId === key}}"
                                      on-favorite-tapped="{{handleFavorited}}"
-                                     style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';'}}"
+                                     style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';' + ' color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}"
                                      class="chip {{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
                                      presentationId="{{key}}"
                                      sessionId="{{sessionId}}"
@@ -68,31 +90,38 @@
 
                 <section class="card-header">
                   <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+
                 </section>
 
 
-                <section class="card-body">
-                  <p>Speaker<span hidden?="{{!presentations[key].speakers['2']}}">s</span>:
-                       <span>
-                          {{presentations[key].speakers['1']['name'] }}
-                          <span hidden?="{{!presentations[key].speakers['2'] }}">
-                            &amp; {{presentations[key].speakers['2']['name']}}
-                          </span>
-                       </span>
-                  </p>
+                <section class="card-body" layout vertical>
 
-                  <div class="description" hidden?="{{!presentations[key].featured}}">
+                  <div class="speaker">
+
+                        {{presentations[key].speakers['1']['name'] }}
+                        <span hidden?="{{!presentations[key].speakers['2'] }}">
+                          &amp; {{presentations[key].speakers['2']['name']}}
+                        </span>
+                  </div>
+                  <hr/>
+
+                  <div flex layout vertical center>
+                    <p style="{{'color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}">
+                      {{presentations[key].subject}}
+                    </p>
+                  </div>
+
+                  <div class="short-desc" hidden?="{{!presentations[key].featured}}">
                     <p>
-                      This is the description for this event, which is only visible here when the
-                      item gets set to "featured" and is moved up and given full width.
+                      {{presentations[key].shortDescription}}
                     </p>
                   </div>
                 </section>
 
                 <section class="card-footer">
                   <h2
-                    style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['fontRGBA'] + ';'}}">
-                    <span>{{presentations[key].subject}}</span>
+                    style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['accentColorRGBA'] + ';'}}">
+                    <span>{{tracks[presentations[key]['track']]['title']}}</span>
                   </h2>
                 </section>
 
@@ -103,15 +132,15 @@
 
         </section>
 
-        <section id="detailsContainer">
+        <section id="detailsContainer" hero>
 
           <gdg-presentation-details presentationId="{{selectedPresId}}"
                                     sessionId="{{sessionId}}"
+                                    on-collapse-details="{{collapseDetails}}"
                                     hero-id="{{selectedPresId}}"
                                     hero
-                                    on-collapse-details="{{collapseDetails}}"
-                                    style="{{'background-color: ' +  tracks[presentations[selectedPresId]['track']]['primaryBackgroundHex'] + ';'}}"
-                                    scale-up>
+                                    on-core-animated-pages-transition-end="{{transitionComplete}}"
+                                    style="{{'background-color: ' +  tracks[presentations[selectedPresId]['track']]['primaryBackgroundHex'] + ';'}}">
 
           </gdg-presentation-details>
 
@@ -197,11 +226,12 @@
         collapseDetails: function (/*event, detail, sender*/) {
           this.lastSelected = this.selectedPresId;
           this.selected = 0;
+          this.selectedPresId = null;
         },
 
         transitionComplete: function () {
           if (this.selectedPresId && this.selected === 0) {
-            this.selectedPresId = null;
+            //this.selectedPresId = null;
           }
         },
 
@@ -214,7 +244,6 @@
 
 
         domReady: function () {
-          console.log(this.loggedInUser);
         }
 
       });

@@ -54,8 +54,10 @@ core-icon-button#favicon {
 polyfill-next-selector {
   content: 'section.card-header';
 }
+
 ::content section.card-header {
   width: 100%;
+  height: 20%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,16 +71,26 @@ polyfill-next-selector {
 polyfill-next-selector {
   content: 'section.card-body';
 }
-::content section.card-body {
-  height: $card-height - 50;
-  max-width: 100%;
-  padding: 16px;
-}
 
+::content section.card-body {
+  max-width: 100%;
+  text-align: center;
+
+  .speaker {
+    display: flex;
+    flex-direction: column;
+    margin-top: -5px;
+  }
+  hr {
+    width: 70%;
+  }
+
+}
 
 polyfill-next-selector {
   content: 'section.card-footer';
 }
+
 ::content section.card-footer {
   position: absolute;
   bottom: 0;

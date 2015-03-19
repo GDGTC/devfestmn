@@ -1,13 +1,44 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-comment" attributes="">
+
+<polymer-element name="gdg-comment" attributes="presentationId commentId">
   <template>
     <link rel="stylesheet" href="gdg-comment.css">
+
+    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}/{{commentId}}"
+                      data="{{comment}}"
+                      id="fbComment">
+    </firebase-element>
+
+
+    <section class="mainContainer" layout horizontal>
+
+      <div class="comment-tile" layout vertical>
+        <div class="avatar-container">
+          <img src="{{comment.author.avatarUrl}}"/>
+        </div>
+        <span class="author">{{comment.author.username}}</span>
+      </div>
+
+      <div class="comment-body" flex>
+        <p>{{comment.text}}</p>
+
+        <p style="text-align: end">{{comment.timestamp}}</p>
+      </div>
+
+    </section>
+
+
   </template>
   <script>
     (function () {
       Polymer({
-        // define element prototype here
+        domReady: function () {
+          console.log(this.commentId);
+          console.log(this.presentationId);
+          console.log(this.comment);
+        }
       });
     })();
   </script>

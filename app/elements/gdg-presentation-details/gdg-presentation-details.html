@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../../../bower_components/core-list/core-list.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
 
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
     <gdg-globals values="{{globals}}"></gdg-globals>
+
 
     <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                       data="{{comments}}"
@@ -27,48 +29,105 @@
                       keys="{{presentationKey}}">
     </firebase-element>
 
-    <section id="mainContainer">
-      <!-- Details -->
-      <div>
-        <p>Transitions into fuller Presentation Details view</p>
-      </div>
+    <firebase-element location="https://devfestmn.firebaseio.com/tracks"
+                      keys="{{trackKeys}}"
+                      data="{{tracks}}"
+                      id="fbTracks">
+    </firebase-element>
 
-      <core-icon-button on-tap="{{handleCollapseDetails}}">
-        <core-icon icon="backspace"></core-icon>
-      </core-icon-button>
-      <!-- Add Comments Button with Expanding dialog -->
-      <div class="add-comment">
-        <button on-click="{{openCommentDialog}}">
-          Add a Comment
 
-          <paper-action-dialog id="commentDialog"
-                               heading="Add a Comment"
-                               transition="core-transition-buttom">
 
-            <form>
-              <paper-autogrow-textarea id="commentTextArea">
-                <label for="commentText" hidden?="{{!commentError}}">{{commentError}}</label>
-                <textarea id="commentText" placeholder="Begin your comment here"></textarea>
-              </paper-autogrow-textarea>
-            </form>
+    <!-- Heading -->
+    <section id="mainContainer" layout vertical hero>
 
-            <paper-button affirmative autofocus on-click="{{submitComment}}">Submit</paper-button>
+      <!-- Card header -->
+      <section class="header-container" layout horizontal>
 
-          </paper-action-dialog>
+        <div flex>
+          <h1 style="{{ 'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">{{presentation.subject || 'Title'}}</h1>
+          <hr/>
+        </div>
 
-        </button>
-      </div>
+        <div class="back-button-container">
+          <core-icon-button on-tap="{{handleCollapseDetails}}">
+            <core-icon icon="backspace"></core-icon>
+          </core-icon-button>
+        </div>
 
-      <!-- Comments -->
-      <div class="comment">
-        <template repeat="keys in commentKeys">
-          <p>I'm a comment</p>
+      </section>
 
-          <p>{{comments[key].user.username}}</p>
 
-          <p>{{comments[key].text}}</p>
+      <!-- Description Body -->
+      <section class="body-container" hero>
+
+        <div layout vertical>
+
+          <div layout horizontal>
+
+            <core-icon icon="chevron-right"></core-icon>
+
+            <div class="description-container">
+
+              <div class="description-block presentation">
+                <p>{{presentation.longDescription}}</p>
+
+                <p>I'm the text that's going to describe this presentation</p>
+              </div>
+
+              <hr/>
+
+              <template repeat="speaker in presentation.speakers">
+                <div class="description-block speaker">
+                  <img src="{{speaker.imgUrl}}"/>
+
+                  <p>I'm the text that's going to describe {{speaker.name}}</p>
+                </div>
+              </template>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Scrollable Comments -->
+      <section class="comments-container" layout vertical>
+
+
+        <!-- Add Comments Button with Expanding dialog -->
+        <div class="add-comment">
+          <button on-click="{{openCommentDialog}}">
+            Add a Comment
+
+            <paper-action-dialog id="commentDialog"
+                                 heading="Add a Comment"
+                                 transition="core-transition-buttom">
+
+              <form>
+                <paper-autogrow-textarea id="commentTextArea">
+                  <label for="commentText" hidden?="{{!commentError}}">{{commentError}}</label>
+                  <textarea id="commentText" placeholder="Begin your comment here"></textarea>
+                </paper-autogrow-textarea>
+              </form>
+
+              <paper-button affirmative autofocus on-click="{{submitComment}}">Submit</paper-button>
+
+            </paper-action-dialog>
+
+          </button>
+        </div>
+
+
+        <template repeat="{{key in commentKeys}}">
+          <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
         </template>
-      </div>
+
+
+      </section>
+
 
     </section>
 
@@ -78,6 +137,8 @@
     (function () {
 
       Polymer({
+
+        commentsModel: {},
 
         openCommentDialog: function () {
           this.$.commentDialog.toggle();
@@ -90,9 +151,12 @@
             return;
           }
 
+          console.log(this.presentationId);
+          console.log(this.$.fbComments);
+
           this.$.fbComments.push({
             text: this.$.commentText.value,
-            user: {
+            author: {
               uid: this.globals.user.uid,
               username: this.globals.user.google.displayName,
               avatarUrl: this.globals.user.google.cachedUserProfile.picture,
@@ -103,6 +167,8 @@
 
           this.$.commentText.value = '';
 
+          console.log(this.comments);
+
         },
 
         handleCollapseDetails: function () {
@@ -110,7 +176,11 @@
         },
 
         domReady: function () {
-          console.log(this.globals.user);
+
+        },
+
+        transitionComplete: function () {
+
         }
 
 

@@ -14,7 +14,8 @@
     </firebase-element>
 
 
-    <section id="content">
+
+    <section id="content" layout vertical>
 
       <!-- Absolutely positioned elements -->
       <core-icon-button
@@ -28,16 +29,7 @@
 
       </core-icon-button>
 
-
-      <!--
-      <a class="details-button" href="{{'#/presentations/' + presentationId }}">
-        <paper-button>
-          READ MORE
-        </paper-button>
-      </a>
-      -->
-
-      <section class="card-footer" flex>
+      <section class="card-footer">
         <content select="section.card-footer"></content>
       </section>
       <!-- / Absolutely positioned elements -->
@@ -51,7 +43,7 @@
           <content select="section.card-header"></content>
         </section>
 
-        <section class="card-body">
+        <section class="card-body" flex>
           <content select="section.card-body"></content>
         </section>
 

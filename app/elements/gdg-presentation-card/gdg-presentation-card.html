@@ -1,7 +1,9 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../../bower_components/core-tooltip/core-tooltip.html">
 
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+<link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-presentation-card" attributes="presentationId sessionId featured">
@@ -13,7 +15,7 @@
                       data="{{presentation}}">
     </firebase-element>
 
-
+    <gdg-globals values="{{globals}}"></gdg-globals>
 
     <section id="content" layout vertical>
 
@@ -26,8 +28,11 @@
         <span class="btn-label favorites">
           {{presentation.favoriteCount || 0}}
         </span>
-
       </core-icon-button>
+      <core-tooltip id="favoriteTooltip" hidden?="{{hideFavoriteTooltip}}">
+        Sign in to begin saving favorites!
+      </core-tooltip>
+
 
       <section class="card-footer">
         <content select="section.card-footer"></content>
@@ -59,6 +64,8 @@
     (function () {
       Polymer({
 
+        hideFavoriteTooltip: true,
+
         publish: {
           favorited: {
             value: false,
@@ -78,7 +85,12 @@
           event.stopPropagation();
           //this.favorited = !this.favorited;
 
-          this.fire('favorite-tapped');
+          if (this.globals.user) {
+            this.fire('favorite-tapped');
+          } else {
+            this.hideFavoriteTooltip = false;
+          }
+
         },
 
         ready: function () {

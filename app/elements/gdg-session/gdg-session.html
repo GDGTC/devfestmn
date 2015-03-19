@@ -58,13 +58,16 @@
     <section id="mainContainer">
 
       <section class="session-banner-container">
-        <div layout horizontal>
-          <h1 flex>Session {{sessionNum}}</h1>
-            <span>
-              <core-icon icon="device:access-time"></core-icon>
-              {{gdgSession.startTime}} - {{gdgSession.endTime}}
-            </span>
+        <div layout horizontal center-center>
+          <h1>{{gdgSession.label}}</h1>
+          <p style="width: 10%"></p>
+          <p>
+            <core-icon icon="device:access-time"></core-icon>
+            {{gdgSession.startTime}} - {{gdgSession.endTime}}
+          </p>
         </div>
+
+
       </section>
 
       <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition"
@@ -98,7 +101,7 @@
 
                   <div class="speaker">
 
-                        {{presentations[key].speakers['1']['name'] }}
+                    {{presentations[key].speakers['1']['name'] }}
                         <span hidden?="{{!presentations[key].speakers['2'] }}">
                           &amp; {{presentations[key].speakers['2']['name']}}
                         </span>

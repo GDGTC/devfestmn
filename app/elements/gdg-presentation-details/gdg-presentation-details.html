@@ -171,7 +171,7 @@
               avatarUrl: this.globals.user.google.cachedUserProfile.picture,
               htmlUrl: this.globals.user.google.cachedUserProfile.link
             },
-            timestamp: new Date().getTime()
+            timestamp: this.globals.FORMAT_COMMENT_TIME(new Date())
           });
 
           this.$.commentText.value = '';

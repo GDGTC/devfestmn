@@ -39,7 +39,7 @@
 
       <!-- Schedule -->
       <section class="content-layout-container">
-          <gdg-session-list id="sessionsList" router="router"></gdg-session-list>
+          <gdg-session-list id="sessionsList" router="{{router}}"></gdg-session-list>
       </section>
 
     </section>
@@ -51,9 +51,10 @@
     (function () {
       Polymer({
 
-        devfestStartTime: new Date(2015, 2, 21, 7),
+        devfestStartTime: "",
 
         ready: function () {
+          this.devfestStartTime = new Date(2015, 2, 21, 7);
           var tabs = this.$.mainContainer.querySelector('paper-tabs');
 
           // Only show favorited events when the user selects the 'favorites' tab
@@ -66,10 +67,6 @@
 //          var gdgHomePage = document.querySelector('gdg-home-page');
 //          gdgHomePage.addEventListener('presentation-selected')
 
-        },
-
-        onPresentationClick: function (e, presentationId) {
-          this.router.go('/presentations/' + presentationId);
         }
 
 

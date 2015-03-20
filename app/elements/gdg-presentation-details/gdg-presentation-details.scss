@@ -3,6 +3,10 @@
 $card-detail-view__primary_height: 500px;
 $card-detail-view__primary-width: 770px;
 
+$comments-list-height-transition-time: .5s;
+$comments-list-height-easing-func: cubic-bezier(0.215, 0.610, 0.355, 1.000);  // easeOutCubic
+
+
 :host {
   display: block;
   //overflow: hidden;
@@ -67,12 +71,13 @@ h1 {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 25px;
+    transition: height $comments-list-height-transition-time $comments-list-height-easing-func;
 
     .scroll-panel-container {
       position: relative;
       width: 90%;
       height: 100%;
-
+      @include BoxShadowHelper(2);
 
       core-scroll-header-panel {
         position: absolute;
@@ -88,15 +93,24 @@ h1 {
 
     /* Expanded state of comments container */
     &.expanded {
+      height: 400px;
       .comments {
         visibility: visible;
       }
-      overflow: visible;
       core-scroll-header-panel {
-        height: 400px;
+        //height: 400px;
       }
-    }
+      .scroll-panel-container {
+        @include BoxShadowHelper(5);
+      }
 
+      .panel-fab {
+        /deep/ core-icon {
+          transform: rotateZ(180deg);
+        }
+      }
+
+    }
 
     .panel-fab {
       position: absolute;
@@ -105,9 +119,16 @@ h1 {
       right: -20px;
       width: 53px;
       height: 53px;
+
+      /deep/ core-icon {
+        transition: transform .2s $comments-list-height-transition-time cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
     }
   }
 
+  .comment-count {
+    margin-left: -10px;
+  }
 
 }
 

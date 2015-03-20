@@ -99,8 +99,8 @@ h1 {
   justify-content: center;
   border-radius: 50%;
 
-  transition: opacity 2.0s cubic-bezier(.59, -0.54, 72, 1.59),
-              background-color .3s cubic-bezier(.59, -0.54, 72, 1.59);
+  transition: opacity .5s ease-out,
+              background-color .2s ease-out;
 
   &:hover {
     background-color: #CCFF33;

@@ -8,7 +8,7 @@
 
   .session-banner-container {
     width: 100%;
-    height: 100px;
+    //height: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -30,9 +30,28 @@
 
 #mainContainer {
   width: 100%;
-  min-height: 400px;
+  min-height: 490px;
   display: flex;
   flex-direction: column;
+
+  &:not(.hasList) {
+    .card-container {
+      width: 80%;
+    }
+    gdg-presentation-card,
+    {
+      font-size: 2rem;
+    }
+    .room-tag {
+      font-size: 1.5rem;
+      margin-bottom: -4px;
+    }
+  }
+}
+
+.session-banner-container {
+  padding-top: 16px;
+  font-size: 1.75rem;
 }
 
 #detailsContainer {

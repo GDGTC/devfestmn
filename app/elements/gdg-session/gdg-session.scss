@@ -6,49 +6,6 @@
   top: 0;
   bottom: 0;
 
-  gdg-presentation-card {
-    display: inline-block;
-    margin: 10px 0;
-    @include BoxShadowHelper(2);
-    transition: bow-shadow .25s;
-
-    &:hover {
-
-      transition: transform .25s;
-      @include BoxShadowHelper(4);
-      transform: translate3d(0, -5px, 0);
-    }
-
-    width: 15%;
-    max-width: 90%;
-
-
-    @media screen and (min-width: 750px) {
-      &:not(.stretched) {
-        font-size: 1rem;
-      }
-    }
-
-    @media screen and (max-width: 1150px) {
-
-      width: 25%;
-      //flex-grow: .5;
-
-      &.stretched {
-        width: 45%;
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      width: 90%;
-
-      &.stretched {
-        width: 90%;
-      }
-    }
-
-  }
-
   .session-banner-container {
     width: 100%;
     height: 100px;
@@ -74,6 +31,8 @@
 #mainContainer {
   width: 100%;
   min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 #detailsContainer {
@@ -83,17 +42,84 @@
   justify-content: center;
 }
 
-
 .chip-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   max-width: 100%;
   display: flex;
+  flex-direction: column;
+}
+
+.chip-panel-container {
+  display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: space-around;
   flex-wrap: wrap;
   margin: 5px 0;
 }
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  width: 15%;
+}
+
+gdg-presentation-card {
+  display: inline-block;
+  margin: 10px 0;
+  @include BoxShadowHelper(2);
+  transition: bow-shadow .25s;
+
+  &:hover {
+
+    transition: transform .25s;
+    @include BoxShadowHelper(4);
+    transform: translate3d(0, -5px, 0);
+  }
+
+  width: 100%;
+
+}
+
+@media screen and (min-width: 750px) {
+  .card-container {
+    &:not(.stretches) {
+      font-size: 1rem;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1150px) {
+
+  #mainContainer.hasList {
+    height: 850px;
+  }
+
+  .card-container {
+    width: 25%;
+
+    &.stretches {
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .card-container {
+    width: 90%;
+
+    &.stretches {
+      width: 90%;
+    }
+  }
+
+  #mainContainer.hasList {
+    height: (275px * 7) + (15px * 5) !important;
+  }
+}
+
+

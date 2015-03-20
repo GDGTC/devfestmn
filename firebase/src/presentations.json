@@ -3,15 +3,16 @@
     "presentation01": {
       "speakers": {
         "1": {
-          "name": "Firebase Guy",
+          "name": "Martin Omander",
           "title": "",
           "bio": ""
         }
       },
-      "subject": "Firebase Magic",
+      "subject": "Aspirin for the Developer Soul",
       "track": "general",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     }
   },
   "s2": {
@@ -26,7 +27,8 @@
       "subject": "RecyclerView",
       "track": "android",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r3"
     },
     "presentation03": {
       "speakers": {
@@ -44,7 +46,8 @@
       "subject": "Apps for Android Wear",
       "track": "wearables",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     },
     "presentation04": {
       "speakers": {
@@ -57,7 +60,8 @@
       "subject": "WebRTC Workshop (Video Chat)",
       "track": "chromeCloud",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r5"
     },
     "presentation05": {
       "speakers": {
@@ -70,7 +74,8 @@
       "subject": "Material Design",
       "track": "frontEnd",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r4"
     },
     "presentation06": {
       "speakers": {
@@ -84,7 +89,8 @@
       "subject": "AngularJS Workshop",
       "track": "gettingStarted",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     }
   },
   "s3": {
@@ -99,7 +105,8 @@
       "subject": "Getting Groovy on Android",
       "track": "android",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r4"
     },
     "presentation08": {
       "speakers": {
@@ -112,7 +119,8 @@
       "subject": "Analog Watch Face",
       "track": "wearables",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r3"
     },
     "presentation09": {
       "speakers": {
@@ -125,7 +133,8 @@
       "subject": "Developing with Cloud Platform Containers",
       "track": "chromeCloud",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     },
     "presentation10": {
       "speakers": {
@@ -138,7 +147,8 @@
       "subject": "Polymer",
       "track": "frontEnd",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     },
     "presentation11": {
       "speakers": {
@@ -151,7 +161,8 @@
       "subject": "Intro to Android",
       "track": "gettingStarted",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r5"
     }
   },
   "s4": {
@@ -160,7 +171,8 @@
       "subject": "Lunch & Prizes",
       "track": "general",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": ""
     }
   },
   "s5": {
@@ -180,7 +192,8 @@
       "subject": "Android Testing w/ Espresso",
       "track": "android",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r3"
     },
     "presentation14": {
       "speakers": {
@@ -198,7 +211,8 @@
       "subject": "Wearable-Integrated Apps",
       "track": "wearables",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     },
     "presentation15": {
       "speakers": {
@@ -211,12 +225,13 @@
       "subject": "Security & Privacy",
       "track": "chromeCloud",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r5"
     },
     "presentation16": {
       "speakers": {
         "1": {
-          "name": "John Hendy",
+          "name": "John Henderson",
           "title": "",
           "bio": ""
         }
@@ -224,18 +239,20 @@
       "subject": "Data Visualization",
       "track": "frontEnd",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r4"
     },
     "presentation17": {
       "speakers": {
         "1": {
-          "name": "Panel"
+          "name": "Paul Modderman"
         }
       },
-      "subject": "Design vs Development",
+      "subject": "Making Enterprise Data Friendly with Google Sheets",
       "track": "gettingStarted",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     }
   },
   "s6": {
@@ -250,7 +267,8 @@
       "subject": "Android Dependencies",
       "track": "android",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     },
     "presentation19": {
       "speakers": {
@@ -263,7 +281,8 @@
       "subject": "Reemo Wearable",
       "track": "wearables",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r3"
     },
     "presentation20": {
       "speakers": {
@@ -276,14 +295,27 @@
       "subject": "Ditch CMS for Google Drive",
       "track": "chromeCloud",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     },
     "presentation21": {
-      "speakers": "",
-      "subject": "",
+      "speakers": {
+        "1": {
+          "name": "Abram Isola",
+          "title": "",
+          "bio": ""
+        },
+        "2": {
+          "name": "Ben Demaree",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Using Google Compute Engine",
       "track": "frontEnd",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r5"
     },
     "presentation22": {
       "speakers": {
@@ -296,7 +328,8 @@
       "subject": "Android Libraries",
       "track": "gettingStarted",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r4"
     }
   },
   "s7": {
@@ -311,9 +344,78 @@
       "subject": "Reactive",
       "track": "android",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     },
     "presentation24": {
+      "speakers": {
+        "1": ""
+      },
+      "subject": "",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": "",
+      "room": ""
+    },
+    "presentation25": {
+      "speakers": {
+        "1": {
+          "name": "Dan Baran",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Tag Manager",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": "",
+      "room": "r5"
+    },
+    "presentation26": {
+      "speakers": {
+        "1": {
+          "name": "Irvin Briscoe",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Design & CSS",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": "",
+      "room": "r1"
+    },
+    "presentation27": {
+      "speakers": {
+        "1": {
+          "name": "Jim",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Android 5",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": "",
+      "room": "r3"
+    }
+  },
+  "s8": {
+    "presentation28": {
+      "speakers": {
+        "1": {
+          "name": "Brad Armstrong",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Where to Find a Drink in Minneapolis",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": "",
+      "room": "r3"
+    },
+    "presentation29": {
       "speakers": {
         "1": {
           "name": "Justin Grammens",
@@ -324,62 +426,8 @@
       "subject": "Gobot Language",
       "track": "wearables",
       "shortDescription": "",
-      "longDescription": ""
-    },
-    "presentation25": {
-      "speakers": {
-        "1": {
-          "name": "Martin Omander",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Choosing the Right Cloud Product",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": ""
-    },
-    "presentation26": {
-      "speakers": {
-        "1": {
-          "name": "Irving Briscoe",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Design/CSS",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": ""
-    },
-    "presentation27": {
-      "speakers": "",
-      "subject": "",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": ""
-    }
-  },
-  "s8": {
-    "presentation28": {
-      "speakers": "",
-      "subject": "",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": ""
-    },
-    "presentation29": {
-      "speakers": {
-        "1": {
-          "name": "Jenna Pederson",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     },
     "presentation30": {
       "speakers": {
@@ -392,14 +440,16 @@
       "subject": "RESTful in Python",
       "track": "chromeCloud",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r4"
     },
     "presentation31": {
-      "speakers": "",
-      "subject": "",
+      "speakers": "Chelsie Ellingson",
+      "subject": "Design for Developers",
       "track": "frontEnd",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r2"
     },
     "presentation32": {
       "speakers": {
@@ -412,7 +462,8 @@
       "subject": "MEAN Stack",
       "track": "gettingStarted",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r5"
     }
   },
   "s9": {
@@ -421,7 +472,8 @@
       "subject": "Closing Remarks",
       "track": "general",
       "shortDescription": "",
-      "longDescription": ""
+      "longDescription": "",
+      "room": "r1"
     }
   }
 }

@@ -1,0 +1,411 @@
+{
+  "s1": {
+    "presentation01": {
+      "speakers": {
+        "1": "speaker1"
+      },
+      "subject": "Aspirin for the Developer Soul",
+      "track": "general",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s2": {
+    "presentation02": {
+      "speakers": {
+        "1": "speaker2"
+      },
+      "subject": "RecyclerView",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation03": {
+      "speakers": {
+        "1": "speaker3",
+        "2": "speaker4"
+      },
+      "subject": "Apps for Android Wear",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation04": {
+      "speakers": {
+        "1": {
+          "name": "Ilya Verbitsky",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "WebRTC Workshop (Video Chat)",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation05": {
+      "speakers": {
+        "1": {
+          "name": "Noah Blon",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Material Design",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation06": {
+      "speakers": {
+        "1": {
+          "name": "Steven Fluin",
+          "title": "",
+          "bio": ""
+        }
+
+      },
+      "subject": "AngularJS Workshop",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s3": {
+    "presentation07": {
+      "speakers": {
+        "1": {
+          "name": "Andrew Reitz",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Getting Groovy on Android",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation08": {
+      "speakers": {
+        "1": {
+          "name": "Christopher Black",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Analog Watch Face",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation09": {
+      "speakers": {
+        "1": {
+          "name": "Paul Lundberg",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Developing with Cloud Platform Containers",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation10": {
+      "speakers": {
+        "1": {
+          "name": "Lloyd Cledwyn",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Polymer",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation11": {
+      "speakers": {
+        "1": {
+          "name": "Patrick Fuentes",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Intro to Android",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s4": {
+    "presentation12": {
+      "speakers": "",
+      "subject": "Lunch & Prizes",
+      "track": "general",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s5": {
+    "presentation13": {
+      "speakers": {
+        "1": {
+          "name": "Chris Davis",
+          "title": "",
+          "bio": ""
+        },
+        "2": {
+          "name": "Jim White",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Android Testing w/ Espresso",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation14": {
+      "speakers": {
+        "1": {
+          "name": "Kenton Watson",
+          "title": "",
+          "bio": ""
+        },
+        "2": {
+          "name": "Brendon Justin",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Wearable-Integrated Apps",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation15": {
+      "speakers": {
+        "1": {
+          "name": "M A al-Kabir",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Security & Privacy",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation16": {
+      "speakers": {
+        "1": {
+          "name": "John Hendy",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Data Visualization",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation17": {
+      "speakers": {
+        "1": {
+          "name": "Panel"
+        }
+      },
+      "subject": "Design vs Development",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s6": {
+    "presentation18": {
+      "speakers": {
+        "1": {
+          "name": "Daniel Lew",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Android Dependencies",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation19": {
+      "speakers": {
+        "1": {
+          "name": "Al Baker",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Reemo Wearable",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation20": {
+      "speakers": {
+        "1": {
+          "name": "Mark Nutter",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Ditch CMS for Google Drive",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation21": {
+      "speakers": "",
+      "subject": "",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation22": {
+      "speakers": {
+        "1": {
+          "name": "Andrew Watson",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Android Libraries",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s7": {
+    "presentation23": {
+      "speakers": {
+        "1": {
+          "name": "Colin Lee",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Reactive",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation24": {
+      "speakers": {
+        "1": {
+          "name": "Justin Grammens",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Gobot Language",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation25": {
+      "speakers": {
+        "1": {
+          "name": "Martin Omander",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Choosing the Right Cloud Product",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation26": {
+      "speakers": {
+        "1": {
+          "name": "Irving Briscoe",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "Design/CSS",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation27": {
+      "speakers": "",
+      "subject": "",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s8": {
+    "presentation28": {
+      "speakers": "",
+      "subject": "",
+      "track": "android",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation29": {
+      "speakers": {
+        "1": {
+          "name": "Jenna Pederson",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "",
+      "track": "wearables",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation30": {
+      "speakers": {
+        "1": {
+          "name": "Ryan Morlok",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "RESTful in Python",
+      "track": "chromeCloud",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation31": {
+      "speakers": "",
+      "subject": "",
+      "track": "frontEnd",
+      "shortDescription": "",
+      "longDescription": ""
+    },
+    "presentation32": {
+      "speakers": {
+        "1": {
+          "name": "Baskin",
+          "title": "",
+          "bio": ""
+        }
+      },
+      "subject": "MEAN Stack",
+      "track": "gettingStarted",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  },
+  "s9": {
+    "presentation33": {
+      "speakers": "",
+      "subject": "Closing Remarks",
+      "track": "general",
+      "shortDescription": "",
+      "longDescription": ""
+    }
+  }
+}

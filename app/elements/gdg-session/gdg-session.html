@@ -44,6 +44,11 @@
                       data="{{gdgSession}}">
     </firebase-element>
 
+    <firebase-element location="https://devfestmn.firebaseio.com/rooms"
+                      id="fbRooms"
+                      data="{{rooms}}">
+    </firebase-element>
+
     <!--
         <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                           data="{{comments}}"
@@ -55,82 +60,94 @@
 
 
     <!-- Begin content -->
-    <section id="mainContainer">
-
-      <section class="session-banner-container">
-        <div layout horizontal center-center>
-          <h1>{{gdgSession.label}}</h1>
-          <p style="width: 10%"></p>
-          <p>
-            <core-icon icon="device:access-time"></core-icon>
-            {{gdgSession.startTime}} - {{gdgSession.endTime}}
-          </p>
-        </div>
+    <section id="mainContainer"
+             class="{{ {hasList: gdgSession.hasPresentationList} | tokenList }}">
 
 
-      </section>
 
       <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition"
                            on-core-animated-pages-transition-end="{{transitionComplete}}">
 
         <section hero>
 
-          <div class="chip-container" hero-p on-tap="{{expandDetails}}">
+          <section class="session-banner-container">
+            <div layout horizontal center-center>
+              <h1>{{gdgSession.label}}</h1>
+
+              <p style="width: 10%"></p>
+
+              <p>
+                <core-icon icon="device:access-time"></core-icon>
+                {{gdgSession.startTime}} - {{gdgSession.endTime}}
+              </p>
+            </div>
+          </section>
+
+          <div class="chip-container" hero-p>
+
+            <div class="chip-panel-container">
 
 
-            <template repeat="{{key, indexNum in presentationKeys}}">
+              <template repeat="{{key, indexNum in presentationKeys}}">
 
 
-              <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
-                                     hero-id="key"
-                                     hero?="{{selectedPresId === key}}"
-                                     on-favorite-tapped="{{handleFavorited}}"
-                                     style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';' + ' color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}"
-                                     class="chip {{ {featured: presentations[key].featured, stretched: indexNum == 0 || indexNum == 1} | tokenList }}"
-                                     presentationId="{{key}}"
-                                     sessionId="{{sessionId}}"
-                                     hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
+                <div class="card-container {{ {stretches: indexNum === '0' || indexNum === '1'} | tokenList}}"
+                     style="{{ 'order: ' + rooms[presentations[key]['room']]['order'] + ';' }}">
 
-                <section class="card-header">
-                  <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+                  <p class="room-tag">{{ rooms[presentations[key]['room']].name }}</p>
+                  <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
+                                         hero-id="key"
+                                         on-tap="{{expandDetails}}"
+                                         hero?="{{selectedPresId === key}}"
+                                         on-favorite-tapped="{{handleFavorited}}"
+                                         style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';' + ' color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';' }}"
+                                         class="chip {{ {featured: presentations[key]['track'] === 'general' } | tokenList }}"
+                                         presentationId="{{key}}"
+                                         sessionId="{{sessionId}}"
+                                         hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
 
-                </section>
+                    <section class="card-header">
+                      <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+
+                    </section>
 
 
-                <section class="card-body" layout vertical>
+                    <section class="card-body" layout vertical>
 
-                  <div class="speaker">
+                      <div class="speaker">
 
-                    {{presentations[key].speakers['1']['name'] }}
+                        {{presentations[key].speakers['1']['name'] }}
                         <span hidden?="{{!presentations[key].speakers['2'] }}">
                           &amp; {{presentations[key].speakers['2']['name']}}
                         </span>
-                  </div>
-                  <hr/>
+                      </div>
+                      <hr/>
 
-                  <div flex layout vertical center>
-                    <p style="{{'color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}">
-                      {{presentations[key].subject}}
-                    </p>
-                  </div>
+                      <div flex layout vertical center>
+                        <p style="{{'color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}">
+                          {{presentations[key].subject}}
+                        </p>
+                      </div>
 
-                  <div class="short-desc" hidden?="{{!presentations[key].featured}}">
-                    <p>
-                      {{presentations[key].shortDescription}}
-                    </p>
-                  </div>
-                </section>
+                      <div class="short-desc" hidden?="{{!presentations[key].featured}}">
+                        <p>
+                          {{presentations[key].shortDescription}}
+                        </p>
+                      </div>
+                    </section>
 
-                <section class="card-footer">
-                  <h2
-                    style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['accentColorRGBA'] + ';'}}">
-                    <span>{{tracks[presentations[key]['track']]['title']}}</span>
-                  </h2>
-                </section>
+                    <section class="card-footer">
+                      <h2
+                        style="{{'background-color: ' + tracks[presentations[key]['track']]['accentBackgroundHex'] + ';' + 'color: rgba' + tracks[presentations[key]['track']]['accentColorRGBA'] + ';'}}">
+                        <span>{{tracks[presentations[key]['track']]['title']}}</span>
+                      </h2>
+                    </section>
 
-              </gdg-presentation-card>
+                  </gdg-presentation-card>
+                </div>
 
-            </template>
+              </template>
+            </div>
           </div>
 
         </section>
@@ -172,7 +189,31 @@
           var presentationKey = sender.templateInstance.model.key;
           var presentation = this.presentations[presentationKey];
 
-          var isNewFavorite = !this.loggedInUser.favoritePresentations[presentationKey];
+
+
+          ///// Determine whether presentation is being newly favorited or unfavorited //////
+          var isNewFavorite;
+          if ('favoritePresentations' in this.loggedInUser) {
+            if (this.loggedInUser.favoritePresentations[presentationKey]) {
+              // Unfavorite
+              isNewFavorite = false;
+              delete this.loggedInUser.favoritePresentations[presentationKey];
+
+            } else {
+              // Favorite
+              isNewFavorite = true;
+              this.loggedInUser.favoritePresentations[presentationKey] = presentation;
+            }
+
+          } else {
+            // Favorite (and the first favorite for this user ever!)
+            isNewFavorite = true;
+            this.loggedInUser.favoritePresentations = {
+              presentationKey: presentation
+            };
+          }
+          this.$.fbUser.commitProperty('favoritePresentations');
+
           console.log(isNewFavorite);
 
           // Update the presentation's favorites count
@@ -189,27 +230,6 @@
           }
           this.$.fbPresentations.commitProperty(presentationKey);
 
-
-          // Update the user's favorites
-          if (this.loggedInUser) {
-
-            if (isNewFavorite) {
-
-              // Handle adding to favorites
-              if ('favoritePresentations' in this.loggedInUser) {
-                this.loggedInUser.favoritePresentations[presentationKey] = presentation;
-              } else {
-                this.loggedInUser.favoritePresentations = {
-                  presentationKey: presentation
-                };
-              }
-
-              // handle removing from favorites
-            } else {
-              delete this.loggedInUser.favoritePresentations[presentationKey];
-            }
-            this.$.fbUser.commitProperty('favoritePresentations');
-          }
         },
 
 

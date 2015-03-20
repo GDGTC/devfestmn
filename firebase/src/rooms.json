@@ -1,0 +1,17 @@
+{
+  "r1": {
+    "name": "Main Auditorium"
+  },
+  "r2": {
+    "name": "Lab"
+  },
+  "r3": {
+    "name": "Small Auditorium"
+  },
+  "r4": {
+    "name": "Classroom A"
+  },
+  "r5": {
+    "name": "Classroom B"
+  }
+}

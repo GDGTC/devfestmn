@@ -9,6 +9,7 @@
 <link rel="import" href="../../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../../bower_components/core-icons/communication-icons.html">
 <link rel="import" href="../../../bower_components/core-icons/hardware-icons.html">
+<link rel="import" href="../../../bower_components/core-signals/core-signals.html">
 
 <link rel="import" href="../../../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../../../bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
@@ -23,6 +24,7 @@
 
     <gdg-globals values="{{globals}}"></gdg-globals>
 
+    <core-signals on-core-signal-details-expanded="{{handleExpanded}}"></core-signals>
 
     <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                       data="{{comments}}"
@@ -51,7 +53,8 @@
       <section class="header-container" layout horizontal>
 
         <div flex>
-          <h1 style="{{ 'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">{{presentation.subject || 'Title'}}</h1>
+          <h1 style="{{ 'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">{{presentation.subject ||
+            'Title'}}</h1>
           <hr/>
         </div>
 
@@ -65,7 +68,7 @@
 
 
       <!-- Description Body -->
-      <section class="body-container" hero>
+      <section hidden?="{{commentsExpanded}}" class="body-container" hero>
 
         <div layout vertical>
 
@@ -127,16 +130,19 @@
                          id="commentCountIcon"
                          icon="communication:forum">
               </core-icon>
+
+              <!--
               <span class="commentCount"
                     style="{{'color: rgba' + tracks[presentation.track]['accentColorRGBA'] + ';'}}">
-                {{comments.length || 0}}
+                {{dereffedComments.length || 0}}
               </span>
+              -->
 
             </core-toolbar>
 
             <div class="scroll-content comments">
 
-              <template repeat="{{key in commentKeys}}">
+              <template if={{presentationId}} repeat="{{key in commentKeys}}">
                 <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
               </template>
 
@@ -182,10 +188,45 @@
       Polymer({
 
         commentsExpanded: false,
+        commentCount: 0,
+        dereffedComments: [],
 
         toggleComments: function () {
           this.commentsExpanded = !this.commentsExpanded;
         },
+
+
+        /**
+         * Helper function fired on expansion that dereferrences comments
+         * for the expanded card.
+         */
+        handleExpanded: function (e, detail /*sender*/) {
+
+          var presId = detail.key;
+          var res = [];
+
+          if (presId && this.comments) {
+
+            if (presId in this.comments) {
+
+              var _comments = Object.create(this.comments);
+              var currentPresentationComments = _comments[presId];
+              var commentKeys = Object.keys(currentPresentationComments);
+
+              for (var i = 0, l = commentKeys.length; i < l; i++) {
+                res.push(currentPresentationComments[commentKeys[i]]);
+              }
+            }
+          }
+          this.updateComments(res);
+        },
+
+        updateComments: function (newComments) {
+          //console.log(newComments);
+          this.dereffedComments = newComments;
+        },
+
+
 
 
         openCommentDialog: function () {
@@ -213,6 +254,13 @@
             timestamp: this.globals.FORMAT_COMMENT_TIME(new Date())
           });
 
+          if (!this.presentation.commentCount) {
+            this.presentation.commentCount = 1;
+          } else {
+            this.presentation.commentCount += 1;
+          }
+          this.$.fbPresentation.commitProperty('commentCount');
+
           this.$.commentText.value = '';
 
           console.log(this.comments);
@@ -224,10 +272,6 @@
         },
 
         domReady: function () {
-
-        },
-
-        transitionComplete: function () {
 
         }
 

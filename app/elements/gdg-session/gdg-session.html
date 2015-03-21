@@ -101,10 +101,9 @@
                                          hero?="{{selectedPresId === key}}"
                                          on-favorite-tapped="{{handleFavorited}}"
                                          style="{{'background-color: ' +  tracks[presentations[key]['track']]['primaryBackgroundHex'] + ';' + ' color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';' }}"
-                                         class="chip {{ {featured: presentations[key]['track'] === 'general' } | tokenList }}"
+                                         class="chip {{ {featured: presentations[key]['track'] === 'general', blurred: viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]  } | tokenList }}"
                                          presentationId="{{key}}"
-                                         sessionId="{{sessionId}}"
-                                         hidden?="{{viewMode === 'favorites' && !loggedInUser['favoritePresentations'][key]}}">
+                                         sessionId="{{sessionId}}">
 
                     <section class="card-header">
                       <img src="{{presentations[key].iconUrl}}" width="70" height="70">
@@ -214,8 +213,6 @@
           }
           this.$.fbUser.commitProperty('favoritePresentations');
 
-          console.log(isNewFavorite);
-
           // Update the presentation's favorites count
           if ('favoriteCount' in presentation) {
             if (isNewFavorite) {
@@ -243,6 +240,8 @@
           var fbPresentation = e.target.templateInstance.model;
           this.selectedPresId = fbPresentation.key;
           this.selected = 1;
+
+          this.fire('core-signal', {name: 'details-expanded', data: fbPresentation});
         },
 
 
@@ -252,10 +251,12 @@
           this.selectedPresId = null;
         },
 
+        /**
+         * Listen for transition completion and signal to the selected
+         * card detail view so that it can fire additional methods
+         */
         transitionComplete: function () {
-          if (this.selectedPresId && this.selected === 0) {
-            //this.selectedPresId = null;
-          }
+          //console.log("Transition complete");
         },
 
         /**

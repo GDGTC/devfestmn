@@ -59,6 +59,8 @@
   //height: 100%;
   display: flex;
   justify-content: center;
+  z-index: 5;
+  @include BoxShadowHelper(4);
 }
 
 .chip-container {
@@ -89,7 +91,8 @@ gdg-presentation-card {
   display: inline-block;
   margin: 10px 0;
   @include BoxShadowHelper(2);
-  transition: bow-shadow .25s;
+  transition: box-shadow .25s,
+              opacity .3s;
 
   &:hover {
 
@@ -97,28 +100,35 @@ gdg-presentation-card {
     @include BoxShadowHelper(4);
     transform: translate3d(0, -5px, 0);
   }
-
   width: 100%;
+
+  &.blurred {
+    opacity: 0.35;
+  }
 
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 601px) and (max-width: 750px) {
+
   .card-container {
     &:not(.stretches) {
       font-size: 1rem;
+
+      .card-footer h2 span {
+        font-size: 1.25rem;
+      }
     }
   }
 }
 
 
-@media screen and (max-width: 1150px) {
+@media screen and (min-width: 601px) and (max-width: 1250px) {
 
   #mainContainer.hasList {
     height: 850px;
   }
-
   .card-container {
-    width: 25%;
+    width: 33%;
 
     &.stretches {
       width: 45%;
@@ -137,8 +147,20 @@ gdg-presentation-card {
   }
 
   #mainContainer.hasList {
-    height: (275px * 7) + (15px * 5) !important;
+    height: (275px * 7) + (15px * 5);
   }
+
+
+  .chip-panel-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section#detailsContainer.core-selected {
+    position: fixed;
+    top: 19%;
+  }
+
 }
 
 

@@ -141,7 +141,7 @@
 
             <div class="scroll-content comments">
 
-              <template if={{presentationId}} repeat="{{key in commentKeys}}">
+              <template hidden?={{isActivePresentation}} repeat="{{key in commentKeys}}">
                 <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
               </template>
 
@@ -187,6 +187,7 @@
       Polymer({
 
         commentsExpanded: false,
+        isActivePresentation: false,
         commentCount: 0,
         dereffedComments: [],
 
@@ -201,23 +202,34 @@
          */
         handleExpanded: function (e, detail /*sender*/) {
 
-          var presId = detail.key;
-          var res = [];
+          //console.log(this.comments);
+          console.log(this.presentationId);
 
-          if (presId && this.comments) {
+          var selectedPresId = detail.key;
 
-            if (presId in this.comments) {
+          if (this.presentationId !== selectedPresId) {
+            this.isActivePresentation = false;
+          } else {
+            this.isActivePresentation = true;
 
-              var _comments = Object.create(this.comments);
-              var currentPresentationComments = _comments[presId];
-              var commentKeys = Object.keys(currentPresentationComments);
 
-              for (var i = 0, l = commentKeys.length; i < l; i++) {
-                res.push(currentPresentationComments[commentKeys[i]]);
+            var res = [];
+
+            if (selectedPresId && this.comments) {
+
+              if (selectedPresId in this.comments) {
+
+                var _comments = Object.create(this.comments);
+                var currentPresentationComments = _comments[selectedPresId];
+                var commentKeys = Object.keys(currentPresentationComments);
+
+                for (var i = 0, l = commentKeys.length; i < l; i++) {
+                  res.push(currentPresentationComments[commentKeys[i]]);
+                }
               }
             }
+            this.updateComments(res);
           }
-          this.updateComments(res);
         },
 
         updateComments: function (newComments) {

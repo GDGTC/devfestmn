@@ -106,7 +106,7 @@
                                          sessionId="{{sessionId}}">
 
                     <section class="card-header">
-                      <img src="{{presentations[key].iconUrl}}" width="70" height="70">
+                      <img src="{{tracks[presentations[key]['track']]['iconUrl']}}" width="70" height="70">
 
                     </section>
 
@@ -262,7 +262,7 @@
         /**
          * Receives a signal of the new view mode from core-signals
          */
-        handleNewViewMode: function (e, detail /*sender*/) {
+                      handleNewViewMode: function (e, detail /*sender*/) {
           this.viewMode = detail;
         },
 

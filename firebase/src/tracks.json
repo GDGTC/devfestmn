@@ -1,44 +1,56 @@
 {
-    "general": {
-        "title": "",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#000000",
-        "accentBackgroundHex": "#FFFFFF",
-        "fontRGBA": "(253, 251, 251, 1)"
-    },
-    "android": {
-        "title": "Android",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#78C15B",
-        "accentBackgroundHex": "#C6FF00",
-        "fontRGBA": "(100, 100, 95, 1)"
-    },
-    "wearables": {
-        "title": "Wearables",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#B388FF",
-        "accentBackgroundHex": "#7E57C2",
-        "fontRGBA": "(100, 100, 95, 1)"
-    },
-    "chromeCloud": {
-        "title": "Chrome & Cloud",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#84FFFF",
-        "accentBackgroundHex": "#03A9F4",
-        "fontRGBA": "(253, 251, 251, 1)"
-    },
-    "frontEnd": {
-        "title": "Design & Front End",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#FF8A80",
-        "accentBackgroundHex": "#FF5252",
-        "fontRGBA": "(253, 251, 251, 1)"
-    },
-    "gettingStarted": {
-        "title": "Getting Started",
-        "iconUrl": "",
-        "primaryBackgroundHex": "#FFFF8D",
-        "accentBackgroundHex": "#FFEB3B",
-        "fontRGBA": "(100, 100, 95, 1)"
-    }
+  "android" : {
+    "accentBackgroundHex" : "#C6FF00",
+    "accentColorRGBA" : "(96, 125, 139, 1)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#78C15B",
+    "primaryFontRGBA" : "(47, 47, 16, .82)",
+    "title" : "Android",
+    "iconUrl": "https://developers.google.com/apps/images/io_2013/track_android.png"
+  },
+  "chromeCloud" : {
+    "accentBackgroundHex" : "#03A9F4",
+    "accentColorRGBA" : "(255, 255, 141, 1)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#84FFFF",
+    "primaryFontRGBA" : "(47, 47, 16, .82)",
+    "title" : "Chrome & Cloud",
+    "iconUrl": "https://developers.google.com/apps/images/io_2013/track_chromeapps.png"
+  },
+  "frontEnd" : {
+    "accentBackgroundHex" : "#FF5252",
+    "accentColorRGBA" : "(98, 0, 234, 1)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#FF8A80",
+    "primaryFontRGBA" : "(47, 47, 16, .82)",
+    "title" : "Design & Front End",
+    "iconUrl": "https://developers.google.com/apps/images/io_2013/track_googlecloudplatform.png"
+  },
+  "general" : {
+    "accentBackgroundHex" : "#FFFFFF",
+    "accentColorRGBA" : "(1, 1, 1, .82)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#000000",
+    "primaryFontRGBA" : "(255, 255, 255, .87)",
+    "title" : "",
+    "iconUrl": ""
+  },
+  "gettingStarted" : {
+    "accentBackgroundHex" : "#FFEB3B",
+    "accentColorRGBA" : "(255, 61, 0, 1)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#FFFF8D",
+    "primaryFontRGBA" : "(47, 47, 16, .82)",
+    "title" : "Getting Started",
+    "iconUrl": "https://developers.google.com/apps/images/io_2013/track_techtalk.png"
+  },
+  "wearables" : {
+    "accentBackgroundHex" : "#7E57C2",
+    "accentColorRGBA" : "(255, 128, 171, 1)",
+    "iconUrl" : "",
+    "primaryBackgroundHex" : "#B388FF",
+    "primaryFontRGBA" : "(47, 47, 16, .82)",
+    "title" : "Wearables",
+    "iconUrl": "http://drive.google.com/uc?export=download&id=0B1P_fRZsoCpXTm16S1E0cEdERVU"
+  }
 }

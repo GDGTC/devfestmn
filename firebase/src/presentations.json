@@ -1,479 +1,425 @@
 {
-  "s1": {
-    "presentation01": {
-      "speakers": {
-        "1": {
-          "name": "Martin Omander",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Aspirin for the Developer Soul",
-      "track": "general",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+  "s1" : {
+    "presentation01" : {
+      "favoriteCount" : 1,
+      "longDescription" : "",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Martin Omander",
+        "title" : ""
+      } ],
+      "subject" : "Aspirin for the Developer Soul",
+      "track" : "general"
     }
   },
-  "s2": {
-    "presentation02": {
-      "speakers": {
-        "1": {
-          "name": "Aaron Goldberg",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "RecyclerView",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+  "s2" : {
+    "presentation02" : {
+      "favoriteCount" : 0,
+      "longDescription" : "The latest version of Android is the best version yet! Learn how to implement two of the most powerful new widgets available in Lollipop;RecyclerView and CardView.",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Aaron Goldberg",
+        "title" : ""
+      } ],
+      "subject" : "RecyclerView & CardView in Android L",
+      "track" : "android"
     },
-    "presentation03": {
-      "speakers": {
-        "1": {
-          "name": "Brian Yencho",
-          "title": "",
-          "bio": ""
-        },
-        "2": {
-          "name": "Sean Weisner",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Apps for Android Wear",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+    "presentation03" : {
+      "longDescription" : "The Android Wear framework may be best known for its rich support of Android notifications, but it also allows developers to go beyond notifications and actually build full apps for Android Wear devices. We will give an in depth look at the available tools and best practices for doing so, with a particular emphasis on building custom UI.",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Brian Yencho",
+        "title" : ""
+      }, {
+        "bio" : "",
+        "name" : "Sean Weisner",
+        "title" : ""
+      } ],
+      "subject" : "Apps for Android Wear",
+      "track" : "wearables"
     },
-    "presentation04": {
-      "speakers": {
-        "1": {
-          "name": "Ilya Verbitsky",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "WebRTC Workshop (Video Chat)",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation04" : {
+      "favoriteCount" : 0,
+      "longDescription" : "This session will introduce the attendees to WebRTC, the technology that supports browser-to-browser applications for voice calling, video chat, and P2P file sharing without the need of either internal or external plugins. I am going to talk about WebRTC current state and to show sample video chat and file sharing application.",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Ilya Verbitsky",
+        "title" : ""
+      } ],
+      "subject" : "WebRTC Workshop",
+      "track" : "chromeCloud"
     },
-    "presentation05": {
-      "speakers": {
-        "1": {
-          "name": "Noah Blon",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Material Design",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r4"
+    "presentation05" : {
+      "favoriteCount" : 1,
+      "longDescription" : "This presentation would cover material design from the perspective of a front end web developer. The challenges material design presents on the web, some techniques to implement the concepts, and the type of communication that must be present between developer and designer are points that will be touched out. Real-life project work and code will be used as examples.",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Noah Blon",
+        "title" : ""
+      } ],
+      "subject" : "Material Design: A Front End Web Perspective",
+      "track" : "frontEnd"
     },
-    "presentation06": {
-      "speakers": {
-        "1": {
-          "name": "Steven Fluin",
-          "title": "",
-          "bio": ""
-        }
-
-      },
-      "subject": "AngularJS Workshop",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
+    "presentation06" : {
+      "longDescription" : "Walk through setting up your first AngularJS application and learn how to connect to web services or package your application as a mobile application.",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Steven Fluin",
+        "title" : ""
+      } ],
+      "subject" : "AngularJS Workshop",
+      "track" : "gettingStarted"
     }
   },
-  "s3": {
-    "presentation07": {
-      "speakers": {
-        "1": {
-          "name": "Andrew Reitz",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Getting Groovy on Android",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r4"
+  "s3" : {
+    "presentation07" : {
+      "longDescription" : "A lightning talking about using the Groovy Language on Android.",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Andrew Reitz",
+        "title" : ""
+      } ],
+      "subject" : "Getting Groovy on Android",
+      "track" : "android"
     },
-    "presentation08": {
-      "speakers": {
-        "1": {
-          "name": "Christopher Black",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Analog Watch Face",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+    "presentation08" : {
+      "longDescription" : "Build your own analog watch face for Android Wear devices. In this presentation we'll use Android Canvas & Paint classes to build a custom analog watch face. ",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Christopher Black",
+        "title" : ""
+      } ],
+      "subject" : "Analog Watch Faces w/ Android Wear",
+      "track" : "wearables"
     },
-    "presentation09": {
-      "speakers": {
-        "1": {
-          "name": "Paul Lundberg",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Developing with Cloud Platform Containers",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+    "presentation09" : {
+      "longDescription" : "The container hoopla has swept the technology industry in the past year. But, it’s still the early days for containers. Containers are core to what Google does. Google spins up more than two billion containers a week - it knows how to manage containers at scale.  Now Google is looking to take the lead in this growing market. Google was the first big vendor out with a container product with their announcements at Google Cloud Platform Live in November 2014. Since then, the dust continues to stir.  Come and learn how containers are helping us to move toward a future of widespread Platform-as-a-Service. This presentation will address the following questions:  - What are containers? - Why is this so important to Google’s Cloud Platform strategy? - Why didn’t this happen earlier? - How will containers change the way I develop and deploy applications? - I develop on AppEngine: Aren’t I already developing in containers?",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Paul Lundberg",
+        "title" : ""
+      } ],
+      "subject" : "Developers: Why Containers are in your Future",
+      "track" : "chromeCloud"
     },
-    "presentation10": {
-      "speakers": {
-        "1": {
-          "name": "Lloyd Cledwyn",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Polymer",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
+    "presentation10" : {
+      "longDescription" : "Why Polymer is simply the awesome. And we should all get on board",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Lloyd Cledwyn",
+        "title" : ""
+      } ],
+      "subject" : "Why Polymer is the Awesome",
+      "track" : "frontEnd"
     },
-    "presentation11": {
-      "speakers": {
-        "1": {
-          "name": "Patrick Fuentes",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Intro to Android",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation11" : {
+      "longDescription" : "Take away extracts from our #StudyJam and Android expert Patrick Fuentes as he helps new developers get started with Android.",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Patrick Fuentes",
+        "title" : ""
+      } ],
+      "subject" : "Intro to Android",
+      "track" : "gettingStarted"
     }
   },
-  "s4": {
-    "presentation12": {
-      "speakers": "",
-      "subject": "Lunch & Prizes",
-      "track": "general",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": ""
+  "s4" : {
+    "presentation12" : {
+      "longDescription" : "",
+      "room" : "",
+      "shortDescription" : "",
+      "speakers" : "",
+      "subject" : "Lunch & Prizes (2nd Floor)",
+      "track" : "general"
     }
   },
-  "s5": {
-    "presentation13": {
-      "speakers": {
-        "1": {
-          "name": "Chris Davis",
-          "title": "",
-          "bio": ""
-        },
-        "2": {
-          "name": "Jim White",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Android Testing w/ Espresso",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+  "s5" : {
+    "presentation13" : {
+      "longDescription" : "Testing on android can be a painful experience, but now that Espresso is part of the Android Support Repository, it’s slightly less unpleasant. I’ll cover the basics of Android testing using Android Studio as well as how to utilize Google’s new testing library. ",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Chris Davis",
+        "title" : ""
+      }, {
+        "bio" : "",
+        "name" : "Jim White",
+        "title" : ""
+      } ],
+      "subject" : "Android Testing w/ Espresso",
+      "track" : "android"
     },
-    "presentation14": {
-      "speakers": {
-        "1": {
-          "name": "Kenton Watson",
-          "title": "",
-          "bio": ""
-        },
-        "2": {
-          "name": "Brendon Justin",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Wearable-Integrated Apps",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+    "presentation14" : {
+      "longDescription" : "An introduction to wearable programming on Android Wear with a contrast to iOS WatchKit. Tell the story of the technical and design decisions that went into creating a simple yet useful mobile app with Wearable integration.",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Kenton Watson",
+        "title" : ""
+      }, {
+        "bio" : "",
+        "name" : "Brendon Justin",
+        "title" : ""
+      } ],
+      "subject" : "What Not to (Android) Wear: The Creation of a Wearable-Integrated App",
+      "track" : "wearables"
     },
-    "presentation15": {
-      "speakers": {
-        "1": {
-          "name": "M A al-Kabir",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Security & Privacy",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation15" : {
+      "longDescription" : "We shall cover what is the internet mobile experience is in how security interacts with consumers ,governments and enterprises .The tools that promote privacy.(Tor)And the cost of enterprise hacks.",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "M A al-Kabir",
+        "title" : ""
+      } ],
+      "subject" : "Cloud Security",
+      "track" : "chromeCloud"
     },
-    "presentation16": {
-      "speakers": {
-        "1": {
-          "name": "John Henderson",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Data Visualization",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r4"
+    "presentation16" : {
+      "longDescription" : "",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "John Henderson",
+        "title" : ""
+      } ],
+      "subject" : "Building Interactive Web Applications w/ R and Shiny",
+      "track" : "frontEnd"
     },
-    "presentation17": {
-      "speakers": {
-        "1": {
-          "name": "Paul Modderman"
-        }
-      },
-      "subject": "Making Enterprise Data Friendly with Google Sheets",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
+    "presentation17" : {
+      "longDescription" : "Learn from Paul's experience in leveraging Google Sheets to make Enterprise Data more friendly.",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "name" : "Paul Modderman"
+      } ],
+      "subject" : "Making Enterprise Data Friendly w/ Google Sheets",
+      "track" : "gettingStarted"
     }
   },
-  "s6": {
-    "presentation18": {
-      "speakers": {
-        "1": {
-          "name": "Daniel Lew",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Android Dependencies",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
+  "s6" : {
+    "presentation18" : {
+      "longDescription" : "Take advantage of the hard work of other developers who have developed libraries and tools for Android! You COULD write an entire app from scratch, but it'll be easier, faster and safer if you use battle-tested libraries. In this talk, I'll be going over some dependencies you can use to turbo boost development.",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Daniel Lew",
+        "title" : ""
+      } ],
+      "subject" : "Android Dependencies You Can Depend On",
+      "track" : "android"
     },
-    "presentation19": {
-      "speakers": {
-        "1": {
-          "name": "Al Baker",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Reemo Wearable",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+    "presentation19" : {
+      "longDescription" : "Al is a founder for Reemo, a new band that allows users to lever gesture control to control the internet of things.  Reemo will be launching early developer SDKs soon, come and get a sneak peak at these upcoming devices.",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Al Baker",
+        "title" : ""
+      } ],
+      "subject" : "The Reemo: Enabling gesture control of the “Internet of Things”",
+      "track" : "wearables"
     },
-    "presentation20": {
-      "speakers": {
-        "1": {
-          "name": "Mark Nutter",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Ditch CMS for Google Drive",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+    "presentation20" : {
+      "longDescription" : "Content management systems (CMS's) are everywhere but running them, maintaining them, and getting your staff to use them can be challenging. Google drive makes managing and editing content easy and secure, so why not use that instead? Learn about a real world case where Google Drive was used *as* the content management system for a small organization looking to revamp their website and dramatically increase staff involvement in keeping it up to date.",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Mark Nutter",
+        "title" : ""
+      } ],
+      "subject" : "Ditch CMS and Use Google Drive",
+      "track" : "chromeCloud"
     },
-    "presentation21": {
-      "speakers": {
-        "1": {
-          "name": "Abram Isola",
-          "title": "",
-          "bio": ""
-        },
-        "2": {
-          "name": "Ben Demaree",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Using Google Compute Engine",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation21" : {
+      "longDescription" : "Big Query In Action: Data Import & Analytics With Google Big Query",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Abram Isola",
+        "title" : ""
+      }, {
+        "bio" : "",
+        "name" : "Ben Demaree",
+        "title" : ""
+      } ],
+      "subject" : "Big Query In Action",
+      "track" : "frontEnd"
     },
-    "presentation22": {
-      "speakers": {
-        "1": {
-          "name": "Andrew Watson",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Android Libraries",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r4"
+    "presentation22" : {
+      "favoriteCount" : 1,
+      "longDescription" : "Android development used to be marked by writing a lot of the same tedious boilerplate code from project to project. But not anymore! The Android developer community is an awesome place to be; there are all kinds of great open source libraries that make life as an Android developer better.  In this conversational session, we'll go through the latest and greatest Android Libraries that can save you time and allow you to focus on the things that make your app unique. We'll also have an extended discussion time where you can weigh in with your own favorite libraries.",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Andrew Watson",
+        "title" : ""
+      } ],
+      "subject" : "Android Library Love",
+      "track" : "gettingStarted"
     }
   },
-  "s7": {
-    "presentation23": {
-      "speakers": {
-        "1": {
-          "name": "Colin Lee",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Reactive",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
+  "s7" : {
+    "presentation23" : {
+      "longDescription" : "Reactive programming has become the hottest new programming paradigm and has been adopted by many forward-thinking companies like Netflix. As a \"Lite\" form of functional programming, it offers a dramatically-improved model for managing asynchronous algorithms compared to the old, state-heavy, \"callback hell\" many programmers have grown used to. Code examples will use RxJava and Android, but the same ideas apply to all languages listed at ReactiveX.io.\"",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Colin Lee",
+        "title" : ""
+      } ],
+      "subject" : "Reactive: The New Paradigm",
+      "track" : "android"
     },
-    "presentation24": {
-      "speakers": {
-        "1": ""
-      },
-      "subject": "",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": ""
+    "presentation24" : {
+      "longDescription" : "Take a break and talk to the other great attendees!",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, "You!" ],
+      "subject" : "Networking Break",
+      "track" : "wearables"
     },
-    "presentation25": {
-      "speakers": {
-        "1": {
-          "name": "Dan Baran",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Tag Manager",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation25" : {
+      "longDescription" : "",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Dan Baran",
+        "title" : ""
+      } ],
+      "subject" : "Tag Manager",
+      "track" : "chromeCloud"
     },
-    "presentation26": {
-      "speakers": {
-        "1": {
-          "name": "Irvin Briscoe",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Design & CSS",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+    "presentation26" : {
+      "longDescription" : "",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Irvin Briscoe",
+        "title" : ""
+      } ],
+      "subject" : "JavaScript Task Managers and Front End Workflow Hacks",
+      "track" : "frontEnd"
     },
-    "presentation27": {
-      "speakers": {
-        "1": {
-          "name": "Jim",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Android 5",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+    "presentation27" : {
+      "longDescription" : "Android 5 was released in November 2014.  Smartphones and tablets running Android 5 – code named Lollipop - are finally starting to emerge and many more are to follow this spring.  In this session, learn about what new APIs and features that have been added with Android 5 and see why many are calling this a significant major release.  In particular, see and learn about:     ·      Material Design  ·      New widgets for efficient handling large data sets  ·      Animations  ·      Project Volta and the JobScheduler  ·      Improved Notifications  ·      WebView updates  ·      Media and Connectivity improvements  ·      ART",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Jim White",
+        "title" : ""
+      } ],
+      "subject" : "What's New in Android 5? A Developer's Perspective",
+      "track" : "gettingStarted"
     }
   },
-  "s8": {
-    "presentation28": {
-      "speakers": {
+  "s8" : {
+    "presentation28" : {
+      "longDescription" : "Using the new Open Data apis published by the city of Minneapolis, plus RxJava/RxAndroid, Retrofit and Google Play Services, we'll explore how to build a truly useful Android application.",
+      "room" : "r3",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Brad Armstrong",
+        "title" : ""
+      } ],
+      "subject" : "Where to Find a Drink in Minneapolis",
+      "track" : "android"
+    },
+    "presentation29" : {
+      "longDescription" : "The world of physical computing and the so called \"Internet of Things\" is growing. Shouldn't we be using smarter languages as well?  Gobot is an open source robotics framework which allows developers to interface and control a multitude of devices using the Go Programming Language. We'll cover what you need to get started, source code and a history of where the Internet of Things is today and where it’s forecasted to go in the future.\"",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Justin Grammens",
+        "title" : ""
+      } ],
+      "subject" : "Gobot: Using the Go Programming Language to Control The \"Things\" around Us",
+      "track" : "wearables"
+    },
+    "presentation30" : {
+      "longDescription" : "Google App Engine provides several mechanisms for creating services. In this talk, I will discuss the pros and cons of each with examples. I will also demo a lightweight library I have created to help making JSON-based services.",
+      "room" : "r4",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Ryan Morlok",
+        "title" : ""
+      } ],
+      "subject" : "RESTful Services in Python on Google App Engine",
+      "track" : "chromeCloud"
+    },
+    "presentation31" : {
+      "longDescription" : "",
+      "room" : "r2",
+      "shortDescription" : "",
+      "speakers" : {
         "1": {
-          "name": "Brad Armstrong",
+          "name": "Chelsie Ellingson",
           "title": "",
           "bio": ""
         }
       },
-      "subject": "Where to Find a Drink in Minneapolis",
-      "track": "android",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r3"
+      "subject" : "Design for Developers",
+      "track" : "frontEnd"
     },
-    "presentation29": {
-      "speakers": {
-        "1": {
-          "name": "Justin Grammens",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "Gobot Language",
-      "track": "wearables",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
-    },
-    "presentation30": {
-      "speakers": {
-        "1": {
-          "name": "Ryan Morlok",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "RESTful in Python",
-      "track": "chromeCloud",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r4"
-    },
-    "presentation31": {
-      "speakers": "Chelsie Ellingson",
-      "subject": "Design for Developers",
-      "track": "frontEnd",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r2"
-    },
-    "presentation32": {
-      "speakers": {
-        "1": {
-          "name": "Baskin",
-          "title": "",
-          "bio": ""
-        }
-      },
-      "subject": "MEAN Stack",
-      "track": "gettingStarted",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r5"
+    "presentation32" : {
+      "longDescription" : "In this talk, Baskin will go over briefly what the MEAN stack is and the advantages of using it. Then he will show case the application (will be publicly available on Github) which will have elements of drag & drop.   As a game example, consider using a simple \"Tic Tac Toe\" implementation where a JavaScript engine does the computation for the game (winner/loser). The game's session state will be saved in the MongoDB using NodeJS and Express frameworks.\"",
+      "room" : "r5",
+      "shortDescription" : "",
+      "speakers" : [ null, {
+        "bio" : "",
+        "name" : "Baskin",
+        "title" : ""
+      } ],
+      "subject" : "Drag & Drop Game Design Using MEAN Stack",
+      "track" : "gettingStarted"
     }
   },
-  "s9": {
-    "presentation33": {
-      "speakers": "",
-      "subject": "Closing Remarks",
-      "track": "general",
-      "shortDescription": "",
-      "longDescription": "",
-      "room": "r1"
+  "s9" : {
+    "presentation33" : {
+      "longDescription" : "Final Giveaways",
+      "room" : "r1",
+      "shortDescription" : "",
+      "speakers" : "",
+      "subject" : "Networking & Closing Remarks",
+      "track" : "general"
     }
   }
 }

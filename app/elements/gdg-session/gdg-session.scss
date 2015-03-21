@@ -38,13 +38,11 @@
     .card-container {
       width: 80%;
     }
-    gdg-presentation-card,
-    {
+    gdg-presentation-card {
       font-size: 2rem;
-    }
-    .room-tag {
-      font-size: 1.5rem;
-      margin-bottom: -4px;
+      .card-footer h2 {
+        line-height: 30px;
+      }
     }
   }
 }
@@ -61,7 +59,14 @@
   justify-content: center;
   z-index: 5;
   @include BoxShadowHelper(4);
+
+
+  &.core-selected {
+    position: fixed;
+    top: 19%;
+  }
 }
+
 
 .chip-container {
   max-width: 100%;
@@ -104,6 +109,10 @@ gdg-presentation-card {
 
   &.blurred {
     opacity: 0.35;
+  }
+
+  .description {
+    font-size: 1.1rem;
   }
 
 }

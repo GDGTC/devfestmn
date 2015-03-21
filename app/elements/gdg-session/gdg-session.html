@@ -64,7 +64,6 @@
              class="{{ {hasList: gdgSession.hasPresentationList} | tokenList }}">
 
 
-
       <core-animated-pages id="cardPager" selected="{{selected}}" transitions="hero-transition"
                            on-core-animated-pages-transition-end="{{transitionComplete}}">
 
@@ -94,7 +93,11 @@
                 <div class="card-container {{ {stretches: indexNum === '0' || indexNum === '1'} | tokenList}}"
                      style="{{ 'order: ' + rooms[presentations[key]['room']]['order'] + ';' }}">
 
-                  <p class="room-tag">{{ rooms[presentations[key]['room']].name }}</p>
+                  <gdg-stubbed-label class="card-label"
+                                     label="{{rooms[presentations[key]['room']].name }}"
+                                     primaryBackgroundColor="{{ tracks[presentations[key]['track']]['primaryBackgroundHSLA'] }}"
+                                     accentBackgroundColor="{{ tracks[presentations[key]['track']]['accentBackgroundHSLA'] }}">
+                  </gdg-stubbed-label>
                   <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
                                          hero-id="key"
                                          on-tap="{{expandDetails}}"
@@ -119,20 +122,25 @@
                         <span hidden?="{{!presentations[key].speakers['2'] }}">
                           &amp; {{presentations[key].speakers['2']['name']}}
                         </span>
+
                       </div>
                       <hr/>
 
-                      <div flex layout vertical center>
-                        <p style="{{'color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}">
-                          {{presentations[key].subject}}
-                        </p>
+                      <div class="description">
+                        <div flex layout vertical center>
+                          <p style="{{'color: rgba' + tracks[presentations[key]['track']]['primaryFontRGBA'] + ';'}}">
+                            {{presentations[key].subject}}
+                          </p>
+                        </div>
+
+                        <div class="short-desc" hidden?="{{!presentations[key].featured}}">
+                          <p>
+                            {{presentations[key].shortDescription}}
+                          </p>
+                        </div>
+
                       </div>
 
-                      <div class="short-desc" hidden?="{{!presentations[key].featured}}">
-                        <p>
-                          {{presentations[key].shortDescription}}
-                        </p>
-                      </div>
                     </section>
 
                     <section class="card-footer">
@@ -187,7 +195,6 @@
 
           var presentationKey = sender.templateInstance.model.key;
           var presentation = this.presentations[presentationKey];
-
 
 
           ///// Determine whether presentation is being newly favorited or unfavorited //////
@@ -262,7 +269,7 @@
         /**
          * Receives a signal of the new view mode from core-signals
          */
-                      handleNewViewMode: function (e, detail /*sender*/) {
+        handleNewViewMode: function (e, detail /*sender*/) {
           this.viewMode = detail;
         },
 

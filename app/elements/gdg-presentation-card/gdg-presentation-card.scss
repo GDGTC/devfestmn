@@ -4,7 +4,7 @@ $card-height: 275px;
   display: block;
   position: relative;
   height: $card-height;
-  overflow: hidden;
+  //overflow: hidden;
   font-size: 1.2rem;
   border-radius: 3px;
   font-weight: 300;
@@ -33,6 +33,13 @@ $card-height: 275px;
 
 .card-header {
   margin-bottom: 10px;
+}
+
+#roomLabel {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
 }
 
 core-icon-button#favicon {
@@ -80,6 +87,7 @@ polyfill-next-selector {
 ::content section.card-body {
   max-width: 100%;
   text-align: center;
+  font-size: 1.2rem;
 
   .speaker {
     display: flex;

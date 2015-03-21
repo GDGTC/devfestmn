@@ -1,0 +1,38 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="gdg-stubbed-label" attributes="primaryBackgroundColor accentBackgroundColor label icon">
+  <template>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      }
+
+      .bar {
+        width: 4px;
+      }
+
+      .text {
+        width: 98%;
+      }
+    </style>
+
+
+    <div class="container" style="{{ 'background-color: ' + primaryBackgroundColor + ';' }}">
+      <div class="bar" style="{{'background-color: hsla' + accentBackgroundColor + ';' }}"></div>
+      <div class="text" style="color: hsla(0, 0%, 0%, 1);">
+        {{label}}
+      </div>
+    </div>
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>

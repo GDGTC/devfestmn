@@ -1,6 +1,8 @@
 {
   "android" : {
     "accentBackgroundHex" : "#C6FF00",
+    "accentBackgroundHSLA" : "(79, 100%, 50%, 1)",
+    "primaryBackgroundHSLA": "hsla(274, 100%, 72%, 1)",
     "accentColorRGBA" : "(96, 125, 139, 1)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#78C15B",
@@ -10,15 +12,19 @@
   },
   "chromeCloud" : {
     "accentBackgroundHex" : "#03A9F4",
+    "accentBackgroundHSLA": "(199, 98%, 48%, 1)",
+    "accentColorHSLA": "(255, 255, 141, 1)",
     "accentColorRGBA" : "(255, 255, 141, 1)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#84FFFF",
+    "primaryBackgroundRGBA": "",
     "primaryFontRGBA" : "(47, 47, 16, .82)",
     "title" : "Chrome & Cloud",
     "iconUrl": "https://developers.google.com/apps/images/io_2013/track_chromeapps.png"
   },
   "frontEnd" : {
     "accentBackgroundHex" : "#FF5252",
+    "accentBackgroundHSLA" : "(350, 100%, 55%, 1)",
     "accentColorRGBA" : "(98, 0, 234, 1)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#FF8A80",
@@ -28,6 +34,7 @@
   },
   "general" : {
     "accentBackgroundHex" : "#FFFFFF",
+    "accentBackgroundHSLA" : "(0, 0%, 100%, 1)",
     "accentColorRGBA" : "(1, 1, 1, .82)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#000000",
@@ -37,6 +44,7 @@
   },
   "gettingStarted" : {
     "accentBackgroundHex" : "#FFEB3B",
+    "accentBackgroundHSLA" : "(57, 99%, 55%, 1)",
     "accentColorRGBA" : "(255, 61, 0, 1)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#FFFF8D",
@@ -46,6 +54,7 @@
   },
   "wearables" : {
     "accentBackgroundHex" : "#7E57C2",
+    "accentBackgroundHSLA" : "(262, 47%, 55%, 1)",
     "accentColorRGBA" : "(255, 128, 171, 1)",
     "iconUrl" : "",
     "primaryBackgroundHex" : "#B388FF",

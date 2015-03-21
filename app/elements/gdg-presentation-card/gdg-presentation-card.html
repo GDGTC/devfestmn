@@ -4,18 +4,34 @@
 
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
+<link rel="import" href="../gdg-stubbed-label/gdg-stubbed-label.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="gdg-presentation-card" attributes="presentationId sessionId featured">
   <template>
     <link rel="stylesheet" href="gdg-presentation-card.css">
 
+
+    <!-- Init Data -->
     <firebase-element id="fbPresentation"
                       location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
                       data="{{presentation}}">
     </firebase-element>
 
+    <firebase-element location="https://devfestmn.firebaseio.com/tracks"
+                      keys="{{trackKeys}}"
+                      data="{{tracks}}"
+                      id="fbTracks">
+    </firebase-element>
+
+    <firebase-element location="https://devfestmn.firebaseio.com/rooms"
+                      keys="{{roomKeys}}"
+                      data="{{rooms}}"
+                      id="fbRooms">
+    </firebase-element>
+
     <gdg-globals values="{{globals}}"></gdg-globals>
+    <!-- / Init Data -->
 
     <section id="content" layout vertical>
 
@@ -33,7 +49,6 @@
       <core-tooltip id="favoriteTooltip" hidden?="{{hideFavoriteTooltip}}">
         Sign in to begin saving favorites!
       </core-tooltip>
-
 
       <section class="card-footer">
         <content select="section.card-footer"></content>

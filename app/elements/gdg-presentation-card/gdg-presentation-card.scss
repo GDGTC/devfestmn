@@ -87,12 +87,17 @@ polyfill-next-selector {
 ::content section.card-body {
   max-width: 100%;
   text-align: center;
-  font-size: 1.2rem;
+  overflow: hidden;
+  font-size: 1.3rem;
 
   .speaker {
+    font-size: 1em;
     display: flex;
     flex-direction: column;
     margin-top: -5px;
+  }
+  .description {
+    font-size: .8em;
   }
   hr {
     width: 70%;

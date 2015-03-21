@@ -40,6 +40,14 @@
     }
     gdg-presentation-card {
       font-size: 2rem;
+
+      section.card-body .speaker {
+        font-size: 1.3em;
+      }
+      section.card-body .description {
+        font-size: 1.1em;
+      }
+
       .card-footer h2 {
         line-height: 30px;
       }
@@ -89,7 +97,7 @@
   text-align: center;
   justify-content: center;
 
-  width: 15%;
+  width: 18%;
 }
 
 gdg-presentation-card {
@@ -110,11 +118,6 @@ gdg-presentation-card {
   &.blurred {
     opacity: 0.35;
   }
-
-  .description {
-    font-size: 1.1rem;
-  }
-
 }
 
 @media screen and (min-width: 601px) and (max-width: 750px) {

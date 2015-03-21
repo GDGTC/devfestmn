@@ -68,29 +68,21 @@
       <!-- Description Body -->
       <section hidden?="{{commentsExpanded}}" class="body-container" hero>
 
-        <div layout vertical>
+        <div layout vertical class="description-container">
 
-          <div layout horizontal>
+            <core-scroll-header-panel flex>
+              <div></div>
+              <p>{{presentation.longDescription}}</p>
+            </core-scroll-header-panel>
 
-            <core-icon icon="chevron-right"></core-icon>
 
-            <div class="description-container">
-
-              <div class="description-block presentation">
-                <p>{{presentation.longDescription}}</p>
+            <!--
+            <template repeat="speaker in presentation.speakers">
+              <div class="description-block speaker">
+                <img src="{{speaker.imgUrl}}"/>
               </div>
-
-              <hr/>
-
-              <template repeat="speaker in presentation.speakers">
-                <div class="description-block speaker">
-                  <img src="{{speaker.imgUrl}}"/>
-                </div>
-              </template>
-
-            </div>
-
-          </div>
+            </template>
+            -->
 
         </div>
 
@@ -235,8 +227,6 @@
           //console.log(newComments);
           this.dereffedComments = newComments;
         },
-
-
 
 
         openCommentDialog: function () {

@@ -33,6 +33,21 @@ h1 {
   font-size: 2rem;
 }
 
+
+.description-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 1rem;
+  //overflow-y: scroll;
+
+  p {
+    line-height: 30px;
+  }
+}
+
 #mainContainer {
   height: $card-detail-view__primary_height;
   position: relative;

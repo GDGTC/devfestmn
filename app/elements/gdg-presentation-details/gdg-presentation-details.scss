@@ -100,7 +100,7 @@ h1 {
         height: 100%;
         width: 100%;
       }
-      .comments {
+      .scroll-content {
         visibility: collapse;
       }
 
@@ -109,7 +109,7 @@ h1 {
     /* Expanded state of comments container */
     &.expanded {
       height: 400px;
-      .comments {
+      .scroll-content {
         visibility: visible;
       }
       core-scroll-header-panel {
@@ -143,6 +143,31 @@ h1 {
 
   .comment-count {
     margin-left: -10px;
+  }
+
+  .comments-container core-scroll-header-panel {
+    .scroll-content {
+      height: 100%;
+
+      .comments {
+        max-height: 80%;
+      }
+      .add-comment {
+        min-height: 20%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  .btn.add-comment {
+
+    /deep/ core-icon {
+      width: 64px;
+      height: 64px;
+    }
   }
 
 }

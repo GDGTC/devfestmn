@@ -18,7 +18,7 @@
 <link rel="import" href="../gdg-comment/gdg-comment.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 
-<polymer-element name="gdg-presentation-details" attributes="presentationId sessionId">
+<polymer-element name="gdg-presentation-details" attributes="activePresId sessionId">
   <template>
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
@@ -26,14 +26,14 @@
 
     <core-signals on-core-signal-details-expanded="{{handleExpanded}}"></core-signals>
 
-    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
+    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{activePresId}}"
                       data="{{comments}}"
                       id="fbComments"
                       keys="{{commentKeys}}"
                       childEvents>
     </firebase-element>
 
-    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
+    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{activePresId}}"
                       data="{{presentation}}"
                       id="fbPresentation"
                       keys="{{presentationKey}}">
@@ -92,6 +92,7 @@
       <!-- Scrollable Comments -->
       <section class="comments-container {{ {expanded: commentsExpanded} | tokenList }}" layout vertical>
 
+        <!-- Expands open when fab clicked -->
         <div class="scroll-panel-container">
 
           <paper-fab icon="hardware:keyboard-arrow-up"
@@ -130,20 +131,26 @@
 
             </core-toolbar>
 
-            <div class="scroll-content comments">
 
-              <template hidden?={{isActivePresentation}} repeat="{{key in commentKeys}}">
-                <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
-              </template>
+            <div class="scroll-content">
+
+              <!-- List the current comments -->
+              <div class="comments">
+                <template if="{{ commentsKey && commentsKey === activePresId }}" repeat="{{key in commentKeys}}">
+                  <gdg-comment commentId="{{key}}" presentationId="{{activePresId}}"></gdg-comment>
+                </template>
+              </div>
 
               <!-- Add a new Comment! -->
               <div class="add-comment">
-                <button on-click="{{openCommentDialog}}">
-                  Add a Comment
+                <core-icon-button class="btn add-comment"
+                                  icon="add"
+                                  style="{{'color: ' + tracks[presentation.track]['accentBackgroundHex'] + ';' }}"
+                                  on-click="{{openCommentDialog}}">
 
                   <paper-action-dialog id="commentDialog"
                                        heading="Add a Comment"
-                                       transition="core-transition-buttom">
+                                       transition="core-transition-button">
 
                     <form>
                       <paper-autogrow-textarea id="commentTextArea">
@@ -156,7 +163,7 @@
 
                   </paper-action-dialog>
 
-                </button>
+                </core-icon-button>
               </div>
 
             </div>
@@ -186,46 +193,8 @@
           this.commentsExpanded = !this.commentsExpanded;
         },
 
-
-        /**
-         * Helper function fired on expansion that dereferrences comments
-         * for the expanded card.
-         */
-        handleExpanded: function (e, detail /*sender*/) {
-
-          //console.log(this.comments);
-          console.log(this.presentationId);
-
-          var selectedPresId = detail.key;
-
-          if (this.presentationId !== selectedPresId) {
-            this.isActivePresentation = false;
-          } else {
-            this.isActivePresentation = true;
-
-
-            var res = [];
-
-            if (selectedPresId && this.comments) {
-
-              if (selectedPresId in this.comments) {
-
-                var _comments = Object.create(this.comments);
-                var currentPresentationComments = _comments[selectedPresId];
-                var commentKeys = Object.keys(currentPresentationComments);
-
-                for (var i = 0, l = commentKeys.length; i < l; i++) {
-                  res.push(currentPresentationComments[commentKeys[i]]);
-                }
-              }
-            }
-            this.updateComments(res);
-          }
-        },
-
-        updateComments: function (newComments) {
-          //console.log(newComments);
-          this.dereffedComments = newComments;
+        handleExpanded: function (e, detail /*, sender*/) {
+          this.commentsKey = detail.key;
         },
 
 

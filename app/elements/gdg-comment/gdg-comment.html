@@ -2,7 +2,7 @@
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 
-<polymer-element name="gdg-comment" attributes="presentationId commentId">
+<polymer-element name="gdg-comment" attributes="commentId presentationId">
   <template>
     <link rel="stylesheet" href="gdg-comment.css">
 
@@ -35,9 +35,13 @@
     (function () {
       Polymer({
         domReady: function () {
-//          console.log(this.commentId);
-//          console.log(this.presentationId);
-//          console.log(this.comment);
+          console.log(this.commentId);
+          console.log(this.presentationId);
+          console.log(this.comment);
+
+          if (!this.comment) {
+            this.style.display = 'none';
+          }
         }
       });
     })();

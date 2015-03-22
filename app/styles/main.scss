@@ -1,11 +1,25 @@
 @import "base_variables";
 @import "media/over500w";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background: #fafafa;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 }
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: $footer-height;
+  background-color: #da70d6;
+}
+
+
 
 img, embed, object, video {
   max-width: 100%;

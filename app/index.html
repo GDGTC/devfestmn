@@ -130,11 +130,12 @@
 
       <div class="content">
 
-          <!--
-          <gdg-home-page></gdg-home-page>
-          -->
+        <!--
+        <gdg-home-page></gdg-home-page>
+        -->
 
-        <app-router id="router" core-animated-pages transitions="hero-transition cross-fade scale-up tile-cascade">
+        <app-router id="router" core-animated-pages
+                    transitions="hero-transition cross-fade scale-up tile-cascade">
 
           <app-route path="/"
                      element="gdg-home-page"
@@ -160,9 +161,15 @@
                      element="gdg-scavenger-hunt-page"
                      bindRouter>
           </app-route>
+
         </app-router>
 
       </div>
+
+      <!-- TODO: Content above should include a footer after scrolling. -->
+
+      <!-- TODO: Solution! Because app-router is essentially injecting a top-level, scrollable page here, this is a perfect opportunity to create a custom footer element and make sure that our top-level pages use it. (The <div class="content"> element here is a bit of a lie, that perhaps should be corrected at some point after the footer is fixed :) )-->
+
 
       <div id="upScroller">
         <core-icon icon="up-arrow"></core-icon>
@@ -170,9 +177,8 @@
 
     </core-header-panel>
   </core-drawer-panel>
+
 </template>
-
-
 
 
 <!-- build:js /scripts/app.js -->
@@ -184,5 +190,6 @@
 
 </script>
 </body>
+
 
 </html>

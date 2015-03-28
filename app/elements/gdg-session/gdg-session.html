@@ -10,6 +10,7 @@
 
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
+<link rel="import" href="../gdg-notification-scroll-flash/gdg-notification-scroll-flash.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
@@ -74,11 +75,13 @@
               <h1>{{gdgSession.label}}</h1>
 
               <p style="width: 10%"></p>
-
               <p>
                 <core-icon icon="device:access-time"></core-icon>
                 {{gdgSession.startTime}} - {{gdgSession.endTime}}
               </p>
+              <p style="width: 10%"></p>
+
+              <gdg-notification-scroll-flash uid="{{sessionId}}" animation="aparition" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-flash>
             </div>
           </section>
 
@@ -99,7 +102,7 @@
                                      accentBackgroundColor="{{ tracks[presentations[key]['track']]['accentBackgroundHSLA'] }}">
                   </gdg-stubbed-label>
                   <gdg-presentation-card favorited="{{!!loggedInUser['favoritePresentations'][key]}}"
-                                         hero-id="key"
+                                         hero-id="{{key}}"
                                          on-tap="{{expandDetails}}"
                                          hero?="{{selectedPresId === key}}"
                                          on-favorite-tapped="{{handleFavorited}}"
@@ -161,7 +164,7 @@
 
         <section id="detailsContainer" hero>
 
-          <gdg-presentation-details activePresId="{{selectedPresId}}"
+          <gdg-presentation-details presentationId="{{selectedPresId}}"
                                     sessionId="{{sessionId}}"
                                     on-collapse-details="{{collapseDetails}}"
                                     hero-id="{{selectedPresId}}"
@@ -185,6 +188,7 @@
 
         selected: 0,
         selectedPresId: null,
+        currentSessionId: null,
 
         handleFavorited: function (event, detail, sender) {
 
@@ -273,8 +277,12 @@
           this.viewMode = detail;
         },
 
+        ready: function () {
+          this.sessionId = this.sessionId || '';
+        },
 
         domReady: function () {
+          console.log(this.sessionId);
         }
 
       });

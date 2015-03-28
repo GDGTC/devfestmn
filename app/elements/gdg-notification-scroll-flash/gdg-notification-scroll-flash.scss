@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+[id^="contentContainer"] {
+  
+  opacity: 0;
+  
+  transition: background-color 5s,
+              opacity 5s;
+}
+
+.animated {
+
+  opacity: 1;
+  background-color: red;
+}

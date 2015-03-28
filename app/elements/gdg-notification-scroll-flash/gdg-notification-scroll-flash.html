@@ -1,0 +1,67 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<polymer-element name="gdg-notification-scroll-flash" attributes="uid message animation timeout">
+  <template>
+    <link rel="stylesheet" href="gdg-notification-scroll-flash.css">
+
+    <span id="{{ 'contentContainer' + uid }}" class="revealOnScroll">{{message}}</span>
+  </template>
+  <script>
+    (function (Polymer, undefined) {
+
+      var windowHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+
+      var windowHeightPadded = windowHeight * 1.1;
+      var isTouch = Modernizr.touch;
+
+
+      /**
+       * Bind to scrolling events on an element's scroll container after the app's template is bound and the
+       * custom element can find it
+       */
+      function bindScroll (scrollContainer, elem) {
+        scrollContainer.addEventListener('scroll', function (event) {
+          revealOnScroll(event, scrollContainer, elem);
+        });
+      }
+
+      function revealOnScroll (event, scrollContainer, elem) {
+
+        var currentScrollBottom = scrollContainer.scroller.scrollTop + windowHeightPadded;
+        var contentContainer = elem.$['contentContainer' + elem.uid];
+
+        var offsetTop = contentContainer.getBoundingClientRect().top;
+        console.log('Element offset top, ' + elem.uid + ': ' + offsetTop);
+        console.log('Current Scroll Bottom: ' + elem.uid + ': ' + currentScrollBottom);
+
+        if (currentScrollBottom > offsetTop) {
+
+          // The element in in view!
+          contentContainer.setAttribute('class', 'animated ' + elem.attributes.animation.value);
+        }
+      }
+
+
+
+      Polymer('gdg-notification-scroll-flash', {
+
+        ready: function () {
+          this.uid = this.uid || '';
+        },
+
+        domReady: function () {
+          console.log(windowHeightPadded);
+          var scrollContainer = document.querySelector('#mainPanel');
+          bindScroll(scrollContainer, this);
+        }
+
+      });
+
+    }(Polymer));
+  </script>
+</polymer-element>
+

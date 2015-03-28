@@ -18,7 +18,7 @@
 <link rel="import" href="../gdg-comment/gdg-comment.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 
-<polymer-element name="gdg-presentation-details" attributes="activePresId sessionId">
+<polymer-element name="gdg-presentation-details" attributes="presentationId sessionId">
   <template>
     <link rel="stylesheet" href="gdg-presentation-details.css">
 
@@ -26,14 +26,14 @@
 
     <core-signals on-core-signal-details-expanded="{{handleExpanded}}"></core-signals>
 
-    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{activePresId}}"
+    <firebase-element location="https://devfestmn.firebaseio.com/comments/{{presentationId}}"
                       data="{{comments}}"
                       id="fbComments"
                       keys="{{commentKeys}}"
                       childEvents>
     </firebase-element>
 
-    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{activePresId}}"
+    <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}/{{presentationId}}"
                       data="{{presentation}}"
                       id="fbPresentation"
                       keys="{{presentationKey}}">
@@ -136,8 +136,8 @@
 
               <!-- List the current comments -->
               <div class="comments">
-                <template if="{{ commentsKey && commentsKey === activePresId }}" repeat="{{key in commentKeys}}">
-                  <gdg-comment commentId="{{key}}" presentationId="{{activePresId}}"></gdg-comment>
+                <template repeat="{{key in commentKeys}}">
+                  <gdg-comment commentId="{{key}}" presentationId="{{presentationId}}"></gdg-comment>
                 </template>
               </div>
 
@@ -238,6 +238,12 @@
 
         handleCollapseDetails: function () {
           this.fire('collapse-details');
+        },
+
+
+        ready: function () {
+          this.sessionId = this.sessionId || '';
+          this.presentationId = this.presentationId || '';
         },
 
         domReady: function () {

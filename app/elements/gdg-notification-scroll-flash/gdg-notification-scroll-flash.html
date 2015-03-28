@@ -15,9 +15,15 @@
         document.body.clientHeight, document.documentElement.clientHeight
       );
 
+
       var windowHeightPadded = windowHeight * 1.1;
+
+      var Modernizr = this.Modernizr;
       var isTouch = Modernizr.touch;
 
+      if (isTouch) {
+        //console.log('Touch device detected!');
+      }
 
       /**
        * Bind to scrolling events on an element's scroll container after the app's template is bound and the

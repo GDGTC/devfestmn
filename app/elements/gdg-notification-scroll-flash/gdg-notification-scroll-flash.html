@@ -31,25 +31,31 @@
        */
       function bindScroll (scrollContainer, elem) {
         scrollContainer.addEventListener('scroll', function (event) {
-          revealOnScroll(event, scrollContainer, elem);
+          revealOnScroll(event, elem);
         });
       }
 
-      function revealOnScroll (event, scrollContainer, elem) {
 
-        var currentScrollBottom = scrollContainer.scroller.scrollTop + windowHeightPadded;
+      /**
+       * Is the element's container within the current window?
+       */
+      function isElemVisible (contentOffsetTop) {
+        return contentOffsetTop > 0 && contentOffsetTop < windowHeightPadded;
+      }
+
+
+      function revealOnScroll (event, elem) {
+
         var contentContainer = elem.$['contentContainer' + elem.uid];
+        var contentOffsetTop = contentContainer.getBoundingClientRect().top;
 
-        var offsetTop = contentContainer.getBoundingClientRect().top;
-        console.log('Element offset top, ' + elem.uid + ': ' + offsetTop);
-        console.log('Current Scroll Bottom: ' + elem.uid + ': ' + currentScrollBottom);
-
-        if (currentScrollBottom > offsetTop) {
-
-          // The element in in view!
+        if (isElemVisible(contentOffsetTop)) {
           contentContainer.setAttribute('class', 'animated ' + elem.attributes.animation.value);
+        } else {
+          contentContainer.setAttribute('class', '');
         }
       }
+
 
 
 

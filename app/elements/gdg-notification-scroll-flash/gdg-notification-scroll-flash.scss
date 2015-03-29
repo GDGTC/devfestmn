@@ -1,13 +1,15 @@
+$animation-time: 2s;
+
 :host {
   display: block;
 }
 
 [id^="contentContainer"] {
-  
+
   opacity: 0;
-  
-  transition: background-color 5s,
-              opacity 5s;
+
+  transition: background-color $animation-time,
+              opacity $animation-time;
 }
 
 .animated {

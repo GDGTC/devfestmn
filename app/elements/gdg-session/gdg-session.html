@@ -10,7 +10,7 @@
 
 <link rel="import" href="../gdg-presentation-card/gdg-presentation-card.html">
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
-<link rel="import" href="../gdg-notification-scroll-flash/gdg-notification-scroll-flash.html">
+<link rel="import" href="../gdg-notification-scroll-animate/gdg-notification-scroll-animate.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
@@ -81,7 +81,7 @@
               </p>
               <p style="width: 10%"></p>
 
-              <gdg-notification-scroll-flash uid="{{sessionId}}" animation="aparition" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-flash>
+              <gdg-notification-scroll-animate uid="{{sessionId}}" animations="aparition slideInRight" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-animate>
             </div>
           </section>
 

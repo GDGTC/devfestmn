@@ -1,0 +1,32 @@
+$animation-time: .5s;
+
+@keyframes slideInRight {
+  0% {
+    transform: translate3d(150px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+:host {
+  display: block;
+}
+
+[id^="contentContainer"] {
+
+  opacity: 0;
+
+  transition: background-color $animation-time,
+              opacity $animation-time;
+}
+
+.animated {
+  opacity: 1;
+  background-color: red;
+}
+
+
+.slideInRight {
+  animation: slideInRight $animation-time ease-out;
+}

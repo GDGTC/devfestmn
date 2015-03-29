@@ -1,8 +1,8 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<polymer-element name="gdg-notification-scroll-flash" attributes="uid message animation timeout">
+<polymer-element name="gdg-notification-scroll-animate" attributes="uid message animations timeout">
   <template>
-    <link rel="stylesheet" href="gdg-notification-scroll-flash.css">
+    <link rel="stylesheet" href="gdg-notification-scroll-animate.css">
 
     <span id="{{ 'contentContainer' + uid }}" class="revealOnScroll">{{message}}</span>
   </template>
@@ -29,9 +29,9 @@
        * Bind to scrolling events on an element's scroll container after the app's template is bound and the
        * custom element can find it
        */
-      function bindScroll (scrollContainer, elem) {
+      function bindScroll (scrollContainer, elem, animationList) {
         scrollContainer.addEventListener('scroll', function (event) {
-          revealOnScroll(event, elem);
+          revealOnScroll(event, elem, animationList);
         });
       }
 
@@ -44,31 +44,41 @@
       }
 
 
-      function revealOnScroll (event, elem) {
+      function revealOnScroll (event, elem, animationList) {
 
+        var animationClassString = animationList.join(' ');
         var contentContainer = elem.$['contentContainer' + elem.uid];
         var contentOffsetTop = contentContainer.getBoundingClientRect().top;
 
+
+        // Add or remove appropriate animation classes
         if (isElemVisible(contentOffsetTop)) {
-          contentContainer.setAttribute('class', 'animated ' + elem.attributes.animation.value);
+          // check if already animated so we only add classes once when entering the animation state
+          if (contentContainer.getAttribute('class').indexOf('animated') === -1) {
+            contentContainer.className += ' animated ' + animationClassString;
+          }
         } else {
-          contentContainer.setAttribute('class', '');
+          contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + animationClassString), '');
         }
       }
 
 
 
 
-      Polymer('gdg-notification-scroll-flash', {
+      Polymer('gdg-notification-scroll-animate', {
 
         ready: function () {
           this.uid = this.uid || '';
+          this.animations = this.animations || '';
         },
 
         domReady: function () {
-          console.log(windowHeightPadded);
-          var scrollContainer = document.querySelector('#mainPanel');
-          bindScroll(scrollContainer, this);
+          if (this.animations) {
+            var animationList = this.animations.split(/[ *]/);  // split on one or many spaces
+            var scrollContainer = document.querySelector('#mainPanel');
+            bindScroll(scrollContainer, this, animationList);
+          }
+
         }
 
       });

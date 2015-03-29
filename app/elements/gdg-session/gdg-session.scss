@@ -58,6 +58,13 @@
 .session-banner-container {
   padding-top: 16px;
   font-size: 1.75rem;
+
+  div {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 #detailsContainer {
@@ -131,6 +138,9 @@ gdg-presentation-card {
       }
     }
   }
+  .session-banner-container {
+    font-size: 1.25rem;
+  }
 }
 
 
@@ -145,6 +155,9 @@ gdg-presentation-card {
     &.stretches {
       width: 45%;
     }
+  }
+  .session-banner-container {
+    font-size: 1.5rem;
   }
 }
 
@@ -171,6 +184,10 @@ gdg-presentation-card {
   section#detailsContainer.core-selected {
     position: fixed;
     top: 19%;
+  }
+
+  .session-banner-container {
+    font-size: 1.1rem;
   }
 
 }

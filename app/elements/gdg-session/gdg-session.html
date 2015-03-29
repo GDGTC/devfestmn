@@ -71,17 +71,16 @@
         <section hero>
 
           <section class="session-banner-container">
-            <div layout horizontal center-center>
-              <h1>{{gdgSession.label}}</h1>
-
-              <p style="width: 10%"></p>
-              <p>
+            <div>
+              <p flex>
                 <core-icon icon="device:access-time"></core-icon>
                 {{gdgSession.startTime}} - {{gdgSession.endTime}}
               </p>
-              <p style="width: 10%"></p>
 
-              <gdg-notification-scroll-animate uid="{{sessionId}}" animation="slideInRight" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-animate>
+              <h1>{{gdgSession.label}}</h1>
+
+              <gdg-notification-scroll-animate flex uid="{{sessionId}}" animation="slideInRight" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-animate>
+
             </div>
           </section>
 

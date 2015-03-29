@@ -1,6 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<polymer-element name="gdg-notification-scroll-animate" attributes="uid message animations timeout">
+<polymer-element name="gdg-notification-scroll-animate" attributes="uid message animation timeout">
   <template>
     <link rel="stylesheet" href="gdg-notification-scroll-animate.css">
 
@@ -29,9 +29,9 @@
        * Bind to scrolling events on an element's scroll container after the app's template is bound and the
        * custom element can find it
        */
-      function bindScroll (scrollContainer, elem, animationList) {
+      function bindScroll (scrollContainer, elem, animation) {
         scrollContainer.addEventListener('scroll', function (event) {
-          revealOnScroll(event, elem, animationList);
+          revealOnScroll(event, elem, animation);
         });
       }
 
@@ -44,9 +44,8 @@
       }
 
 
-      function revealOnScroll (event, elem, animationList) {
+      function revealOnScroll (event, elem, animation) {
 
-        var animationClassString = animationList.join(' ');
         var contentContainer = elem.$['contentContainer' + elem.uid];
         var contentOffsetTop = contentContainer.getBoundingClientRect().top;
 
@@ -55,10 +54,10 @@
         if (isElemVisible(contentOffsetTop)) {
           // check if already animated so we only add classes once when entering the animation state
           if (contentContainer.getAttribute('class').indexOf('animated') === -1) {
-            contentContainer.className += ' animated ' + animationClassString;
+            contentContainer.className += ' animated ' + animation;
           }
         } else {
-          contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + animationClassString), '');
+          contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + animation), '');
         }
       }
 
@@ -69,14 +68,13 @@
 
         ready: function () {
           this.uid = this.uid || '';
-          this.animations = this.animations || '';
+          this.animation = this.animation || '';
         },
 
         domReady: function () {
-          if (this.animations) {
-            var animationList = this.animations.split(/[ *]/);  // split on one or many spaces
+          if (this.animation) {
             var scrollContainer = document.querySelector('#mainPanel');
-            bindScroll(scrollContainer, this, animationList);
+            bindScroll(scrollContainer, this, this.animation);
           }
 
         }

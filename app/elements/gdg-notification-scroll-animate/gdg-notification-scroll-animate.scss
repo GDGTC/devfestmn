@@ -1,32 +1,42 @@
-$animation-time: .5s;
+$animation-time: .8s;
+$easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
 
+
+// TODO: Moar animations to support animation API
 @keyframes slideInRight {
   0% {
-    transform: translate3d(150px, 0, 0);
+    opacity: 0;
+    transform: translate3d(500px, 0, 0);
   }
   100% {
+    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
+
+@keyframes aparition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 :host {
   display: block;
 }
 
 [id^="contentContainer"] {
-
-  opacity: 0;
-
-  transition: background-color $animation-time,
-              opacity $animation-time;
+  // Add any misc transitions here
 }
 
-.animated {
-  opacity: 1;
-  background-color: red;
+.aparition {
+  animation: aparition $animation-time;
 }
 
 
 .slideInRight {
-  animation: slideInRight $animation-time ease-out;
+  animation: slideInRight $animation-time $easing-small-bounce;
 }

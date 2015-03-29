@@ -1,5 +1,7 @@
 # DEVFEST MN 2015 Website
 
+Current app in development is being hosted [on Firebase](https://devfestmn.firebaseapp.com/)
+
 # Getting Started
 
 This project is built through Gulp, with packages managed by NPM and Bower, so

@@ -1,4 +1,4 @@
-$animation-time: .8s;
+$animation-time: .5s;
 $easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
 
 
@@ -13,6 +13,26 @@ $easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
     transform: translate3d(0, 0, 0);
   }
 }
+
+@keyframes SlideInRightAndHighlight {
+  0% {
+    opacity: 0;
+    background-color: transparent;
+    transform: translate3d(500px, 0, 0);
+  }
+
+  50% {
+    opacity: 1;
+    background-color: #C172FF;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    background-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 
 @keyframes aparition {
   0% {
@@ -29,7 +49,8 @@ $easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
 }
 
 [id^="contentContainer"] {
-  // Add any misc transitions here
+  // Default styles for container being animated
+  transform: translate3d(500px, 0, 0);
 }
 
 .aparition {
@@ -39,4 +60,10 @@ $easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
 
 .slideInRight {
   animation: slideInRight $animation-time $easing-small-bounce;
+}
+
+.slideInRightAndHighlight {
+  animation: SlideInRightAndHighlight $animation-time * 2;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }

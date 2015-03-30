@@ -4,7 +4,9 @@
   <template>
     <link rel="stylesheet" href="gdg-notification-scroll-animate.css">
 
-    <span id="{{ 'contentContainer' + uid }}" class="revealOnScroll">{{message}}</span>
+    <div id="{{ 'contentContainer' + uid }}" class="revealOnScroll">
+      <span>{{message}}</span>
+    </div>
   </template>
   <script>
     (function (Polymer, undefined) {
@@ -44,6 +46,10 @@
       }
 
 
+      /**
+       * Adds and removes proper animation classing to the element
+       * when it's within the view of the page
+       */
       function revealOnScroll (event, elem, animation) {
 
         var contentContainer = elem.$['contentContainer' + elem.uid];

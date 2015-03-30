@@ -1,5 +1,19 @@
 @import "mixins";
 
+$animation-time__view_entry: 2s;
+
+
+@keyframes aparition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
 :host {
 
   position: relative;
@@ -28,7 +42,7 @@
   //  }
 }
 
-#mainContainer {
+[id^="mainContainer"] {
   width: 100%;
   min-height: 490px;
   display: flex;
@@ -146,7 +160,7 @@ gdg-presentation-card {
 
 @media screen and (min-width: 601px) and (max-width: 1250px) {
 
-  #mainContainer.hasList {
+  [id^="mainContainer"].hasList {
     height: 850px;
   }
   .card-container {
@@ -171,7 +185,7 @@ gdg-presentation-card {
     }
   }
 
-  #mainContainer.hasList {
+  [id^="mainContainer"].hasList {
     height: (275px * 7) + (15px * 5);
   }
 
@@ -189,7 +203,11 @@ gdg-presentation-card {
   .session-banner-container {
     font-size: 1.1rem;
   }
+}
 
+// Hooks for scroll animation
+.aparition {
+  animation: aparition $animation-time__view_entry;
 }
 
 

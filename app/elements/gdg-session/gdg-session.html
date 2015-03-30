@@ -14,7 +14,7 @@
 <link rel="import" href="../gdg-globals/gdg-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-session" attributes="sessionId sessionNum">
+<polymer-element name="gdg-session" attributes="sessionId scrollAnimation sessionNum">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
@@ -61,7 +61,7 @@
 
 
     <!-- Begin content -->
-    <section id="mainContainer"
+    <section id="{{ 'mainContainer' + sessionId }}"
              class="{{ {hasList: gdgSession.hasPresentationList} | tokenList }}">
 
 
@@ -79,7 +79,8 @@
 
               <h1>{{gdgSession.label}}</h1>
 
-              <gdg-notification-scroll-animate flex uid="{{sessionId}}" animation="slideInRight" message="{{gdgSession.notification || 'Average length test notification'}}"></gdg-notification-scroll-animate>
+              <gdg-notification-scroll-animate flex uid="{{sessionId}}" animation="slideInRightAndHighlight" message="{{'Cool notification test'}}">
+              </gdg-notification-scroll-animate>
 
             </div>
           </section>
@@ -182,8 +183,66 @@
   </template>
 
   <script>
-    (function () {
-      Polymer({
+    (function (Polymer, undefined) {
+
+      var windowHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+
+      var windowHeightPadded = windowHeight * 1.1;
+
+      var Modernizr = this.Modernizr;
+      var isTouch = Modernizr.touch;
+
+      if (isTouch) {
+        //console.log('Touch device detected!');
+      }
+
+      /**
+       * Bind to scrolling events on an element's scroll container after the app's template is bound and the
+       * custom element can find it
+       */
+      function bindScroll (scrollContainer, elem, scrollAnimation) {
+        scrollContainer.addEventListener('scroll', function (event) {
+          revealOnScroll(event, elem, scrollAnimation);
+        });
+      }
+
+
+      /**
+       * Is the element's container within the current window?
+       */
+      function isElemVisible (contentOffsetTop) {
+        return contentOffsetTop > 0 && contentOffsetTop < windowHeightPadded;
+      }
+
+
+      /**
+       * Adds and removes proper animation classing to the element
+       * when it's within the view of the page
+       */
+      function revealOnScroll (event, elem, scrollAnimation) {
+
+        var contentContainer = elem.$['mainContainer' + elem.sessionId];
+        var contentOffsetTop = contentContainer.getBoundingClientRect().top;
+
+
+        // Add or remove appropriate animation classes
+        if (isElemVisible(contentOffsetTop)) {
+          // check if already animated so we only add classes once when entering the animation state
+          if (contentContainer.getAttribute('class').indexOf('animated') === -1) {
+            contentContainer.className += ' animated ' + scrollAnimation;
+          }
+        } else {
+          // Uncomment to remove class (Although, it seems best to keep the content once we scroll to it and it appears)
+          //contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + scrollAnimation), '');
+        }
+      }
+
+
+      Polymer('gdg-session', {
 
         selected: 0,
         selectedPresId: null,
@@ -278,13 +337,15 @@
 
         ready: function () {
           this.sessionId = this.sessionId || '';
+          this.scrollAnimation = this.scrollAnimation || '';
         },
 
         domReady: function () {
-          console.log(this.sessionId);
+          var scrollContainer = document.querySelector('#mainPanel');
+          bindScroll(scrollContainer, this, this.scrollAnimation);
         }
 
       });
-    })();
+    }(Polymer));
   </script>
 </polymer-element>

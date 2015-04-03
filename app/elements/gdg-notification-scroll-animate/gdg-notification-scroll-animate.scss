@@ -53,6 +53,16 @@ $easing-small-bounce: cubic-bezier(.59, -0.54, .72, 1.59);
   transform: translate3d(500px, 0, 0);
 }
 
+
+.main-container {
+  
+}
+
+
+
+
+/* Animation Hooks */
+
 .aparition {
   animation: aparition $animation-time;
 }

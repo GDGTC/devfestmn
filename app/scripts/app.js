@@ -112,7 +112,7 @@
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
-  app.appName = 'Google DevFest Twin Cities';
+  app.appName = 'Google DevFest Twin Cities 2015';
 
 
   app.devfestStartTime = new Date(2015, 2, 21, 7);

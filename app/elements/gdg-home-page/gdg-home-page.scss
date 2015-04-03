@@ -11,6 +11,20 @@
   width: 100%;
 }
 
+.content-container {
+  width: 100%;
+  height: 100%;
+}
+
+.page__section {
+  width: 100%;
+  height: 100%;
+
+  &.home-photo {
+
+  }
+}
+
 
 .card-list {
   height: 300px;
@@ -18,7 +32,7 @@
 }
 
 core-toolbar {
-  color: #FAFAFA;
+  color: hsla(0, 0%, 100%, 1);
   background-color: $theme-color__primary;
 }
 

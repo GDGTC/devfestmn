@@ -17,27 +17,45 @@
 
     <section id="mainContainer" cross-fade>
 
+
       <!-- Hero Banner -->
       <section class="hero-container">
 
         <div class="hero-unit">
           <h3>GDG Twin Cities DevFest 2015</h3>
         </div>
+
       </section>
 
-      <!-- Tabs to toggle full schedule vs favorites -->
-      <core-toolbar>
-        <paper-tabs id="scheduleTabs" selected="list" self-end>
-          <paper-tab name="list">Scheduled Events</paper-tab>
-          <paper-tab name="favorites">My Favorites</paper-tab>
-        </paper-tabs>
+      <section class="home-photo page__section">
 
-      </core-toolbar>
-
-      <!-- Schedule -->
-      <section class="content-layout-container">
-          <gdg-session-list id="sessionsList" router="{{router}}"></gdg-session-list>
       </section>
+
+      <!-- Expanding schedule container: Position over mid-point of separation between hero banner and the rest of the content -->
+      <core-overlay-layer>
+        <core-animated-pages>
+
+          <section>
+            <core-toolbar>
+
+              <!-- Tabs to toggle full schedule vs favorites -->
+              <paper-tabs id="scheduleTabs" selected="list" self-end>
+                <paper-tab name="list">Scheduled Events</paper-tab>
+                <paper-tab name="favorites">My Favorites</paper-tab>
+              </paper-tabs>
+
+            </core-toolbar>
+          </section>
+
+          <!-- Expanding content section with Schedule -->
+          <section class="content-layout-container">
+            <gdg-session-list id="sessionsList" router="{{router}}"></gdg-session-list>
+          </section>
+
+        </core-animated-pages>
+      </core-overlay-layer>
+
+
 
     </section>
 
@@ -65,8 +83,6 @@
 //          gdgHomePage.addEventListener('presentation-selected')
 
         }
-
-
 
 
       });

@@ -1,6 +1,8 @@
-@import "base_variables";
+@import "../../styles/base_variables";
+@import "../../styles/page_sections";
 
-
+$chevron-height: 400px;
+$chevron-width: 145px;
 
 :host {
   display: block;
@@ -12,9 +14,42 @@
 }
 
 
+
 .card-list {
   height: 300px;
   background-color: yellow;
+}
+
+.chevron-container {
+  height: $chevron-height;
+  font-size: 5rem;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+
+  img {
+    height: $chevron-height;
+    width: $chevron-width;
+  }
+
+  .logo-text-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 100%;
+    color: $theme-color__primary;
+
+    .logo-text {
+      p {
+        line-height: 0;
+      }
+      .title {
+        opacity: 0;
+      }
+    }
+
+  }
 }
 
 core-toolbar {
@@ -45,36 +80,38 @@ core-header-panel {
 
 
 
+
 .hero-container {
-  margin: 0 auto;
-  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: $theme-color__primary;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: $theme-color__accent_secondary;
 
-  .hero-unit {
-    padding: 16px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: $theme-color__primary;
-    justify-content: center;
-    font-size: 36px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: $theme-color__accent;
-    border-radius: 6px;
+  .description {
+    opacity: 0;
+    font-size: 0;
   }
 
-  .countdown {
-    h2 {
-      margin: 0;
-    }
-  }
 }
+
+.logo-container {
+  opacity: 0;
+}
+
+
 
 #scheduleTabs {
   width: 100%;
   height: 100%;
   margin: 0;
+  background-color: $theme-color__primary;
   text-transform: uppercase;
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -4,11 +4,14 @@
   <template>
     <link rel="stylesheet" href="gdg-notification-scroll-animate.css">
 
-    <div id="{{ 'contentContainer' + uid }}" class="revealOnScroll mainContainer">
-      <span>{{message}}</span>
+    <gdg-animation-globals values="{{animGlobals}}"></gdg-animation-globals>
+
+    <div id="{{ 'contentContainer' + uid }}" class="revealOnScroll main-container">
+      <p class="content"><span>{{message}}</span></p>
     </div>
 
   </template>
+  <script src="animations.js"></script>
   <script>
     (function (Polymer, undefined) {
 
@@ -59,9 +62,10 @@
 
         // Add or remove appropriate animation classes
         if (isElemVisible(contentOffsetTop)) {
-          // check if already animated so we only add classes once when entering the animation state
+          // check if already animated so we only perform the animation once when the element enters view
           if (contentContainer.getAttribute('class').indexOf('animated') === -1) {
-            contentContainer.className += ' animated ' + animation;
+            animate(elem, contentContainer, animation);
+            contentContainer.className += ' animated';
           }
         } else {
           contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + animation), '');

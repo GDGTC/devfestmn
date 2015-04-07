@@ -1,17 +1,5 @@
 @import "mixins";
 
-$animation-time__view_entry: 2s;
-
-
-@keyframes aparition {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 
 
 :host {
@@ -47,6 +35,7 @@ $animation-time__view_entry: 2s;
   min-height: 490px;
   display: flex;
   flex-direction: column;
+  opacity: 0;  /* animate to full opaqueness when scrolled into view for the first time */
 
   &:not(.hasList) {
     .card-container {
@@ -205,9 +194,5 @@ gdg-presentation-card {
   }
 }
 
-// Hooks for scroll animation
-.aparition {
-  animation: aparition $animation-time__view_entry;
-}
 
 

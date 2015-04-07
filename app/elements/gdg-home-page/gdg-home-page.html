@@ -7,6 +7,7 @@
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
 <link rel="import" href="../gdg-session-list/gdg-session-list.html">
+<link rel="import" href="../gdg-animation-globals/gdg-animation-globals.html">
 
 
 <polymer-element name="gdg-home-page" attributes="router">
@@ -14,15 +15,36 @@
   <template>
     <link rel="stylesheet" href="gdg-home-page.css">
 
+    <gdg-animation-globals values="{{animGlobals}}"></gdg-animation-globals>
+
+
 
     <section id="mainContainer" cross-fade>
 
       <!-- Hero Banner -->
-      <section class="hero-container">
+      <section class="page-section__hero">
 
-        <div class="hero-unit">
-          <h3>GDG Twin Cities DevFest 2015</h3>
+        <div class="hero-container" id="heroContainer">
+          <div class="logo-container">
+
+            <div class="chevron-container">
+              <img src="../../images/gdg_chevron_left.svg">
+
+              <div class="logo-text-container">
+                <div class="logo-text">
+                  <span class="title">GDG DevFest</span> <!-- Hidden at first -->
+                  <span class="year">2015</span>
+                </div>
+              </div>
+
+              <img src="../../images/gdg_chevron_right.svg">
+            </div>
+
+          </div>
+
+          <p class="description">Saturday, March 21, 2015. 8am - 5pm</p>
         </div>
+
       </section>
 
       <!-- Tabs to toggle full schedule vs favorites -->
@@ -46,11 +68,13 @@
 
   <script>
     (function () {
+
       Polymer({
 
         devfestStartTime: "",
 
         ready: function () {
+
           this.devfestStartTime = new Date(2015, 2, 21, 7);
           var tabs = this.$.mainContainer.querySelector('paper-tabs');
 
@@ -59,19 +83,17 @@
             this.fire('core-signal', {name: 'view-mode', data: tabs.selected});
           });
 
+        },
 
-//          // Listen for presentation selection so we can transition to the detail page
-//          var gdgHomePage = document.querySelector('gdg-home-page');
-//          gdgHomePage.addEventListener('presentation-selected')
-
+        domReady: function () {
+          //var heroContainer = this.$.heroUnit;
+          animateHero(this);
         }
-
-
-
 
       });
     })();
 
   </script>
+  <script src="hero-animation.js"></script>
 
 </polymer-element>

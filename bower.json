@@ -9,7 +9,7 @@
     "firebase-element": "Polymer/firebase-element#~0.5.5",
     "app-router": "~2.6.0",
     "modernizr": "~2.8.3",
-    "velocity": "~1.2.2"
+    "gsap": "~1.16.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.2.3",

@@ -12,15 +12,19 @@
 <link rel="import" href="../gdg-presentation-details/gdg-presentation-details.html">
 <link rel="import" href="../gdg-notification-scroll-animate/gdg-notification-scroll-animate.html">
 <link rel="import" href="../gdg-globals/gdg-globals.html">
+<link rel="import" href="../gdg-animation-globals/gdg-animation-globals.html">
 <link rel="import" href="../../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="gdg-session" attributes="sessionId scrollAnimation sessionNum">
+
+<polymer-element name="gdg-session" attributes="sessionId sessionNum">
 
   <template>
     <link rel="stylesheet" href="gdg-session.css">
 
     <core-signals on-core-signal-view-mode="{{handleNewViewMode}}"></core-signals>
     <gdg-globals values="{{globals}}"></gdg-globals>
+
+    <gdg-animation-globals values="{{animGlobals}}"></gdg-animation-globals>
 
 
     <firebase-element location="https://devfestmn.firebaseio.com/presentations/{{sessionId}}"
@@ -179,7 +183,6 @@
       </core-animated-pages>
     </section>
 
-
   </template>
 
   <script>
@@ -191,7 +194,7 @@
         document.body.clientHeight, document.documentElement.clientHeight
       );
 
-      var windowHeightPadded = windowHeight * 1.1;
+      var navbarHeight = 64;
 
       var Modernizr = this.Modernizr;
       var isTouch = Modernizr.touch;
@@ -204,9 +207,9 @@
        * Bind to scrolling events on an element's scroll container after the app's template is bound and the
        * custom element can find it
        */
-      function bindScroll (scrollContainer, elem, scrollAnimation) {
+      function bindScroll (scrollContainer, elem) {
         scrollContainer.addEventListener('scroll', function (event) {
-          revealOnScroll(event, elem, scrollAnimation);
+          revealOnScroll(event, elem);
         });
       }
 
@@ -215,7 +218,7 @@
        * Is the element's container within the current window?
        */
       function isElemVisible (contentOffsetTop) {
-        return contentOffsetTop > 0 && contentOffsetTop < windowHeightPadded;
+        return contentOffsetTop > 0 && contentOffsetTop < (windowHeight - navbarHeight);
       }
 
 
@@ -223,21 +226,30 @@
        * Adds and removes proper animation classing to the element
        * when it's within the view of the page
        */
-      function revealOnScroll (event, elem, scrollAnimation) {
+      function revealOnScroll (event, elem) {
 
         var contentContainer = elem.$['mainContainer' + elem.sessionId];
         var contentOffsetTop = contentContainer.getBoundingClientRect().top;
 
-
+        var classes;
         // Add or remove appropriate animation classes
         if (isElemVisible(contentOffsetTop)) {
+          classes = contentContainer.getAttribute('class');
           // check if already animated so we only add classes once when entering the animation state
-          if (contentContainer.getAttribute('class').indexOf('animated') === -1) {
-            contentContainer.className += ' animated ' + scrollAnimation;
+          if (classes.indexOf('in-view') === -1) {
+            TweenMax.to(
+              contentContainer,
+              elem.animGlobals.BASE_DURATION * 1.25,
+              {
+                opacity: 1,
+                delay: elem.animGlobals.BASE_DURATION * 0.25
+              }
+            );
+            contentContainer.className += ' in-view';
           }
         } else {
           // Uncomment to remove class (Although, it seems best to keep the content once we scroll to it and it appears)
-          //contentContainer.className = contentContainer.className.replace(new RegExp('animated ' + scrollAnimation), '');
+          //contentContainer.className = contentContainer.className.replace(new RegExp('in-view '), '');
         }
       }
 
@@ -335,6 +347,7 @@
           this.viewMode = detail;
         },
 
+
         ready: function () {
           this.sessionId = this.sessionId || '';
           this.scrollAnimation = this.scrollAnimation || '';
@@ -342,7 +355,7 @@
 
         domReady: function () {
           var scrollContainer = document.querySelector('#mainPanel');
-          bindScroll(scrollContainer, this, this.scrollAnimation);
+          bindScroll(scrollContainer, this);
         }
 
       });

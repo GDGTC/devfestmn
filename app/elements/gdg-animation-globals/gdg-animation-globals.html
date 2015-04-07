@@ -1,13 +1,31 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<polymer-element name="gdg-animation-globals" attributes="">
+<polymer-element name="gdg-animation-globals" attributes="values">
   <template>
     <link rel="stylesheet" href="gdg-animation-globals.css">
   </template>
   <script>
     (function () {
+
+      var values = {
+
+        // base duration multiplier for animation timing properties
+        BASE_DURATION: 1
+      };
+
+
       Polymer({
-        // define element prototype here
+
+        ready: function () {
+          this.values = values;
+
+          var attr;
+          for (var i = 0, l = this.attributes.values.length; i < l; i++) {
+            attr = this.attributes[i];
+            values[attr.nodeName] = attr.value;
+          }
+        }
+
       });
     })();
   </script>

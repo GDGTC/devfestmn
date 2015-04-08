@@ -1,0 +1,77 @@
+@import "../../styles/base_variables";
+
+
+$chevron-height: 400px;
+$chevron-width: 145px;
+
+
+:host {
+  display: block;
+}
+
+
+.chevron-container {
+  height: $chevron-height;
+  font-size: 5rem;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+
+  img {
+    height: $chevron-height;
+    width: $chevron-width;
+  }
+
+  .logo-text-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 100%;
+    color: $theme-color__primary;
+
+    .logo-text {
+      p {
+        line-height: 0;
+      }
+      .title {
+        opacity: 0;
+      }
+    }
+
+  }
+}
+
+
+.hero-unit h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+
+
+.hero-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: $theme-color__primary;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: $theme-color__accent_secondary;
+
+  .description {
+    opacity: 0;
+    font-size: 0;
+  }
+
+}
+
+.logo-container {
+  opacity: 0;
+}

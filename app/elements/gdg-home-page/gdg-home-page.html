@@ -8,7 +8,7 @@
 
 <link rel="import" href="../gdg-session-list/gdg-session-list.html">
 <link rel="import" href="../gdg-animation-globals/gdg-animation-globals.html">
-
+<link rel="import" href="../gdg-hero/gdg-hero.html">
 
 <polymer-element name="gdg-home-page" attributes="router">
 
@@ -24,26 +24,7 @@
       <!-- Hero Banner -->
       <section class="page-section__hero">
 
-        <div class="hero-container" id="heroContainer">
-          <div class="logo-container">
-
-            <div class="chevron-container">
-              <img src="../../images/gdg_chevron_left.svg">
-
-              <div class="logo-text-container">
-                <div class="logo-text">
-                  <span class="title">GDG DevFest</span> <!-- Hidden at first -->
-                  <span class="year">2015</span>
-                </div>
-              </div>
-
-              <img src="../../images/gdg_chevron_right.svg">
-            </div>
-
-          </div>
-
-          <p class="description">Saturday, March 21, 2015 @ 8am - 5pm</p>
-        </div>
+        <gdg-hero></gdg-hero>
 
       </section>
 
@@ -70,89 +51,9 @@
     (function (Polymer, undefined) {
 
 
-      ////// TODO: Put this function in its own separate file
-      function animateHero(elem) {
-
-        var logoEntranceDuration = elem.animGlobals.BASE_DURATION * 0.8,
-          heroContainer = elem.$.heroContainer,
-          logoContainer = heroContainer.querySelector('.logo-container'),
-          heroDescription = heroContainer.querySelector('.description'),
-          chevrons = heroContainer.querySelectorAll('.chevron-container img'),
-          logoYear = heroContainer.querySelector('.logo-text .year'),
-          logoTitle = heroContainer.querySelector('.logo-text .title');
-
-
-        var timeline = new TimelineMax();
-        //timeline.delay(0.5);
-
-        timeline.to(logoContainer, 0, { opacity: 1 });
-
-        timeline.from(
-          chevrons,
-          logoEntranceDuration,
-          {
-            scale: 0,
-            opacity: 0,
-            ease: Back.easeOut.config(1)
-          }
-        );
-
-        timeline.fromTo(
-          logoYear,
-          logoEntranceDuration,
-          {
-            fontSize: '0px',
-            opacity: 0,
-            display: 'block'
-          },
-          {
-            fontSize: '1em',
-            opacity: 1,
-            ease: Back.easeOut.config(1)
-          },
-          '-=' + logoEntranceDuration
-        );
-
-        /////////// Expand Text //////////
-
-        timeline.fromTo(
-          logoTitle,
-          elem.animGlobals.BASE_DURATION,
-          {
-            fontSize: '0px',
-            opacity: 0,
-            display: 'none'
-          },
-          {
-            display: 'block',
-            opacity: 1,
-            fontSize: '1em',
-            ease: Back.easeOut.config(1.7)
-          }
-        );
-
-        timeline.to(
-          heroDescription,
-          logoEntranceDuration,
-          {
-            fontSize: '1em',
-            opacity: 1
-          },
-          '+=0.5'
-        );
-      }
-
-
-
       Polymer('gdg-home-page', {
 
         devfestStartTime: "",
-
-        _animateHero: function (elem) {
-          window.requestAnimationFrame(function () {
-            animateHero(elem);
-          });
-        },
 
         ready: function () {
 
@@ -163,12 +64,6 @@
           tabs.addEventListener('core-select', function () {
             this.fire('core-signal', {name: 'view-mode', data: tabs.selected});
           });
-          this._animateHero(this);  // wrap hero animation in RAF -- the closure of "this" being the Polymer element
-        },
-
-        domReady: function () {
-          //var heroContainer = this.$.heroUnit;
-          //animateHero(this);
         }
 
       });

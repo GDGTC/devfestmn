@@ -11,21 +11,79 @@
     </div>
 
   </template>
-  <script src="animations.js"></script>
   <script>
     (function (Polymer, undefined) {
 
-      var windowHeight = Math.max(
-        document.body.scrollHeight, document.documentElement.scrollHeight,
-        document.body.offsetHeight, document.documentElement.offsetHeight,
-        document.body.clientHeight, document.documentElement.clientHeight
-      );
+      var BASE_DURATION,
+        windowHeight = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+        ),
 
 
-      var windowHeightPadded = windowHeight * 1.1;
+        aparition = function (elem) {
 
-      var Modernizr = this.Modernizr;
-      var isTouch = Modernizr.touch;
+        },
+
+        slideInRight = function (elem) {
+
+        },
+
+
+        slideInRightAndHighlight = function (elem, contentContainer) {
+
+          var timeline = new TimelineMax(),
+            contentP = contentContainer.querySelector('.content');
+
+          timeline.delay(BASE_DURATION * 1.5);
+
+          timeline.from(
+            contentContainer,
+            BASE_DURATION * 0.4,
+            {
+              transform: 'translate3d(500px, 0, 0)',
+              opacity: 0
+            }
+          );
+
+          timeline.to(
+            contentP,
+            BASE_DURATION * 0.75,
+            {
+              backgroundColor: '#C172FF'
+            },
+            '-=' + BASE_DURATION * 0.4
+          );
+
+          timeline.to(
+            contentP,
+            BASE_DURATION,
+            {
+              backgroundColor: 'transparent'
+            }
+          );
+        },
+
+
+      ///// TODO: Place animations in their own file
+        animate = function (elem, contentContainer, animation) {
+
+          BASE_DURATION = elem.animGlobals.BASE_DURATION;
+
+          if (animation === 'slideInRightAndHighlight') {
+            slideInRightAndHighlight(elem, contentContainer);
+          } else if (animation === 'slideInRight') {
+            slideInRight(elem, contentContainer);
+          } else if (animation === 'aparition') {
+            aparition(elem, contentContainer);
+          }
+        };
+
+
+      var windowHeightPadded = windowHeight * 1.1,
+          Modernizr = this.Modernizr,
+          isTouch = Modernizr.touch;
 
       if (isTouch) {
         //console.log('Touch device detected!');
@@ -35,7 +93,7 @@
        * Bind to scrolling events on an element's scroll container after the app's template is bound and the
        * custom element can find it
        */
-      function bindScroll (scrollContainer, elem, animation) {
+      function bindScroll(scrollContainer, elem, animation) {
         scrollContainer.addEventListener('scroll', function (event) {
           revealOnScroll(event, elem, animation);
         });
@@ -45,7 +103,7 @@
       /**
        * Is the element's container within the current window?
        */
-      function isElemVisible (contentOffsetTop) {
+      function isElemVisible(contentOffsetTop) {
         return contentOffsetTop > 0 && contentOffsetTop < windowHeightPadded;
       }
 
@@ -54,7 +112,7 @@
        * Adds and removes proper animation classing to the element
        * when it's within the view of the page
        */
-      function revealOnScroll (event, elem, animation) {
+      function revealOnScroll(event, elem, animation) {
 
         var contentContainer = elem.$['contentContainer' + elem.uid];
         var contentOffsetTop = contentContainer.getBoundingClientRect().top;

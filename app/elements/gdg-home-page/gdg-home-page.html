@@ -117,7 +117,7 @@
 
         timeline.fromTo(
           logoTitle,
-          logoEntranceDuration,
+          elem.animGlobals.BASE_DURATION,
           {
             fontSize: '0px',
             opacity: 0,
@@ -148,6 +148,12 @@
 
         devfestStartTime: "",
 
+        _animateHero: function (elem) {
+          window.requestAnimationFrame(function () {
+            animateHero(elem);
+          });
+        },
+
         ready: function () {
 
           this.devfestStartTime = new Date(2015, 2, 21, 7);
@@ -157,8 +163,7 @@
           tabs.addEventListener('core-select', function () {
             this.fire('core-signal', {name: 'view-mode', data: tabs.selected});
           });
-          animateHero(this);
-
+          this._animateHero(this);  // wrap hero animation in RAF -- the closure of "this" being the Polymer element
         },
 
         domReady: function () {

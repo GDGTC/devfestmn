@@ -12,14 +12,25 @@ $chevron-width: 145px;
 
 .chevron-container {
   height: $chevron-height;
-  font-size: 5rem;
+  font-size: 2em;
   display: flex;
   flex-direction: row;
   text-align: center;
 
-  img {
+  .chevron {
     height: $chevron-height;
     width: $chevron-width;
+    transform: scale(0);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    &.left {
+      background-image: url('../../images/gdg_chevron_left.svg');
+    }
+    &.right {
+      background-image: url('../../images/gdg_chevron_right.svg');
+    }
   }
 
   .logo-text-container {
@@ -33,8 +44,8 @@ $chevron-width: 145px;
     .logo-text {
       p {
         line-height: 0;
-      }
-      .title {
+        font-size: 0;
+        display: none;
         opacity: 0;
       }
     }
@@ -53,6 +64,7 @@ $chevron-width: 145px;
 
 
 .hero-container {
+  min-width: 850px;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -73,5 +85,5 @@ $chevron-width: 145px;
 }
 
 .logo-container {
-  opacity: 0;
+  //opacity: 0;
 }
